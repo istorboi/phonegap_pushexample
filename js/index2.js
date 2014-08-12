@@ -103,7 +103,35 @@ function onNotificationAPN(e) {
     }
 }
 function tokenHandler (result) {
-	alert("tokenhandler:" + result);
+	alert("borrar tokenhandler:" + result);
+	
+	
+	
+	 $id_tutor=54;
+     $plataforma="iOS";
+     $registro_plataforma=result;
+    
+     
+     
+     $.ajax({
+         type:'GET',
+         url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor.php',
+         data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma},
+          dataType: 'jsonp',
+         jsonp: 'callback',
+         jsonpCallback: 'dispositivoRegistrarCallback',
+         success: function(){
+         			alert("Servicio de Alertas activado para su dispositivo");
+        		
+         },
+         error: function(){
+        	 		alert("Borrar dispositivo ya registrado");
+        }
+        
+
+    });
+	
+	
     //$("#app-status-ul").append('<li>token: '+ result +'</li>');
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
