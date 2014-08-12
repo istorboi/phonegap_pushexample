@@ -105,7 +105,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration"/>
-	<gap:plugin name="com.adobe.plugins.pushplugin" />
+	<gap:plugin name="com.phonegap.plugins.PushPlugin.PushNotification" />
 	
 	
 	
