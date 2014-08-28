@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<!--        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+ -->       <meta name="viewport" id="viewport“ content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+<!--        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="libs/mia2.css" />
+-->
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="libs/mia2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons.min.css" />
+
+
+
+		
+        <title>geolocation</title>
+
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { width: 100%; height: 90%; padding: 0; }
+  #map-page { width: 100%; height: 100%; padding: 0; }
+</style>
+
+    </head>
+    <body onload="onLoad()">
+
+
+<div data-role="page" id="map-page" data-url="map-page">
+    
+    <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+			<h1 style="margin: 0px; padding:0px;">
+			  		<img class="logo_centro" border="0" style="height:50px;" src="img/happy.jpg" />
+				</h1>
+				<a href="main.html" data-ajax="false" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+			</div>
+    
+    
+    <!--  
+    <div data-role="header" data-theme="a">
+    
+    
+     
+    <h1>Maps</h1> <button id ="Boton1" onClick="mostrarUbicacion()"> Mi ubicacion</button>
+    <a href="index.html" data-rel="button" data-transition="fade" data-icon="home" data-ajax="false">Inicio</a>
+    </div>
+    -->
+    
+    
+    <div role="main" class="ui-content" id="map-canvas" style="width:100%; height:90%">
+        <!-- map loads here... -->
+    </div>
+    
+   <div data-role="footer" class="myNavBar" data-position="fixed">
+		<div data-role="navbar" class="myNavBar ui-bar-h">
+		<ul id="mapamenu">
+			<!--  <li><a href="#controlDiario" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+			-->
+			<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+		    
+			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
+			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
+   	  	    <li  id="mapaliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			<li  id="mapaliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		
+		</ul>
+		</div>
+	</div>
+    
+</div>
+
+		
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+
+
+<!-- Todo 1: incluir la referencia al la libreria de google maps -->    
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<!-- Todo 1: fin -->    
+    
+    <script type="text/javascript" src="js/mapa.js"></script>
+    
+    
+    
+        
+    </body>
+</html>

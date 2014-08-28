@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+       <meta name="viewport" id="viewport“ content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="libs/mia2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons.min.css" />
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
+	<script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+	<script type="text/javascript" src="js/profesorMain.js"></script>
+	
+
+
+
+<title>Educador</title>
+</head>
+<body onload="onLoad()">
+
+ <div data-role="page" id="profesorMenu">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+                <h1 style="margin: 0px; padding:0px;">
+		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+            </div>
+            
+            
+            <div data-role="content"> 
+                <h1 id="profesorMenuH1" style="margin: 0px; padding:0px;"> Menú profesor</h1>
+                <br/>
+  	    	    <a href="#profObsClases" class="ui-b" data-role="button" id="profesorMenuAObservacion" >Observaciones Alumnos</a>
+                <br>
+                <a href="#profFotoModo" class="ui-b" data-role="button" id="profesorMenuAFotos" >Subir Foto</a>
+                
+                <br/>
+                <h1 style="margin: 0px; padding:0px;">
+                    <img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+		</h1>
+                
+            </div> 
+            
+            
+            
+            
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+                <div data-role="navbar" class="myNavBar ui-bar-h">
+                    <ul id="controlmenu">
+			<li><a href="#profesorMenu" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+                        <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
+                        <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
+		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+                    </ul>
+		</div>
+            </div>
+        </div>
+
+            
+<!---   profObsClases --------------------------------------------------- -->  
+        <div data-role="page" id="profObsClases">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+                <h1 style="margin: 0px; padding:0px;">
+		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+            </div>
+            
+            
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+                <div data-role="navbar" class="myNavBar ui-bar-h">
+                    <ul id="controlmenu">
+			<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
+                        <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
+                        <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
+		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+                    </ul>
+		</div>
+            </div>
+        </div>
+<!--  profObsAlumnos ---------------------------------------------------- -->
+        <div data-role="page" id="profObsAlumnos">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+                <h1 style="margin: 0px; padding:0px;">
+		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+            </div>
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+                <div data-role="navbar" class="myNavBar ui-bar-h">
+                    <ul id="controlmenu">
+			<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
+                        <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
+                        <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
+		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+                    </ul>
+		</div>
+            </div>
+        </div>
+        
+<!--  profObsAlumno ---------------------------------------------------- -->
+        <div data-role="page" id="profObsAlumno">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+                <h1 style="margin: 0px; padding:0px;">
+		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+            </div>
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+                <div data-role="navbar" class="myNavBar ui-bar-h">
+                    <ul id="controlmenu">
+			<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
+                        <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
+                        <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
+		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+                    </ul>
+		</div>
+            </div>
+        </div>
+        
+       
+<!--  profFotoModo ---------------------------------------------------- -->
+        <div data-role="page" id="profFotoModo">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+                <h1 style="margin: 0px; padding:0px;">
+		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+            </div>
+            
+            <div data-role="content"> 
+                <h1 id="profFotoModoH1" style="margin: 0px; padding:0px;"> Subir Foto</h1>
+                <br/>
+  	    
+                <a onClick="subirFotoCamara()" class="ui-b" data-role="button" id="profFotoModoNuevo" >Nueva Foto</a>
+                <br>
+                <a onClick="subirFotoGaleria()" class="ui-b" data-role="button" id="profFotoModoGaleria" >Desde la Galería</a>
+                <br/>
+                <div id="profFotoModoIniciarSubida"> 
+
+                <a href="#profFotoSubir" class="ui-b" data-rel="button" id="profesorMenuAObservacion" >temporal lista alumnos</a>
+                    
+                    
+                    
+                </div>
+                <br/>
+                <h1 style="margin: 0px; padding:0px;">
+                    <img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+		</h1>
+                
+            </div> 
+            
+            
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+                <div data-role="navbar" class="myNavBar ui-bar-h">
+                    <ul id="controlmenu">
+			<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
+                        <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
+                        <li><a href="#profFotoModo" class="ui-nodisc-icon   ui-btn-active ui-state-persist"  id="nav_fotos" data-icon="custom"></a></li>
+		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+                    </ul>
+		</div>
+            </div>
+        </div>
+<!--  profFotoSubir ---------------------------------------------------- -->
+       
+        <div data-role="page" id="profFotoSubir">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+                <h1 style="margin: 0px; padding:0px;">
+		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+            </div>
+             <div data-role="content"> 
+            <!-- todo: mostrar la foto seleccionada -->
+            
+            
+            
+            
+            <!-- todo   etiquetar alumnossssssssss 
+                boton subir
+            -->
+         
+            <div  id="profFotoSubirListaAlumnos">
+            </div>
+            
+
+            
+            
+            <!--  todo:  boton enviar foto servidor  -->
+            
+            
+            
+             </div>
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+                <div data-role="navbar" class="myNavBar ui-bar-h">
+                    <ul id="controlmenu">
+			<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
+                        <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
+                        <li><a href="#profFotoModo" class="ui-nodisc-icon   ui-btn-active ui-state-persist"  id="nav_fotos" data-icon="custom"></a></li>
+		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+                    </ul>
+		</div>
+            </div>
+        </div>
+        
+
+	
+</body>
+</html>

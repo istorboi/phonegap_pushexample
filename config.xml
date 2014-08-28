@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "es.esolver.push2"
-        versionCode = "1" 
-        version     = "1.0.1" >
+        id          = "es.esolver.mia"
+        versionCode = "3" 
+        version     = "0.0.3" >
 
     <!-- versionCode is optional and Android only -->
 
-    <name>push</name>
+    <name>MIA</name>
 
     <description>
-   push
+    Aplicación para llevar el control diario de alumnos en escuelas infantiles
     </description>
 
     <author href="http://www.miagendainfantil" email="info@miagendainfantil.es">
-       PUSH
+       Mi Agenda Infantil
     </author>
 
 	<preference name="phonegap-version"           value="3.5.0" />          <!-- all: current version of PhoneGap -->
@@ -106,6 +106,8 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration"/>
 	<gap:plugin name="com.phonegap.plugins.PushPlugin" />
+	
+	
 	
 	
 	

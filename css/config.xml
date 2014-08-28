@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "es.esolver.mia"
+        versionCode = "3" 
+        version     = "0.0.3" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>MIA</name>
+
+    <description>
+    Aplicación para llevar el control diario de alumnos en escuelas infantiles
+    </description>
+
+    <author href="http://www.miagendainfantil" email="info@miagendainfantil.es">
+       Mi Agenda Infantil
+    </author>
+
+	<preference name="phonegap-version"           value="3.5.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="orientation" value="portrait" />
+	<preference name="fullscreen" value="true" />
+    <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
+    
+	
+	<icon src="icon.png" />
+	    <!-- iPhone / iPod Touch  -->
+<icon src="icon/icon-60.png" gap:platform="ios" width="60" height="60" />
+<icon src="icon/icon-60@2x.png" gap:platform="ios" width="120" height="120" />
+
+<!-- iPad -->
+<icon src="icon/icon-76.png" gap:platform="ios" width="76" height="76" />
+<icon src="icon/icon-76@2x.png" gap:platform="ios" width="152" height="152" />
+
+<!-- Settings Icon -->
+<icon src="icon/icon-small.png" gap:platform="ios" width="29" height="29" />
+<icon src="icon/icon-small@2x.png" gap:platform="ios" width="58" height="58" />
+
+<!-- Spotlight Icon -->
+<icon src="icon/icon-40.png" gap:platform="ios" width="40" height="40" />
+<icon src="icon/icon-40@2x.png" gap:platform="ios" width="80" height="80" />
+
+ 	<!-- iPhone / iPod Touch -->
+<icon src="icon/icon.png" gap:platform="ios" width="57" height="57" />
+<icon src="icon/icon@2x.png" gap:platform="ios" width="114" height="114" />
+
+<!-- iPad -->
+<icon src="icon/icon-72.png" gap:platform="ios" width="72" height="72" />
+<icon src="icon/icon-72@2x.png" gap:platform="ios" width="144" height="144" />
+
+<!-- iPhone Spotlight and Settings Icon -->
+<icon src="icon/icon-small.png" gap:platform="ios" width="29" height="29" />
+<icon src="icon/icon-small@2x.png" gap:platform="ios" width="58" height="58" />
+
+<!-- iPad Spotlight and Settings Icon -->
+<icon src="icon/icon-50.png" gap:platform="ios" width="50" height="50" />
+<icon src="icon/icon-50@2x.png" gap:platform="ios" width="100" height="100" />
+
+<icon src="icon/ldpi.png" gap:platform="android" gap:density="ldpi" />
+<icon src="icon/mdpi.png" gap:platform="android" gap:density="mdpi" />
+<icon src="icon/hdpi.png" gap:platform="android" gap:density="hdpi" />
+<icon src="icon/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+
+<gap:splash src="Default.png" gap:platform="ios" width="320" height="480" />
+<gap:splash src="Default@2x.png" gap:platform="ios" width="640" height="960" />
+
+<!-- iPhone 5 / iPod Touch (5th Generation) -->
+<gap:splash src="splash/Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />
+
+<!-- iPad -->
+<gap:splash src="splash/Default-Portrait.png" gap:platform="ios" width="768" height="1024" />
+<gap:splash src="splash/Default-Landscape.png" gap:platform="ios" width="1024" height="768" />
+
+<!-- Retina iPad -->
+<gap:splash src="splash/Default-Portrait@2x.png" gap:platform="ios" width="1536" height="2048" />
+<gap:splash src="splash/Default-Landscape@2x.png" gap:platform="ios" width="2048" height="1536" />
+
+
+
+
+	<preference name="permissions" value="none"/>
+
+    <!-- to enable individual permissions use the following examples -->
+    <feature name="http://api.phonegap.com/1.0/battery"/>
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/contacts"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/media"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
+	<feature name="http://api.phonegap.com/1.0/device"/>
+	
+	
+	
+	
+	<gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.dialogs"/>
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.vibration"/>
+	
+	
+	
+	
+	
+	 <access origin="*" />
+	
+</widget>
+
+
+	

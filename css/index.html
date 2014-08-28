@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+ <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+	
+
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="libs/mia2.css" />
+<link rel="stylesheet" type="text/css"
+	href="libs/jquery.mobile.structure-1.4.2.css" />
+<link rel="stylesheet" type="text/css"
+	href="libs/jquery.mobile.icons.min.css" />
+
+
+
+
+<title>Mia</title>
+</head>
+<body onload="onLoad()">
+
+
+
+	<!-- --------------------  Página login  -------------------------------------- -->
+	<div class="app" id="loginPage" data-role="page">
+		<div data-role="header" role="banner" data-position="fixed" style="background-color: #ffffff;" class="ui-header ui-bar-inherit">
+			<h1 style="margin: 0px; padding: 0px;">
+				<img border="0" style="height: 50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+	    </div>
+
+		<div class="ui-content ui-corner-all " style="margin: 3px;">
+
+			<h3 id="autenticacionUsuario">Autenticación de Usuario</h3>
+
+			<form id="formularioLogin">
+
+				<div data-role="fieldcontain">
+					<label for="tipo" id="labelMovil" >Usuario: </label> <input id="tel" type="text" name="movil" 	value="">
+				</div>
+				<div data-role="fieldcontain">
+					<label for="desc" id="labelPass" >Password:</label> <input id="pass" type="password" name="pass" value="">
+				</div>
+
+				<a data-role="button" onClick="loginValidar()" id="botonLogin">Acceder</a>
+
+			</form>
+			
+			<br/>
+			<div data-role="collapsible-set">
+				<div  data-role="collapsible">
+				<h3 id="h3recordar">Recordar Contraseña</h3>
+					<form id="formularioRecordarPass">
+						<div data-role="fieldcontain">
+						<label for="tipo" id="labelMovil2">Móvil: </label> <input type="text" name="movilRecordar"  id="movilRecordar"	value="">
+						</div>
+						<a data-role="button" onClick="recordarPass()" id="botonRecordar">Recordar</a>
+					</form>
+				
+				</div>
+				<div  data-role="collapsible">
+				<h3 id="idTerminos">Términos de uso</h3>
+				<p id="pTerminos">
+					
+La página web www.miagendainfantil.es y la aplicación Mi Agenda Infantil es titularidad de LAMBDA PI, C.B. y cumple con los requisitos derivados de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, del Real Decreto-ley 13/2012, de 30 de marzo, así como de la obligación de Información al usuario contemplada en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, en virtud del cual le informa que los datos personales que nos pueda facilitar a través de MAIL O FORMULARIO DE CONTACTO, no serán incorporados a los ficheros registrados en la Agencia de Protección de Datos de Carácter Personal, que son titularidad de LAMBDA PI, C.B. salvo que posteriormente se inicie una relación comercial entre el USUARIO y LAMBDA PI, C.B. en cuyo caso serán incorporados los datos facilitados, y en cuyo momento el cliente será informado en los términos que establece la LOPD y su reglamento de desarrollo.
+<br/><br/>
+Se advierte expresamente al usuario que las comunicaciones remitidas a través del FORMULARIO DE CONTACTO no disponen de mecanismo alguno de cifrado de datos, por lo que los datos proporcionados mediante dicha comunicación, en el transcurso del envío hasta nuestro buzón, podría ser interceptado por un tercero. Una vez recibido el mail, LAMBDA PI, C.B. garantiza la salvaguarda de la confidencialidad y seguridad de los Datos Personales, habiendo adoptado las medidas legalmente exigidas de seguridad, que permiten razonablemente asegurar la protección de sus datos personales y evitar la pérdida, mal uso, alteración, tratamiento o acceso no autorizado de los mismos.
+<br/><br/>
+Este sitio puede contener enlaces o referencias a otros sitios web que no están bajo nuestro control y en las que, por lo tanto, no es aplicable la presente política de protección de datos. Le aconsejamos leer las indicaciones que al respecto contenga cada página web que visite. Usted pasará a ser el único responsable de sus conexiones con tales páginas.
+<br/><br/>
+LAMBDA PI, C.B. es una sociedad mercantil de nacionalidad española, con domicilio social donde radica su dirección y gestión efectiva sito en Paterna (Valencia), Avda. Juan de la Cierva 10-2-7, con CIF E-97309389. La compañía es titular del dominio miagendainfantil.es y la aplicación miagendainfantil y su dirección de correo electrónico a efecto de comunicaciones electrónicas de Usuarios y terceros es info@lambda-pi.net.
+<br/><br/>
+LAMBDA PI, C.B. solicita, recaba o, simplemente, almacena una serie de datos e informaciones que el Usuario introduce en la Web o la Aplicación “Mi Agenda Infantil” (en adelante, MIA) a través de cualquier formulario electrónico u hoja de captación ya sea durante el proceso de registro del Usuario en la Web o durante el uso diario de MIA. Durante la navegación en la Web, LAMBDA PI, C.B. también puede recabar y almacenar información de su dispositivo.
+<br/><br/>
+LAMBDA PI, C.B. informa a los Usuarios que cumple con la vigente normativa de protección de datos vigente y, con carácter especial, con la Ley Orgánica 15/1999, de 13 de Diciembre de Protección de Datos de Carácter Personal, la Ley 34/2002 de Servicios de la Sociedad de la Información y el Comercio Electrónico y el Real Decreto 1720/2007, de 21 de diciembre de Desarrollo de la LOPD. De acuerdo con lo dispuesto en la referida normativa, LAMBDA PI, C.B. manifiesta que sólo recoge los datos estrictamente necesarios para ofrecer los servicios derivados de su actividad y demás prestaciones, en los términos contenidos en los Términos y Condiciones del Servicio, servicios y actividades atribuidas por la Ley, si bien se reserva el derecho de utilizar los datos que consten en sus bases de datos para realizar estudios estadísticos de los Usuarios registrados y del uso que dan a la Web.
+<br/><br/>
+A tal efecto, por medio de la presente y, en cualquier caso, mediante la introducción de cualesquiera datos de carácter personal en cualquier formulario electrónico u hoja de captación facilitada en MIA, ya sea tanto el proceso de registro como durante el Uso de MIA en los términos expuestos en la Cláusula precedente, el Usuario queda informado y presta su consentimiento para la incorporación de los datos de carácter personal que facilite a la compañía a los ficheros automatizados titularidad de LAMBDA PI, C.B., debidamente inscritos ante el Registro General de Protección de Datos de Carácter Personal.
+<br/><br/>
+Asimismo, el Usuario presta su consentimiento expreso a LAMBDA PI, C.B. para el tratamiento de sus datos, consecuencia de la consulta, solicitud o contratación de cualquier servicio, o de cualquier operación realizada, al objeto de acceder a la información y a los servicios facilitados por LAMBDA PI, C.B., a través de MIA y, en su caso, para el mantenimiento de la relación contractual, así como para el envío de ofertas o comunicaciones publicitarias y promocionales por cualquier medio incluido el electrónico.
+<br/><br/>
+Finalmente, el Usuario, mediante la aceptación en los términos contenidos en la presente Cláusula, se compromete a cumplir durante su navegación y/o uso de MIA sus obligaciones contenidas en la presente Política de Privacidad y a asumir el alcance de las garantías de LAMBDA PI, C.B. otorgadas a través de la misma o de la que resulte vigente en cada momento.
+<br/><br/>
+LAMBDA PI, C.B. se compromete y garantiza el tratamiento de los datos de carácter personal con arreglo a lo dispuesto en la normativa de aplicación ya citada y a la que resulte vigente en cada momento, así como la máxima confidencialidad con respecto a los datos de carácter personal facilitados, tanto por parte de LAMBDA PI, C.B. como de los empleados de la compañía que tengan o pudieren tener acceso a los referidos datos.
+<br/><br/>
+LAMBDA PI, C.B. garantiza, asimismo, que cumplimos con normas de seguridad aceptadas de manera general para proteger la información que se le facilita por el Usuario, tanto durante la transmisión como durante la recepción de ésta y su almacenamiento. Métodos que se consignan en el preceptivo Documento de Seguridad con arreglo a Ley Orgánica 15/1999, de 13 de Diciembre de Protección de Datos de Carácter Personal. Sin embargo, se pone de manifiesto y el Usuario admite y asume conocer que ningún método de transmisión o almacenamiento electrónico es cien por cien (100%) seguro. Por lo tanto, IDEABLE no puede garantizar su absoluta seguridad, sino solo la máxima diligencia en cuanto a la misma y hasta ese límite se hace responsable.
+<br/><br/>
+El Usuario asume, admite que conoce y consiente que LAMBDA PI, C.B., al amparo de lo dispuesto en el artículo 21 del Real Decreto 1720/2007, de 21 de diciembre de Desarrollo de la LOPD, subcontrate el almacenamiento de los contenidos e informaciones subidos y/o compartidos a través de MIA y, en consecuencia, de los datos de carácter personal contenidos en los mismos, produciéndose, por tanto, una cesión de los mismos a la compañía que considere oportuna, cuyo domicilio social, de cuya propiedad serán los servidores en los que se alojen los contenidos de conformidad con el Contrato suscrito entre la misma e LAMBDA PI, C.B., tratará los Documentos exclusivamente con la finalidad de prestación del servicio de hosting señalado y siguiendo expresas instrucciones de LAMBDA PI, C.B. y, por extensión, del Usuario como responsable del Fichero. La subcontratación consistirá, única y exclusivamente, por tanto, en el almacenamiento de los datos, es decir, servicio de Hosting y, en consecuencia, para ese fin serán cedidos, sin que se produzca un tratamiento adicional de los datos por la empresa subcontratada.
+<br/><br/>
+La cesión así operada quedará regulada, en todo caso, en un Contrato suscrito entre LAMBDA PI, C.B. y el cesionario en el que quede claramente diferenciada la finalidad para la que se produce la cesión de los datos.
+<br/><br/>
+A salvo de lo dispuesto en las Cláusulas anteriores, LAMBDA PI, C.B., en ningún caso, revelará la información personal que conste en sus ficheros a terceros sin contar para ello con el consentimiento expreso del Usuario y únicamente utilizará los datos incorporados a los ficheros al objeto de facilitar al Usuario el acceso al servicio y, en caso de que el Usuario hubiera prestado su consentimiento al efecto, para el envío de comunicaciones comerciales, información del producto y servicio, y/o ofertas y promociones.
+<br/><br/>
+Igualmente, LAMBDA PI, C.B. garantiza que no venderá, alquilará o, de cualquier forma lucrativa, cederá los datos personales de los Usuarios, ni los instrumentos o direcciones para comunicarse con los mismos, salvo en aquellos supuestos en los que sea necesario para la propia prestación del servicio.
+<br/><br/>
+El Usuario tiene derecho a oponerse al tratamiento de cualquiera de sus datos que no sean imprescindibles para la celebración del Contrato y a su utilización para cualquier finalidad distinta del mantenimiento de su relación contractual en su caso, como puedan ser los tratamientos con fines publicitarios. Si el Usuario no estuviera conforme con alguno de los tratamientos indicados en la presente política, el Usuario podrá dirigirse a LAMBDA PI, C.B. con el fin de que su derecho de oposición a los tratamientos se haga efectivo.
+<br/><br/>
+Para el correcto uso de MIA y la optimización de sus recursos, LAMBDA PI, C.B. podrá recomendarle que acceda a sitios Web o soportes de terceros o, incluso, que proceda a la descarga y configuración de software de terceros sobre los que LAMBDA PI, C.B. no tiene ningún tipo de control. La presente Política de Privacidad no resulta de aplicación a los citados sitios Web, soportes o software. Por ello, en este sentido, cualquier actividad que el Usuario lleve a cabo en relación a sitios o productos ajenos a LAMBDA PI, C.B. deberá regirse por los términos, condiciones, avisos legales y política de privacidad de las mismas, de las que LAMBDA PI, C.B. no se hace responsable.
+<br/><br/>
+En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico, LAMBDA PI, C.B. exclusivamente enviará ofertas o comunicaciones publicitarias y promocionales por vía electrónica a su dirección de correo electrónico o a través de otro medio de comunicación electrónica equivalente a aquellos Usuarios que hayan otorgado expresamente su consentimiento para la recepción de este tipo de comunicaciones. No obstante lo anterior, mediante la aceptación de los Términos y Condiciones de la Web y se esta Política de Privacidad, los Usuarios aceptan expresamente y autorizan a LAMBDA PI, C.B. a remitirles ofertas y comunicaciones publicitarias que se encuentren vinculadas con MIA.
+<br/><br/>
+El Usuario podrá manifestar su negativa a la recepción de este tipo de comunicaciones en cualquier momento, mediante notificación a LAMBDA PI, C.B. en la forma prevista en la Cláusula precedente o siguiendo en su caso las instrucciones que aparecen al final de nuestros correos electrónicos.
+<br/><br/>
+La presente Política de Privacidad y Protección de datos de carácter personal podrá ser modificada, alterada y/o sustituida, en cualquier momento, como consecuencia de posibles cambios legislativos, jurisprudenciales, de los criterios seguidos por la Agencia Española de Protección de Datos y/o la autoridad competente en cada momento o en función de las prácticas, usos y costumbres del sector, así como a causa de cualesquiera cambios decididos unilateralmente por la dirección de LAMBDA PI, C.B., se deban o no a las razones antedichas, que, en cualquier caso, se compromete a facilitar al Usuario, de manera visible, información suficiente de la modificación que pudiere sufrir la Política de Privacidad.
+<br/><br/>
+En cualquier caso, el Usuario acepta que la Política de Privacidad vigente en cada momento y la cual asume y acepta como consecuencia del uso y navegación en MIA, tras la modificación eventualmente operada es la que se encuentre publicada en cada momento en la propia Web en su página Home, en todo momento accesible para el Usuario.
+<br/><br/>
+					
+</p>
+				
+				</div>
+			</div>
+			
+			
+
+		</div>
+
+
+	</div>
+	<!-- page -->
+        <div data-role="page" id="pagePrimerAcceso">
+            <div data-role="header"  data-position="fixed"> 
+                <h1 id="h1PrimerAcceso">Cambiar password</h1> 
+            </div>  
+            <div data-role="content"> 
+                <span id="spanPrimerAcceso">Al ser la primera vez que accede, debe cambiar el password</span>
+                <form id="formPrimerAcceso" >
+                    <div data-role="fieldcontain">
+                        <label for="pass1" id="labelpass1"  >Nuevo Password: </label>
+                        <input type="text" id ="pass1" name="pass1" value="">
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="pass2" id="labelpass2"  >Repetir Nuevo Password </label>
+                        <input type="text" id ="pass2" name="pass2" value="">
+                    </div>
+                    <a data-role="button" onClick="ajaxCambiarPassPrimerAcceso();" id="submitPrimerAcceso">Acceder</a>
+              </form>
+           </div> 
+	</div> <!-- fin pagePrimerAcceso -->
+
+
+<div data-role="page" id="seleccionarAlumnoTmp">
+		<div data-role="header"  data-position="fixed"> 
+			<h1>Hijos</h1> 
+		</div>  
+		<div data-role="content">
+			<h3 >Consultar Datos Hijos</h3> 
+		    <ul  data-role="listview"  data-inset="true">
+            </ul>    
+   		</div> 
+		<div data-role="footer" class="myNavBar" data-position="fixed">
+			<div data-role="navbar" class="myNavBar ui-bar-h">
+			<ul>
+			<li>              <a onClick="desconectarse()"  class="ui-nodisc-icon"   data-icon="custom"></a></li>
+	 	
+		</ul>
+		</div>
+	</div>
+</div>
+
+
+<div data-role="page" id="seleccionarAlumno">
+		<div data-role="header"  data-position="fixed"> 
+			<h1>Hijos</h1> 
+		</div>  
+		<div data-role="content">
+			<h3 id="consultaHijos">Consultar Datos Hijos</h3> 
+		    <ul id="listahijos" data-role="listview"  data-inset="true">
+            </ul>    
+   		</div> 
+		<div data-role="footer" class="myNavBar" data-position="fixed">
+			<div data-role="navbar" class="myNavBar ui-bar-h">
+			<ul>
+			<li>              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+	 	
+		</ul>
+		</div>
+	</div>
+</div>
+  
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
+	
+	<script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+	
+</body>
+</html>

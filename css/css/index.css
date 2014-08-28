@@ -1,0 +1,292 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+ @font-face {
+	font-family: 'angelina';
+	src: url('./angelina.eot');
+	src: local('angelina'), url('./angelina.woff') format('woff'), url('./angelina.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_4367">Text with this font applied</p> */
+.fontsforweb_fontid_4367 {
+	font-family: 'angelina' !important;
+}
+ 
+ 
+ @font-face {
+	font-family: 'Handlee-Regular';
+	src: local('Handlee-Regular'), url('./Handlee-Regular.ttf') format('truetype');
+}
+.fonts_Handlee_Regular{
+	font-family: 'Handlee-Regular' !important;
+}
+ 
+ 
+ 
+ 
+ 
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+/* Portrait layout (default) */
+.app2 {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app2 {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.custom-corners .ui-bar {
+  -webkit-border-top-left-radius: inherit;
+  border-top-left-radius: inherit;
+  -webkit-border-top-right-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.custom-corners .ui-body {
+  border-top-width: 0;
+  -webkit-border-bottom-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  -webkit-border-bottom-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.texto-morado{
+color:#EF66BE;
+
+}
+.texto-amarillo{
+	/*color:#F9E544*/
+color:#D6BE01;
+}
+.texto-azul{
+color:#4DBFE1;
+}
+
+.texto-verde{
+color:#74C856;
+}
+.texto-marron{
+color:#8B5C02;
+/*font-family:  'Lucida Casual', 'Comic Sans MS'  !important;*/  
+}
+.texto-gris{
+color:#B5B5B5;
+}
+.texto-rojo{
+color:#ff0000;
+}
+
+ .td1 { width:35%;}
+ .td2 { width:15%; }
+ .td3 { width:25%;}
+ .td4 { width:25%;}
+
+
+/*
+.nav-glyphish-example .ui-btn .ui-btn-inner { 
+	padding-top: 40px !important; 
+}
+.nav-glyphish-example .ui-btn .ui-icon { 
+	width: 30px!important; 
+	height: 30px!important; 
+	margin-left: -15px !important; 
+	box-shadow: none!important; 
+	-moz-box-shadow: none!important; 
+	-webkit-box-shadow: none!important; 
+	-webkit-border-radius: 0 !important; 
+	border-radius: 0 !important; 
+}
+
+#chat .ui-icon { background:  url(./chat.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#email .ui-icon { background:  url('./chat.png') 50% 50% no-repeat; background-size: 24px 22px;  }
+#login .ui-icon { background:  url('chat.png') 50% 50% no-repeat;  background-size:24px 22px; }
+#beer .ui-icon { background:  url(css/chat.png)50% 50% no-repeat;  background-size: 24px 22px; }
+#coffee .ui-icon { background:  url('./css/42-photos.png') 50% 50% no-repeat;  background-size: 22px 24px; }
+#skull .ui-icon { background:  url(glyphish-icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
+		
+	*/	
+
+
+/* this makes the nav bar a bit higher than default */
+/*.myNavBar .ui-btn .ui-btn-inner { padding-top: 40px !important; }*/
+
+/* and this makes the space for the icons a bit bigger */
+/*.myNavBar .ui-btn .ui-icon { 
+width: 40px!important; 
+height: 40px!important; 
+margin-left: -20px !important; 
+box-shadow: none!important; 
+-moz-box-shadow: none!important; 
+-webkit-box-shadow: none!important; 
+-webkit-border-radius: 0 !important;
+ border-radius: 0 !important; 
+margin-top:-5px;
+}*/
+
+
+.myNavBar .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+.myNavBar .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
+		
+
+a#nav_perfil {
+	/*background: url(datospersonales_white.png) 50% 10% no-repeat;*/
+	background: url(users_white.png) 50% 10% no-repeat;
+	background-size:27px 28px;
+	color:white !important;
+}
+a#nav_menu {
+	background: url(menu-white.png) 50% 10% no-repeat;
+	background-size:28px 28px;
+	color:white !important;
+}
+a#nav_doc {
+	background: url(icon_doc2.png) 50% 10% no-repeat;
+	background-size:25px 28px;
+	color:white !important;
+}
+
+
+
+a#nav_fotos{
+	background: url(fotos_white.png) 50% 10% no-repeat;
+	background-size:35px 28px;
+	color:white !important;
+}
+
+a#nav_home{
+	background: url(home_white.png) 50% 10% no-repeat;
+	background-size:28px 28px;
+	color:white !important;
+}
+
+
+a#nav_comentarios {
+	background: url(observaciones_white.png) 50% 10% no-repeat;
+	background-size:31px 28px;
+	color:white !important;
+}
+
+a#nav_mapa {
+	background: url(datosguarderia_white.png) 50% 10% no-repeat;
+	background-size:18px 28px;
+	color:white !important;
+}
+a#nav_desconectarse{
+	background: url(desconectarse_white.png) 50% 10% no-repeat;
+	background-size:28px 28px;
+	color:white !important;
+}
+
+a#nav_desconectarse2{
+	/*background: url(desconectarse_white.png) 50% 10% no-repeat;
+	*/
+	background-size:28px 28px;
+	padding-left:10px;
+	color:white !important;
+}
+
+
+
+
+

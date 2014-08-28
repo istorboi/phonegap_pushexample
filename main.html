@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    	<meta charset="UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!--  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="libs/mia2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons.min.css" />
+        
+        <link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
+		<style type="text/css">
+			div.gallery-row:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+			div.gallery-item { float: left; width: 33.333333%; }
+			div.gallery-item a { display: block; margin: 5px; border: 1px solid #3c3c3c; }
+			div.gallery-item img { display: block; width: 100%; height: auto; }
+			#Gallery1 .ui-content, #Gallery2 .ui-content { overflow: hidden; }
+		</style>
+
+
+      <link rel="stylesheet" href="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.css" />
+    
+                  
+        <title>Mia</title>
+    </head>
+   <body onload="onLoad()">
+   
+   
+
+    <!-- --------------------  Página controlDiario - datos hoy  -------------------------------------- -->
+    <div class="app" id="controlDiario" data-role="page" >
+   		    <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 style="margin: 0px; padding:0px;">
+			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+				 <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+			</div>
+
+			<div   class="ui-content ui-corner-all " style="margin:3px;">
+
+				<div class="ui-corner-all custom-corners" style="margin: 7px">
+						<ul data-role="listview" >
+							<li> <a onClick="ajaxfichadetallada()" >
+		 							<img id="fichareducida_imagen" src="imagenes/noimage.jpeg" />
+                            		<h3 id="fichareducida_nombre">CARGANDO...</h3>
+                            		<p id="fichareducida_fechaaula"></p>
+                           		</a>
+							</li>
+						</ul>
+				</div>
+			<!--	<br/>
+				<div style="text-align: center;">
+					  <h3>13 NOVIEMBRE 2014</h3>
+					 
+				</div>
+			-->
+		<br/>
+			
+				<div data-role="controlgroup"
+					style="width: 100%; text-align: center; font-size" data-type="horizontal"
+					class="">
+					
+					<a href="#dialogCalendario" data-rel="dialog" data-role="button" data-icon="calendar"
+						data-iconpos="notext"  data-inline="true">12</a> 
+					<!-- 
+						<a onClick="ajaxControlFecha();" data-role="button" data-icon="calendar"
+						data-iconpos="notext"  data-inline="true">12</a> 
+				     -->
+					
+						
+						<a href="#" data-role="button" data-inline="true" id="fecha" style="width:100px;">13/07/2014</a> <a
+						onClick="ajaxControlHoy();" data-role="button" data-icon="refresh"
+						data-iconpos="notext" data-inline="true">hoy </a>
+
+				</div>
+			
+			
+			<div class="ui-corner-all custom-corners">
+  						<div class="ui-bar ui-bar-c">
+    					<h3 id="comida_etiqueta">Comidas</h3>
+  						</div>
+  						<div class="ui-body ui-body-c" style="margin:0px;padding:0px;">
+  						   <table id="table-comidas" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+						   <tr><td>CARGANDO DATOS....</td></tr>
+						   </table>
+    							    						
+  						</div>
+					</div>
+		            </br>    
+                  	<div class="ui-corner-all custom-corners">
+  						<div class="ui-bar ui-bar-b">
+    					<h3 id="regularidad_etiqueta">Regularidad</h3>
+  						</div>
+  						<div class="ui-body ui-body-b"  style=" margin:0px; padding:0px;">
+  							<table id="table-regularidad" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+						   </table>
+    
+  						</div>
+					</div>
+					</br>
+		            <div class="ui-corner-all custom-corners">
+  						<div class="ui-bar ui-bar-a">
+    					<h3 id="sueno_etiqueta">Sueño</h3>
+  						</div>
+  						<div class="ui-body ui-body-a" style="margin:0px;padding:0px;">
+							<table id="table-sueno" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+						   </table>
+							
+  						</div>
+					</div>
+					</br>
+					
+					
+					<!-- TRAER -->
+					<div class="ui-corner-all custom-corners">
+  						<div class="ui-bar ui-bar-e">
+    					<h3 id="traer_etiqueta" >Traer</h3>
+  						</div>
+  						<div class="ui-body ui-body-e" style="margin:0px;padding:0px;">
+							<table id="table-traer" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+						  </table>
+						   
+							
+  						</div>
+					</div>
+					</br>
+					
+
+					<!-- Observaciones -->
+					<!-- <div class="ui-corner-all custom-corners">
+  						<div class="ui-bar ui-bar-f">
+    					<h3 id="observaciones_etiqueta">Observaciones</h3>
+  						</div>
+  						<div class="ui-body ui-body-f" style="margin:0px;padding:0px;">
+							<table id="table-observaciones" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+						       <tr>
+						         <td style="width:75%"><span id="observaciones" class="texto-marron texto-marron" style="width:100%"></span></td>
+						      
+						         <td  style="text-align: right; padding-right:5px;"><img src="./img/observaciones_64.jpg"></td>
+						       </tr>
+						   </table>
+						   
+  						</div>
+					</div>
+					-->
+					 <div class="ui-corner-all custom-corners">
+                        <div class="ui-bar ui-bar-f">
+                            <h3 id="observaciones_etiqueta" >Observaciones</h3>
+                        </div>
+                        <div class="ui-body ui-body-f" style="margin:0px;padding:0px;">
+                            <table id="table-observaciones" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+                           </table>
+                        </div>
+                    </div>
+					
+					
+					</br>
+
+
+			
+			 <!-- Aula -->
+                    <div class="ui-corner-all custom-corners">
+                            <div class="ui-bar ui-bar-d">
+                    <h3 id="tablonaula_etiqueta" >Tablón Anuncios Aula</h3>
+                            </div>
+                            <div class="ui-body ui-body-d" style="margin:0px;padding:0px;" >
+                                <table id="table-aula" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+                                </table>    
+                               <!--<span class="texto-gris" id="tablonaula">El próximo martes los Ositos nos vamos de excursión</span>
+                                -->
+                            </div>
+                    </div>
+                    </br>
+
+
+                    <!-- Centro-->
+                    <div class="ui-corner-all custom-corners">
+                            <div class="ui-bar ui-bar-g">
+                    <h3 id="tabloncentro_etiqueta">Tablón Anuncios Centro</h3>
+                            </div>
+                            <div class="ui-body ui-body-g" style="margin:0px;padding:0px;">
+                                  <!--  <span class="texto-rojo" id="tabloncentro">	el niño ha tenido algo de calentura</span>-->
+                               <table id="table-centro" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+                                </table>    
+                                  
+                            </div>
+                    </div>
+                    </br>
+			
+				            
+            </div>
+ 	
+ 			<h1 style="margin: 0px; padding:0px;">
+			  		<img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+	<div data-role="footer" class="myNavBar" data-position="fixed">
+		<div data-role="navbar" class="myNavBar ui-bar-h">
+		<ul id="controlmenu">
+			<!--  <li><a href="#controlDiario" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+			-->
+			<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+		    
+			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
+			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
+   	  	    <li  id="controlliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			<li  id="controlliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		
+		</ul>
+		</div>
+	</div>
+            
+ </div>  <!-- fin   pagina controlDiario-datos hoy   ------------------------------ -->
+    
+    
+
+
+
+<!-- --------------------  Página perfil Alumno  -------------------------------------- -->
+    <div class="app" id="perfil" data-role="page" >
+
+   		    <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 style="margin: 0px; padding:0px;">
+			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+				<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+			</div>
+
+			
+			<div   class="ui-content ui-corner-all " style="margin:3px;">
+
+	
+				<div class="ui-corner-all custom-corners" style="margin: 7px">
+                            <ul data-role="listview" >
+                                <li> 
+                                    <img id="fichadetalle_imagen" src="imagenes/noimage.jpeg" />
+                                    <h3 id="fichadetalle_nombre">Alumno</h3>
+                                    <p id="fichadetalle_fechaaula">Fecha  - Aula </p>
+                           		</li>
+                            </ul>
+				</div>
+				<br>
+                <div class="ui-corner-all custom-corners">
+                   <div class="ui-bar ui-bar-c">
+                       <h3 id="tutores_etiquetas">Familiares</h3>
+                   </div>
+                   <div class="ui-body ui-body-c" style="margin:0px;padding:0px;">
+                       <table id="tutores_contacto" id="table-comidas" style="width:100%; margin:0px; padding:0px;" class="ui-responsive"> 
+                           <tr>
+                             <td><span class="texto-morado">Tutor</span></td>
+                             <td> Padre </td>
+                             <td> <a href="tel:777777777"> llamar </a></td>
+                           </tr>
+                       </table>
+                    </div>
+               </div>
+                    
+               <br>
+               
+               <div class="ui-corner-all custom-corners">
+                   <div class="ui-bar ui-bar-h">
+                       <h3 id="observaciones_alumno_etiqueta">Información de Interés</h3>
+                   </div>
+                   <div id="observaciones_alumno"  class="ui-body ui-body-f">
+                      
+                   </div>
+				</div>
+<br>
+
+				<h1 style="margin: 0px; padding:0px;">
+			  		<img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+
+			                
+            </div>
+ 	
+ 	<div data-role="footer" class="myNavBar" data-position="fixed">
+	
+		<div data-role="navbar" class="myNavBar ui-bar-h">
+		<ul id="perfilmenu">
+			<!--  <li><a href="#controlDiario" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+			-->
+			<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+		    
+			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
+			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
+   	  	    <li  id="perfilliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			<li  id="perfilliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		
+		</ul>
+		</div>
+    </div>        
+ </div> 
+ 
+ 
+ 
+ 
+ 
+ 
+  <!-- page -->
+        
+    
+    <!--     ------------------  pagina perfil fin  ------------------------------ -->
+    
+
+    
+    <!--------------------------   Página menu inicio    --------------------------------------- -->
+<!-- 
+	<div class="app" id="menu" data-role="page" >
+			
+			 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 style="margin: 0px; padding:0px;">
+			  		<img class="logo_centro" border="0" style="height:50px;" src="img/happy.jpg" />
+				</h1>
+				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+		
+				 <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+			</div>
+			
+			
+			<div  style="padding:0;" data-role="content" data-theme="c">
+ 				<div id="mycontainer" style="padding:0;width:100%;height:100%">
+        			<canvas id="mycanvas" style="width: 100%; height: 100%"></canvas>
+    			</div>
+    			
+				<h1 style="margin: 0px; padding:0px;">
+			  		<img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+           </div>
+		
+		<div data-role="footer" class="myNavBar" data-position="fixed">
+			
+			<div data-role="navbar" class="myNavBar ui-bar-h">
+			<ul id="menumenu">
+				<li><a href="#controlDiario" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+				<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>
+				<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+			  	<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			      <li  id="menuliHijos" ><a onClick="irListaHijos()" class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			
+				<li  id="menuliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+			
+			</ul>
+			</div>
+	    </div>        
+ </div>  
+ -->
+         <div data-role="page" id="listaCategorias">
+            <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+		<h1 style="margin: 0px; padding:0px;">
+					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+		</h1>
+		<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+		<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+            </div>
+	
+            <div data-role="content"> 
+                <h1 id="h1documentos" style="margin: 0px; padding:0px;"> Documentos</h1>
+                <br/>
+  	    
+               
+                <ul id="ulCategorias" data-role="listview">
+                        <li>No existen Categorías</li>
+                </ul>
+                <br/>
+                <h1 style="margin: 0px; padding:0px;">
+                    <img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+		</h1>
+                
+            </div> 
+            <div data-role="footer" class="myNavBar" data-position="fixed">
+	
+		<div data-role="navbar" class="myNavBar ui-bar-h">
+		<ul id="docmenu">
+			<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+   
+			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
+			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
+   	  	    <li  id="docliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			<li  id="docliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		
+		</ul>
+		</div>
+            </div>
+	</div>
+        
+        <div  data-role="page" id="listaDoc" class="gallery-page" >
+	
+            <div data-role="header">
+		<h1 id="CategoryName">Categoría</h1>
+                 <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
+                
+            </div>
+		
+            <div data-role="content">	
+                <ul id="ulDocumentos" data-role="listview">
+                    <li>No existen Categorías</li>
+                </ul>
+                <br/>
+                <h1 style="margin: 0px; padding:0px;">
+                    <img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+		</h1>
+            </div>
+        </div>
+        
+        <div class="app" id="menu" data-role="page" >
+            
+            <div data-role="header">
+		       <h1 id="documentName">Documentación</h1>
+                 <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
+                  <a  data-icon="arrow-d" onClick="descargarDocumentos();" >Guardar</a>
+            </div>
+   	
+            <div  style="padding:0;" data-role="content" data-theme="c">
+ 				<div id="mycontainer" style="padding:0;width:100%;height:100%">
+        			<canvas id="mycanvas" style="width: 100%; height: 100%"></canvas>
+    			</div>
+           </div>
+				
+	</div>
+ 
+ 
+ <!-- page -->
+
+    <!-- --------------------------Página menú fin  ------------------------------------------------->
+    
+    
+  
+<div data-role="page" id="GalleryList">
+	 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+		<h1 style="margin: 0px; padding:0px;">
+			<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+		</h1>
+		<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+		<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+	</div>
+	<div data-role="content">
+		<h1 id="h1gallerylist" style="margin: 0px; padding:0px;"> Galerías Fotos</h1>
+	   <br/>
+  		<ul id="ultemas" data-role="listview">
+        	<li>No existen fotos</li>
+        </ul>
+        
+        <br/>
+        <h1 style="margin: 0px; padding:0px;">
+			  		<img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+    </div> 
+    <div data-role="footer" class="myNavBar" data-position="fixed">
+	
+		<div data-role="navbar" class="myNavBar ui-bar-h">
+		<ul id="galeriamenu">
+		<!--  <li><a href="#controlDiario" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+			-->
+			<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+		    
+			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
+			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
+   	  	    <li  id="galerialiHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			<li  id="galerialiDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		
+		</ul>
+		</div>
+	</div>	
+</div>
+  <div  data-role="page" id="Gallery1" class="gallery-page" >
+	<div data-role="header">
+		<h1 id="GalleryName">First Gallery</h1>
+		<a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+		
+    </div>
+		
+    <div data-role="content">
+		<div class="gallery" id="gallery_table">
+        </div>
+    </div>
+  </div>
+        
+        <div  data-role="page" id="GalleryDetail" class="gallery-item" >
+	
+            <div data-role="header">
+		       <h1 id="PhotoName">Foto</h1>
+		       <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+		       
+            </div>
+		
+            <div data-role="content">	
+                <div id="divGalleryImg" style="text-align: center;margin: 0 auto;">
+                    <img id="GalleryDetailSrc" src="" data_idfoto="0" style="max-height: 600px; max-width:600px; "/>
+                </div>
+                <a onClick="confirmDesetiquetar();" data-role="button">Desetiquetar niño</a>
+                <a onClick="descargarImagen();" data-role="button">Guardar Imagen en Galería</a>
+                
+            </div>
+	
+           
+        </div>	
+	
+	
+	
+    <!-- --------------------------Página  galeria  Fin ------------------------------------------------->
+    
+        <!--------------------------   Página observaciones inicio    --------------------------------------- -->
+		<div class="app" id="observaciones" data-role="page" >
+			<div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 style="margin: 0px; padding:0px;">
+			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+				 <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+			</div>
+			
+   		    
+
+
+			<div  style="padding:0;" data-role="content" >
+ 				  <form name="formObservaciones" id="formObservaciones">    
+                    <div data-role="fieldcontain">
+                        <div class="ui-bar" ><label id="formObservaciones_label"  for="textObservaciones">Observaciones para el profesor:</label>
+                        </div>
+                        <textarea  class="o" cols="40" rows="3" name="textObservaciones" id="textObservaciones"></textarea>
+                    </div>
+                   
+                   <div data-role="collapsible">
+                        <h3 id="formObservaciones_posponer">Posponer publicación</h3>
+                        <div data-role="fieldcontain">
+                            <fieldset  data-role="controlgroup" >
+                                <label id="labelcheck1" for="check1">hoy</label><input type="checkbox" name="check1" id="check1">
+                                <label id="labelcheck2" for="check2">dia</label><input type="checkbox" name="check2" id="check2">
+                                <label id="labelcheck3" for="check3">dia</label><input type="checkbox" name="check3" id="check3">
+                                <label id="labelcheck4" for="check4">dia</label><input type="checkbox" name="check4" id="check4">
+                                <label id="labelcheck5" for="check5">dia</label><input type="checkbox" name="check5" id="check5">
+                                <label id="labelcheck6" for="check6">dia</label><input type="checkbox" name="check6" id="check6">
+                                <label id="labelcheck7" for="check7">dia</label><input type="checkbox" name="check7" id="check7">
+                            </fieldset>
+                        </div>
+                    </div>
+                   
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a"><a  data-role="button" data-rel="back" data-icon="back" >Cancelar</a></div>
+                        <div class="ui-block-b"><a onClick="enviarFormularioObservaciones()" data-role="button" data-icon="check" >Enviar</a></div>
+                   </div>
+                   <input type="hidden" name="id_tutor" id="id_tutorObservaciones" value=""/>
+                   <input type="hidden" name="id_alumno" id="id_alumnoObservaciones" value=""/>
+                   
+                </form>
+ 				
+ 				<br/>
+ 				 <h1 style="margin: 0px; padding:0px;">
+			  		<img border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+           </div>
+				
+	  <div data-role="footer" class="myNavBar" data-position="fixed">
+	
+		<div data-role="navbar" class="myNavBar ui-bar-h">
+		<ul id="obsmenu">
+			<!--  <li><a href="#controlDiario" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
+			-->
+			<li><a href="#observaciones" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>
+			<li><a href="#GalleryList" class="ui-nodisc-icon" onclick="ajaxAlumnoGetFotos();" id="nav_fotos" data-icon="custom"></a></li>
+		    
+			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
+			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
+   	  	    <li  id="obsliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+			<li  id="obsliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		
+		</ul>
+		</div>
+	</div>	
+            
+ </div>  <!-- page -->
+
+    
+    <!--  pagina dialogo calendario -->
+      <div data-role="page" id="dialogCalendario">
+        <div data-role="header" > 
+            <h1>Seleccionar </h1> 
+        </div>  
+        <div data-role="content">
+            <h3> Fecha a recuperar</h3>
+            <form id="formfecha" name="formfecha">
+                <input id="inputFecha" type="text" data-role="date" data-inline="true">
+    
+                <div class="ui-grid-a">
+                  <div class="ui-block-a">
+                       <a data-role="button" data-rel="back">Cancelar</a>
+                  </div>
+                  <div class="ui-block-b">
+                       <a onClick="ajaxControlFecha();" data-role="button">Aceptar</a>
+                    </div>
+                </div>
+            </form>   
+        </div>
+ </div>
+ <!--  fin pagina dialogo calendario -->
+    
+    
+    
+    
+    
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
+    	<script type="text/javascript" src="libs/simple-inheritance.min.js"></script>
+		<script type="text/javascript" src="libs/jquery.animate-enhanced.min.js"></script>
+		<script type="text/javascript" src="libs/code-photoswipe-jQuery-1.0.11.min.js"></script>
+        <script type="text/javascript" src="libs/img-touch-canvas.js"></script>
+        <script type="text/javascript" src="libs/zoom.js"></script>
+
+
+        <script type="text/javascript" src="js/main.js"></script>
+    	<script type="text/javascript" src="js/observacionesPadres.js"></script>
+    	<!-- <script type="text/javascript" src="js/menu.js"></script> -->
+    	<script type="text/javascript" src="js/doc.js"></script>
+
+ 		<script type="text/javascript" src="js/fotos.js"></script>
+ 
+ 
+     <script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+ 
+ 		<script src="https://rawgithub.com/jquery/jquery-ui/1.10.4/ui/jquery.ui.datepicker.js"></script>
+        <script id="mobile-datepicker" src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.js"></script>
+        <script type="text/javascript" src="js/calendario.js"></script>
+        <script type="text/javascript" src="js/notificaciones.js"></script>
+     
+ 
+    </body>
+</html>
