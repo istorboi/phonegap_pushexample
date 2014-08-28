@@ -177,7 +177,7 @@ function descargarDocumentos()
 		var path ="MIA";
 		
 	}else{
-		var path ="/private/var/mobile/Media/DCIM/100APPLE";
+		var path ="private/var/mobile/Media/DCIM/100APPLE";
 	}
 	
 	DownloadFile(URL, path, File_Name);
@@ -200,7 +200,7 @@ function descargarImagen()
 		var path ="MIA";
 		
 	}else{
-		var path ="/private/var/mobile/Media/DCIM/100APPLE";
+		var path ="private/var/mobile/Media/DCIM/100APPLE";
 	}
 	
 	
