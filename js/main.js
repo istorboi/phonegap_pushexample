@@ -24,12 +24,6 @@ function okAlert()
 	
 
 
-
-
-
-
-
-
 function onLoad() {
 		document.addEventListener("deviceready", onDeviceReady, false); 
 }
@@ -40,7 +34,15 @@ function onDeviceReady() {
 			alert("Se necesita conexión a internet para realizar la validación");
 			return;
 	   }
-         
+      
+	if(device.platform=="iOS" || device.platform=="ios")
+	{
+		$( "#documentos_guardar" ).hide();
+		$( "#descargarImagen" ).hide();
+   	
+   	
+	}
+   	
         
 		
 } 

@@ -416,7 +416,7 @@
             <div data-role="header">
 		       <h1 id="documentName">Documentación</h1>
                  <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
-                  <a  data-icon="arrow-d" onClick="descargarDocumentos();" >Guardar</a>
+                  <a  id="documentos_guardar" data-icon="arrow-d" onClick="descargarDocumentos();" >Guardar</a>
             </div>
    	
             <div  style="padding:0;" data-role="content" data-theme="c">
@@ -498,7 +498,7 @@
                     <img id="GalleryDetailSrc" src="" data_idfoto="0" style="max-height: 600px; max-width:600px; "/>
                 </div>
                 <a onClick="confirmDesetiquetar();" data-role="button">Desetiquetar niño</a>
-                <a onClick="descargarImagen();" data-role="button">Guardar Imagen en Galería</a>
+                <a id="descargarImagen" onClick="descargarImagen();" data-role="button">Guardar Imagen en Galería</a>
                 
             </div>
 	
