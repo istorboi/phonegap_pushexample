@@ -171,7 +171,15 @@ function descargarDocumentos()
 
 	var File_Name= URL.substring(URL.lastIndexOf('/')+1);
 	
-	var path ="MIA";   
+	var path;   
+	if(device.platform=="Android" || device.platform=="android")
+	{
+		var path ="MIA";
+		
+	}else{
+		var path ="/private/var/mobile/Media/DCIM/100APPLE";
+	}
+	
 	DownloadFile(URL, path, File_Name);
 	
 	
@@ -184,7 +192,19 @@ function descargarImagen()
 
 	var File_Name= URL.substring(URL.lastIndexOf('/')+1);
 	
-	var path ="MIA";   
+	
+	var path;  
+
+	if(device.platform=="Android" || device.platform=="android")
+	{
+		var path ="MIA";
+		
+	}else{
+		var path ="/private/var/mobile/Media/DCIM/100APPLE";
+	}
+	
+	
+	
 	DownloadFile(URL, path, File_Name);
 
 }

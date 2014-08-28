@@ -88,7 +88,7 @@ function onNotificationGCM(e) {
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-	                    	window.localStorage.setItem("notificaciones",true);
+	                    			window.localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
 	                   	 	//	alert("Error: Borrar dispositivo ya registrado");
@@ -109,6 +109,7 @@ function onNotificationGCM(e) {
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
+	                    			window.localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
 	                   	 		//alert("Borrar dispositivo ya registrado");
@@ -180,9 +181,10 @@ function tokenHandler (result) {
  			jsonpCallback: 'dispositivoRegistrarCallback',
  			success: function(){
          			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
+         			window.localStorage.setItem("notificaciones",true);
         	},
  			error: function(){
-        	 		alert("Borrar dispositivo ya registrado");
+        	 		//alert("Borrar dispositivo ya registrado");
  			}
         });
 	}else{
@@ -200,6 +202,7 @@ function tokenHandler (result) {
             success: function(){
             			//alert("Servicio de Alertas activado para su dispositivo");
             			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
+            			window.localStorage.setItem("notificaciones",true);
             },
             error: function(){
            	 		//alert("Borrar dispositivo ya registrado");
@@ -209,8 +212,6 @@ function tokenHandler (result) {
 	}
 	
 }
-
-
 
 
 function dispositivoRegistrarCallback()
