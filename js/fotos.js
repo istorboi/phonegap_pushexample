@@ -164,9 +164,82 @@ function desetiquetarCallback(data)
 
 }
 
+/******** NUEVO METODO USANOD PLUGIN CANVAS 2 GALLERY  */
+//https://github.com/devgeeks/Canvas2ImagePlugin
+//http://stackoverflow.com/questions/21577230/phonegap-save-image-from-url-into-device-photo-gallery
+function saveImageToPhone(url, success, error) {
+    var canvas, context, imageDataUrl, imageData;
+    var img = new Image();
+    img.onload = function() {
+        canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context = canvas.getContext('2d');
+        context.drawImage(img, 0, 0);
+        try {
+            imageDataUrl = canvas.toDataURL('image/jpeg', 1.0);
+            imageData = imageDataUrl.replace(/data:image\/jpeg;base64,/, '');
+            cordova.exec(
+                success,
+                error,
+                'Canvas2ImagePlugin',
+                'saveImageDataToLibrary',
+                [imageData]
+            );
+        }
+        catch(e) {
+            error(e.message);
+        }
+    };
+    try {
+        img.src = url;
+    }
+    catch(e) {
+        error(e.message);
+    }
+}
+
+var success = function(msg){
+    //console.info(msg);
+    navigator.notification.alert("Imagen guardada en galeria: " + msg,okAlert,'MIA','Cerrar');
+    
+    
+};
+
+var error = function(err){
+    //console.error(err);
+};
+/******** FINNNNNNNNN    NUEVO METODO USANDO PLUGIN CANVAS 2 GALLERY  */
+
 function descargarDocumentos()
 {
 	
+	var URL = window.localStorage.getItem("doc");
+	saveImageToPhone(URL, success, error);   //usando el plugin del canvas 
+
+	
+	
+	/* llamando al plugin directamente */
+	/*    window.canvas2ImagePlugin.saveImageDataToLibrary(
+	    		 function(msg) {
+	                  navigator.notification.alert(
+	                   msg,
+	                   function(){},
+	                   "Complete",
+	                   "OK");
+	             },
+	             function(err) {
+	                 navigator.notification.alert(
+	                   err,
+	                   function(){},
+	                   "Error",
+	                   "OK");
+	             },
+	        document.getElementById('mycanvas')
+	    );
+	*/
+	
+	/* metodo tradicional, no guarda directo en la galeria
 	var URL = window.localStorage.getItem("doc");
 
 	var File_Name= URL.substring(URL.lastIndexOf('/')+1);
@@ -182,12 +255,22 @@ function descargarDocumentos()
 	
 	DownloadFile(URL, path, File_Name);
 	
-	
+	*/
 }
+
+
+
+
+
 
 function descargarImagen()
 {
 	
+	var URL = $("#GalleryDetailSrc").attr('src');
+	saveImageToPhone(URL, success, error);   //usando el plugin del canvas 
+
+
+	/*   funciona para android paro no lo mete en la galeria automáticamente
 	var URL = $("#GalleryDetailSrc").attr('src');
 
 	var File_Name= URL.substring(URL.lastIndexOf('/')+1);
@@ -203,10 +286,8 @@ function descargarImagen()
 		var path ="private/var/mobile/Media/DCIM/100APPLE";
 	}
 	
-	
-	
 	DownloadFile(URL, path, File_Name);
-
+*/
 }
 
 //First step check parameters mismatch and checking network connection if available call    download function

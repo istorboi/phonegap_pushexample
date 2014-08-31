@@ -17,6 +17,12 @@
        Mi Agenda Infantil
     </author>
 
+	
+	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
+	<string>4</string>
+	</gap:config-file>
+
+	
 	<preference name="phonegap-version"           value="3.5.0" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation" value="portrait" />
 	<preference name="fullscreen" value="true" />
@@ -108,7 +114,7 @@
 	<gap:plugin name="com.phonegap.plugins.PushPlugin" />
 	
 	
-	
+	<gap:plugin name="org.devgeeks.canvas2imageplugin" />
 	
 	 <access origin="*" />
 	

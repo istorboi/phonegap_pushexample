@@ -127,7 +127,7 @@ $(document).on("pageshow",function(event,data){
             desktop: true
         });
         isCanvasSet = true;
-	  }
+	  }   
 	  if(docLocation.indexOf("menu") == -1 && isCanvasSet == true){
 	    var imgCanvas = document.getElementById('mycanvas');
 	    var ctx = imgCanvas.getContext("2d");

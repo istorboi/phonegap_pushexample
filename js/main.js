@@ -29,12 +29,9 @@ function onLoad() {
 }
 function onDeviceReady() {
 
-   	if (navigator.network.connection.type==Connection.NONE)
-	   { 
-			alert("Se necesita conexión a internet para realizar la validación");
-			return;
-	   }
+	verificarAccesoInternet();
       
+	/* temporal, oculta los botones de descarga para iphone
 	if(device.platform=="iOS" || device.platform=="ios")
 	{
 		$( "#documentos_guardar" ).hide();
@@ -42,7 +39,7 @@ function onDeviceReady() {
    	
    	
 	}
-   	
+   	*/
         
 		
 } 
