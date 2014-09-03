@@ -74,14 +74,14 @@ function onDeviceReady() {
 
 $(document).on("pagecreate", "#perfil", function() {
 		//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-	    if ( window.localStorage.getItem("numero_hijos")==1)
+	    if ( localStorage.getItem("numero_hijos")==1)
 		{
 	    	$("#perfilliHijos").remove();
 		}
 });    
 $(document).on("pagecreate", "#listaCategorias", function() {
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( window.localStorage.getItem("numero_hijos")==1)
+    if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#docliHijos").remove();
 	}
@@ -89,14 +89,14 @@ $(document).on("pagecreate", "#listaCategorias", function() {
 
 $(document).on("pagecreate", "#GalleryList", function() {
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( window.localStorage.getItem("numero_hijos")==1)
+    if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#galerialiHijos").remove();
 	}
 });
 $(document).on("pagecreate", "#observaciones", function() {
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( window.localStorage.getItem("numero_hijos")==1)
+    if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#obsliHijos").remove();
 	}
@@ -109,7 +109,7 @@ $(document).on("pagecreate", "#observaciones", function() {
 $(document).on("pagecreate", "#controlDiario", function() {
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( window.localStorage.getItem("numero_hijos")==1)
+    if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#controlliHijos").remove();
 //    	$("#controlliDesconectarse").remove();
@@ -121,11 +121,11 @@ $(document).on("pagecreate", "#controlDiario", function() {
 	}
 		
 	
-	$(".logo_centro").attr("src",window.localStorage.getItem("logo_centro"));
+	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
 	
 	
-	$id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+	$id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
 	
 	$.ajax({
         type:'GET',
@@ -166,8 +166,8 @@ function ajaxControlFecha()
 	// $fecha = "06/30/2014" ;//$("#inputFecha").val();
 	    
 	    
-    $id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+    $id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
 		    
     
 	cargandoDatos();
@@ -198,8 +198,8 @@ function ajaxControlHoy()
 		return;
 	}
 	
-	$id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+	$id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
 	
 	cargandoDatos();
 	
@@ -226,8 +226,8 @@ function ajaxControlHoy()
 
 function ajaxFichaReducida()
 {
-	$id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+	$id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
 	
 	$.ajax({
         type:'GET',
@@ -452,8 +452,8 @@ function ajaxfichadetallada()
 	
 	 $.mobile.changePage("#perfil");
 
-	 $id_alumno=window.localStorage.getItem("id_alumno");
-	 $id_tutor=window.localStorage.getItem("id_tutor");
+	 $id_alumno=localStorage.getItem("id_alumno");
+	 $id_tutor=localStorage.getItem("id_tutor");
 
 	$.ajax({
         type:'GET',
@@ -526,13 +526,13 @@ function irListaHijos()
 
 function desconectarse(){
 	//borramos variables 
-	  window.localStorage.removeItem("id_tutor");
-	  window.localStorage.removeItem("nombre_tutor");
-	  window.localStorage.removeItem("idioma");
-	  window.localStorage.removeItem("numero_hijos");
-	  window.localStorage.removeItem("tel");
-	  window.localStorage.removeItem("pass");
-	  window.localStorage.removeItem("notificaciones");
+	  localStorage.removeItem("id_tutor");
+	  localStorage.removeItem("nombre_tutor");
+	  localStorage.removeItem("idioma");
+	  localStorage.removeItem("numero_hijos");
+	  localStorage.removeItem("tel");
+	  localStorage.removeItem("pass");
+	  localStorage.removeItem("notificaciones");
 	   
 	  window.location.replace("index.html");
 }

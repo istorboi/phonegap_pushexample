@@ -72,9 +72,9 @@ function onNotificationGCM(e) {
                // alert('registration id = '+e.regid);
                 
                 
-             	if (window.localStorage.getItem("id_tutor")) 
+             	if (localStorage.getItem("id_tutor")) 
             	{	//registro alumno
-             		$id_tutor=window.localStorage.getItem("id_tutor");
+             		$id_tutor=localStorage.getItem("id_tutor");
 	                $plataforma="Android";
 	                $registro_plataforma=e.regid;
 	                
@@ -88,14 +88,14 @@ function onNotificationGCM(e) {
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-	                    			window.localStorage.setItem("notificaciones",true);
+	                    			localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
 	                   	 	//	alert("Error: Borrar dispositivo ya registrado");
 	                   }
 	                });
             	}else{ //registro profesor
-             		$id_profesor=window.localStorage.getItem("id_profesor");
+             		$id_profesor=localStorage.getItem("id_profesor");
 	                $plataforma="Android";
 	                $registro_plataforma=e.regid;
 	                
@@ -109,7 +109,7 @@ function onNotificationGCM(e) {
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-	                    			window.localStorage.setItem("notificaciones",true);
+	                    			localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
 	                   	 		//alert("Borrar dispositivo ya registrado");
@@ -167,9 +167,9 @@ function tokenHandler (result) {
 	//alert("borrar tokenhandler:" + result);
 	
 	
-	if (window.localStorage.getItem("id_tutor")) 
+	if (localStorage.getItem("id_tutor")) 
 	{	//registro alumno
- 		$id_tutor=window.localStorage.getItem("id_tutor");
+ 		$id_tutor=localStorage.getItem("id_tutor");
  		$plataforma="iOS";
  		$registro_plataforma=result;
  		$.ajax({
@@ -181,14 +181,14 @@ function tokenHandler (result) {
  			jsonpCallback: 'dispositivoRegistrarCallback',
  			success: function(){
          			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-         			window.localStorage.setItem("notificaciones",true);
+         			localStorage.setItem("notificaciones",true);
         	},
  			error: function(){
         	 		//alert("Borrar dispositivo ya registrado");
  			}
         });
 	}else{
-		$id_profesor=window.localStorage.getItem("id_profesor");
+		$id_profesor=localStorage.getItem("id_profesor");
 		$plataforma="iOS";
  		$registro_plataforma=result;
  		
@@ -202,7 +202,7 @@ function tokenHandler (result) {
             success: function(){
             			//alert("Servicio de Alertas activado para su dispositivo");
             			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-            			window.localStorage.setItem("notificaciones",true);
+            			localStorage.setItem("notificaciones",true);
             },
             error: function(){
            	 		//alert("Borrar dispositivo ya registrado");

@@ -3,8 +3,8 @@
     
 function ajaxAlumnoGetMenu()
 {
-	$id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+	$id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
   
     $.ajax({
                 type:'GET',

@@ -3,8 +3,8 @@
     
 function ajaxAlumnoGetFotos()
 {
-	$id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+	$id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
   
 	//alert("alumno:"+$id_alumno+" tutor:" + $id_tutor );
 	
@@ -46,8 +46,8 @@ function ajaxGetFotosTema(tema){
  $tema_seleccionado = tema;
  $("#GalleryName").html(tema);
 
- 	$id_alumno=window.localStorage.getItem("id_alumno");
-	$id_tutor=window.localStorage.getItem("id_tutor");
+ 	$id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
 
  
  $.ajax({
@@ -135,8 +135,8 @@ function ajaxDesetiquetar()
 {
 
 $idfoto= $("#GalleryDetailSrc").attr("data_idfoto");
-$id_alumno=window.localStorage.getItem("id_alumno");
-$id_tutor=window.localStorage.getItem("id_tutor");
+$id_alumno=localStorage.getItem("id_alumno");
+$id_tutor=localStorage.getItem("id_tutor");
 
 	
   $.ajax({
@@ -214,7 +214,7 @@ var error = function(err){
 function descargarDocumentos()
 {
 	
-	var URL = window.localStorage.getItem("doc");
+	var URL = localStorage.getItem("doc");
 	saveImageToPhone(URL, success, error);   //usando el plugin del canvas 
 
 	
@@ -240,7 +240,7 @@ function descargarDocumentos()
 	*/
 	
 	/* metodo tradicional, no guarda directo en la galeria
-	var URL = window.localStorage.getItem("doc");
+	var URL = localStorage.getItem("doc");
 
 	var File_Name= URL.substring(URL.lastIndexOf('/')+1);
 	

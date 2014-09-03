@@ -24,8 +24,8 @@ function inicializarFormularioObservaciones()
     $("#textObservaciones").val('');
 
   
-    var id_alumno_obs=window.localStorage.getItem("id_alumno");
-	var id_tutor_obs=window.localStorage.getItem("id_tutor");
+    var id_alumno_obs=localStorage.getItem("id_alumno");
+	var id_tutor_obs=localStorage.getItem("id_tutor");
 
     $("#id_tutorObservaciones").val(id_tutor_obs);
     $("#id_alumnoObservaciones").val(id_alumno_obs);

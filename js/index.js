@@ -66,8 +66,8 @@ $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
 	//alert("pagecreate --> lista hijos");
 	if (queryRealizada==false)
 	{
-		$tel = window.localStorage.getItem("tel");
-		$pass = window.localStorage.getItem("pass");
+		$tel = localStorage.getItem("tel");
+		$pass = localStorage.getItem("pass");
 		
 		$.ajax({
 	        type:'GET',
@@ -95,13 +95,13 @@ $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
 $(document).on("pagecreate", "#loginPage", function() {
 	
 	//alert("pagecreate loginpage");
-	if (window.localStorage.getItem("tel")) 
+	if (localStorage.getItem("tel")) 
 	{	
-		$tel = window.localStorage.getItem("tel");
-		$pass = window.localStorage.getItem("pass");
+		$tel = localStorage.getItem("tel");
+		$pass = localStorage.getItem("pass");
 		
 		
-	//	alert ("loginvalidar automatico movil:" +window.localStorage.getItem("tel") +  " pass:" + window.localStorage.getItem("pass") );
+	//	alert ("loginvalidar automatico movil:" +localStorage.getItem("tel") +  " pass:" + localStorage.getItem("pass") );
 		$.ajax({
 	             type:'GET',
 	             url: URL_REST_BASE +'restapi/login.php',
@@ -137,8 +137,8 @@ function loginValidar()
              jsonpCallback: 'loginCallback',
              success: function(){
 
-            		window.localStorage.setItem("tel", $("#tel").val());
-            		window.localStorage.setItem("pass", $("#pass").val());
+            		localStorage.setItem("tel", $("#tel").val());
+            		localStorage.setItem("pass", $("#pass").val());
             		queryRealizada=true;
             		
              },
@@ -159,10 +159,10 @@ function onLoginError() {
 
 function controlAlumno2(id,id_centro,logo_centro)
 {
-	window.localStorage.setItem("id_alumno", id);
-	window.localStorage.setItem("id_centro", id_centro);
-	window.localStorage.setItem("logo_centro", logo_centro);
-    window.location.replace("main.html");
+	localStorage.setItem("id_alumno", id);
+	localStorage.setItem("id_centro", id_centro);
+	localStorage.setItem("logo_centro", logo_centro);
+    location.replace("main.html");
 }
 function controlAlumno()
 {
@@ -175,14 +175,14 @@ function controlAlumno()
      
       if(("rol" in obj ) && obj.rol=="profesor" ){
        //version nueva y tipo profesor
-    	  window.localStorage.setItem("id_profesor", obj.id_profesor);
-    	  window.localStorage.setItem("nombre_profesor", obj.nombre_profesor);
-    	  window.localStorage.setItem("idioma", obj.idioma);
-    	  window.localStorage.setItem("logo_centro", obj.logo_centro);
-          window.localStorage.setItem("id_centro", obj.id_centro);
+    	  localStorage.setItem("id_profesor", obj.id_profesor);
+    	  localStorage.setItem("nombre_profesor", obj.nombre_profesor);
+    	  localStorage.setItem("idioma", obj.idioma);
+    	  localStorage.setItem("logo_centro", obj.logo_centro);
+          localStorage.setItem("id_centro", obj.id_centro);
         
     
-          if (window.localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
+          if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
           
     	  window.location.replace("profesorMain.html");
     	  
@@ -190,12 +190,12 @@ function controlAlumno()
     	      
       }else{
       
-	     window.localStorage.setItem("id_tutor", obj.id_tutor);
-	     window.localStorage.setItem("nombre_tutor", obj.nombre_tutor);
-	     window.localStorage.setItem("idioma", obj.idioma);
-	     window.localStorage.setItem("numero_hijos", obj.alumnos.length);
+	     localStorage.setItem("id_tutor", obj.id_tutor);
+	     localStorage.setItem("nombre_tutor", obj.nombre_tutor);
+	     localStorage.setItem("idioma", obj.idioma);
+	     localStorage.setItem("numero_hijos", obj.alumnos.length);
 	   
-	     if (window.localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
+	     if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
 	     
 	     var numalumnos = obj.alumnos.length;
 	     var primeraVisita = obj.primeraVisita;
@@ -207,9 +207,9 @@ function controlAlumno()
 	     }
 	     if(numalumnos==1)
 	     {
-	        window.localStorage.setItem("id_alumno", obj.alumnos[0]["id_alumno"]);
-	        window.localStorage.setItem("logo_centro", obj.alumnos[0]["logo_centro"]);
-	        window.localStorage.setItem("id_centro", obj.alumnos[0]["id_centro"]);
+	        localStorage.setItem("id_alumno", obj.alumnos[0]["id_alumno"]);
+	        localStorage.setItem("logo_centro", obj.alumnos[0]["logo_centro"]);
+	        localStorage.setItem("id_centro", obj.alumnos[0]["id_centro"]);
 	      //  controlAlumno();
 	     }
 	     if(numalumnos>1)
@@ -274,7 +274,7 @@ function controlAlumno()
  
     function ajaxCambiarPassPrimerAcceso()
     {
-        $id_tutor= window.localStorage.getItem("id_tutor");
+        $id_tutor= localStorage.getItem("id_tutor");
         var newpass1 = $("#pass1").val();
         var newpass2 = $("#pass2").val();
     
@@ -282,7 +282,7 @@ function controlAlumno()
         if (newpass1 ==newpass2 )
         {
             
-             $idtutor=window.localStorage.getItem("id_tutor");
+             $idtutor=localStorage.getItem("id_tutor");
              $pass = newpass1;
                      
             $.ajax({
@@ -309,7 +309,7 @@ function controlAlumno()
     function primerAccesoCallback(data)
     {
      // alert(data); //delete
-       var  numalumnos= window.localStorage.getItem("numero_hijos");
+       var  numalumnos= localStorage.getItem("numero_hijos");
         if(numalumnos==1) { controlAlumno(); }
         if(numalumnos>1){ $.mobile.changePage("#seleccionarAlumno", {transition: "slide", reverse: false  } );}   
     
@@ -318,14 +318,14 @@ function controlAlumno()
     
     function desconectarse(){
     	//borramos variables 
-    	  window.localStorage.removeItem("id_tutor");
-    	  window.localStorage.removeItem("id_centro");
-    	  window.localStorage.removeItem("nombre_tutor");
-    	  window.localStorage.removeItem("idioma");
-    	  window.localStorage.removeItem("numero_hijos");
-    	  window.localStorage.removeItem("tel");
-    	  window.localStorage.removeItem("pass");
-    	  window.localStorage.removeItem("notificaciones");
+    	  localStorage.removeItem("id_tutor");
+    	  localStorage.removeItem("id_centro");
+    	  localStorage.removeItem("nombre_tutor");
+    	  localStorage.removeItem("idioma");
+    	  localStorage.removeItem("numero_hijos");
+    	  localStorage.removeItem("tel");
+    	  localStorage.removeItem("pass");
+    	  localStorage.removeItem("notificaciones");
     	   
     	  window.location.replace("index.html");
     }

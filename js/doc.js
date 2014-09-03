@@ -8,7 +8,7 @@ var boolGetCategoria=false;  //refresh excepto primera vez
 
 function ajaxGetDocumentosCentro()
 {
-	$id_centro=window.localStorage.getItem("id_centro");
+	$id_centro=localStorage.getItem("id_centro");
 	
     $.ajax({
         type:'GET',
@@ -57,7 +57,7 @@ function categoriasCallback(data){
  }
 
 function ajaxGetDocumentosCategoria(descripcion){
-	$id_centro=window.localStorage.getItem("id_centro");
+	$id_centro=localStorage.getItem("id_centro");
 	$categoria_seleccionado = descripcion;
      $("#CategoryName").html(descripcion);
 
@@ -111,7 +111,7 @@ function mostrarDocumento(src)
 {
 
   $url=src;  
-  window.localStorage.setItem("doc", src);
+  localStorage.setItem("doc", src);
 	
   
   var isCanvasSet = false;

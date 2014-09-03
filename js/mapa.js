@@ -38,7 +38,7 @@ $(document).on("pagecreate", "#map-page", function() {
 	
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( window.localStorage.getItem("numero_hijos")==1)
+    if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#mapaliHijos").remove();
     }
@@ -54,9 +54,9 @@ function onLoad() {
 //function onDeviceReady() {
 	//initialize();
 	
-	$id_centro=window.localStorage.getItem("id_centro");
+	$id_centro=localStorage.getItem("id_centro");
 
-	$(".logo_centro").attr("src",window.localStorage.getItem("logo_centro"));
+	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
 	//alert("onloadmapa");
 	   $.ajax({
            type:'GET',
@@ -144,12 +144,12 @@ $(document).on("pagecreate",  function() {
 	
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-	if ( window.localStorage.getItem("numero_hijos")==1)
+	if ( localStorage.getItem("numero_hijos")==1)
 	{
 		$( "#liHijos" ).remove();
 	}
 	
-	$(".logo_centro").attr("src",window.localStorage.getItem("logo_centro"));
+	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
 	
 	
 	
@@ -162,12 +162,12 @@ function irListaHijos()
 
 function desconectarse(){
 	//borramos variables 
-	  window.localStorage.removeItem("id_tutor");
-	  window.localStorage.removeItem("nombre_tutor");
-	  window.localStorage.removeItem("idioma");
-	  window.localStorage.removeItem("numero_hijos");
-	  window.localStorage.removeItem("tel");
-	  window.localStorage.removeItem("pass");
+	  localStorage.removeItem("id_tutor");
+	  localStorage.removeItem("nombre_tutor");
+	  localStorage.removeItem("idioma");
+	  localStorage.removeItem("numero_hijos");
+	  localStorage.removeItem("tel");
+	  localStorage.removeItem("pass");
 	   
-	  window.location.replace("index.html");
+	  location.replace("index.html");
 }
