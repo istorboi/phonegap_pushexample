@@ -36,8 +36,7 @@
     <div class="app" id="controlDiario" data-role="page" >
    		    <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
 				<!--  <h1 style="margin: 0px; padding:0px;">-->
-				<h1 class="headerh1">
-			  	
+				 <h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
 			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
 				 <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
@@ -227,9 +226,8 @@
     <div class="app" id="perfil" data-role="page" >
 
    		    <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
-				<!--  <h1 style="margin: 0px; padding:0px;">-->
-				<h1 style="margin: 0px; padding:0px;">
-			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				 <h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
 				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
 				<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
@@ -357,11 +355,11 @@
  -->
          <div data-role="page" id="listaCategorias">
             <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
-		<h1 style="margin: 0px; padding:0px;">
+				<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
 					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
-		</h1>
-		<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
-		<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+				</h1>
+				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+				<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
             </div>
 	
             <div data-role="content"> 
@@ -398,7 +396,10 @@
         <div  data-role="page" id="listaDoc" class="gallery-page" >
 	
             <div data-role="header">
-		<h1 id="CategoryName">Categoría</h1>
+            <h1  id="CategoryName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+		    <!--  <h1 id="CategoryName">-->
+		     Categoría
+		     </h1>
                  <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
                 
             </div>
@@ -417,7 +418,7 @@
         <div class="app" id="menu" data-role="page" >
             
             <div data-role="header">
-		       <h1 id="documentName">Documentación</h1>
+		       <h1 id="documentName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;" >Documentación</h1>
                  <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
                   <a  id="documentos_guardar" data-icon="arrow-d" onClick="descargarDocumentos();" >Guardar</a>
             </div>
@@ -439,7 +440,7 @@
   
 <div data-role="page" id="GalleryList">
 	 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
-		<h1 style="margin: 0px; padding:0px;">
+		<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
 			<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 		</h1>
 		<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
@@ -477,7 +478,7 @@
 </div>
   <div  data-role="page" id="Gallery1" class="gallery-page" >
 	<div data-role="header">
-		<h1 id="GalleryName">First Gallery</h1>
+		<h1 id="GalleryName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">First Gallery</h1>
 		<a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
 		
     </div>
@@ -491,7 +492,7 @@
         <div  data-role="page" id="GalleryDetail" class="gallery-item" >
 	
             <div data-role="header">
-		       <h1 id="PhotoName">Foto</h1>
+		       <h1 id="PhotoName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">Foto</h1>
 		       <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
 		       
             </div>
@@ -517,7 +518,7 @@
         <!--------------------------   Página observaciones inicio    --------------------------------------- -->
 		<div class="app" id="observaciones" data-role="page" >
 			<div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
-				<h1 style="margin: 0px; padding:0px;">
+				<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
 			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
 				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
@@ -589,7 +590,9 @@
     <!--  pagina dialogo calendario -->
       <div data-role="page" id="dialogCalendario">
         <div data-role="header" > 
-            <h1>Seleccionar </h1> 
+        	<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+            	Seleccionar 
+            </h1> 
         </div>  
         <div data-role="content">
             <h3> Fecha a recuperar</h3>
