@@ -29,6 +29,8 @@ function protectHeaderiOS()
 	         $(this).siblings('A').css("margin-top", "20px");
 	          
 	      });
+		
+		$('#controlDiario').trigger('create');
 		   
 	}else	{	
 	      $('.headerh1').each(function() {
