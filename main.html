@@ -353,6 +353,9 @@
 	    </div>        
  </div>  
  -->
+ 
+ 
+   <!--------------------------   Página documentos inicio    --------------------------------------- -->
          <div data-role="page" id="listaCategorias">
             <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
 				<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
@@ -363,7 +366,7 @@
             </div>
 	
             <div data-role="content"> 
-                <h1 id="h1documentos" style="margin: 0px; padding:0px;"> Documentos</h1>
+                <h1 id="h1documentos"> Documentos</h1>
                 <br/>
   	    
                
@@ -395,16 +398,17 @@
         
         <div  data-role="page" id="listaDoc" class="gallery-page" >
 	
-            <div data-role="header">
-            <h1  id="CategoryName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
-		    <!--  <h1 id="CategoryName">-->
-		     Categoría
-		     </h1>
+             <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
                  <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
                 
             </div>
 		
-            <div data-role="content">	
+            <div data-role="content">
+            	<h1  id="CategoryName">Categoría</h1>
+            	<br>
                 <ul id="ulDocumentos" data-role="listview">
                     <li>No existen Categorías</li>
                 </ul>
@@ -418,7 +422,7 @@
         <div class="app" id="menu" data-role="page" >
             
             <div data-role="header">
-		       <h1 id="documentName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;" >Documentación</h1>
+		       <h1 id="documentName" class="headerh1" style="margin-bottom: 0px; padding-bottom:20px;" >Documentación</h1>
                  <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
                   <a  id="documentos_guardar" data-icon="arrow-d" onClick="descargarDocumentos();" >Guardar</a>
             </div>
@@ -436,7 +440,7 @@
 
     <!-- --------------------------Página menú fin  ------------------------------------------------->
     
-    
+     <!-- --------------------------Página fotos/galerias Inicio  ------------------------------------------------->
   
 <div data-role="page" id="GalleryList">
 	 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
@@ -447,7 +451,7 @@
 		<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
 	</div>
 	<div data-role="content">
-		<h1 id="h1gallerylist" style="margin: 0px; padding:0px;"> Galerías Fotos</h1>
+		<h1 id="h1gallerylist" style="margin: 0px; padding:0px;"> Galería Fotos</h1>
 	   <br/>
   		<ul id="ultemas" data-role="listview">
         	<li>No existen fotos</li>
@@ -477,29 +481,36 @@
 	</div>	
 </div>
   <div  data-role="page" id="Gallery1" class="gallery-page" >
-	<div data-role="header">
-		<h1 id="GalleryName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">First Gallery</h1>
-		<a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+	 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+		<a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
 		
     </div>
 		
     <div data-role="content">
+		<h1 id="GalleryName">First Gallery</h1>
 		<div class="gallery" id="gallery_table">
         </div>
     </div>
   </div>
         
-        <div  data-role="page" id="GalleryDetail" class="gallery-item" >
+	<div  data-role="page" id="GalleryDetail"   >
 	
-            <div data-role="header">
-		       <h1 id="PhotoName" class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">Foto</h1>
-		       <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
-		       
-            </div>
+	 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+		<a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
 		
-            <div data-role="content">	
-                <div id="divGalleryImg" style="text-align: center;margin: 0 auto;">
-                    <img id="GalleryDetailSrc" src="" data_idfoto="0" style="max-height: 600px; max-width:600px; "/>
+    </div>		
+            <div data-role="content">
+             	<h1 id="PhotoName" >Foto</h1>
+		      </br>
+            	
+                <div id="divGalleryImg"  style="text-align: center;margin: 0 auto;">
+                    <img id="GalleryDetailSrc" src="" data_idfoto="0" style="display: block; width: 100%; height: auto;  max-height: 600px; max-width:600px; "/>
                 </div>
                 
                 <a onClick="confirmDesetiquetar();" data-role="button">Desetiquetar niño</a>
@@ -589,12 +600,13 @@
     
     <!--  pagina dialogo calendario -->
       <div data-role="page" id="dialogCalendario">
-        <div data-role="header" > 
-        	<h1 class="headerh1" style="margin-bottom: 0px; padding-bottom:0px;">
+         <div data-role="header">
+			<h1>
             	Seleccionar 
-            </h1> 
+            </h1>
         </div>  
         <div data-role="content">
+        	
             <h3> Fecha a recuperar</h3>
             <form id="formfecha" name="formfecha">
                 <input id="inputFecha" type="text" data-role="date" data-inline="true">
