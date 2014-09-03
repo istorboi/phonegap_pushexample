@@ -20,19 +20,22 @@ function okAlert()
 }
 function protectHeaderiOS()
 {
-	if(device.platform=="iOS" || device.platform=="ios")
-	{	
-		 if (parseFloat(window.device.version) >= 7.0) {
-		      $('.headerh1').each(function() {
-		         // `this` is the h1, the padding goes on the
-		         // containing header div.
-		         $(this).parent().css("padding-top", "20px");
-		         // sort any buttons/icons rendered from A tags too
-		         $(this).siblings('A').css("margin-top", "20px");
-		          
-		      });
-		   }
-	}	
+	if( (device.platform=="iOS" || device.platform=="ios") && (parseFloat(window.device.version) >= 7.0)) {
+		$('.headerh1').each(function() {
+	         // `this` is the h1, the padding goes on the
+	         // containing header div.
+	         $(this).parent().css("padding-top", "20px");
+	         // sort any buttons/icons rendered from A tags too
+	         $(this).siblings('A').css("margin-top", "20px");
+	          
+	      });
+		   
+	}else	{	
+	      $('.headerh1').each(function() {
+		    $(this).parent().css("padding-top", "0px");
+		  });
+		
+	}
 }
 
 
