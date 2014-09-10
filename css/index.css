@@ -288,5 +288,34 @@ a#nav_desconectarse2{
 
 
 
+/* *****************************************************    ********************************************** */
+#enter {
+	position: absolute;
+	text-align: center;
+	left: 50%;
+	top: 50%;
+/*	margin: -240px auto 0 -240px;*/ /* value of top margin: height of the image divide by 2 (ie: 240 / 2), value of left margin: width of the image divide by 2 (ie: 260 / 2) */
+	margin: -120px auto 0 -120px;/* value of top margin: height of the image divide by 2 (ie: 240 / 2), value of left margin: width of the image divide by 2 (ie: 260 / 2) */
+	width: 240px; /* same as the image width */
+	height: 240px; /* same as the image width */
+	
+}
 
+#img_bienvenido10{
+	width: 240px; 
+	height: 240px;
+}
 
+/*
+#enter span a {
+	display: block;
+	width: 240px !important;
+	height: 240px !important;
+	margin: auto;
+	position: relative;
+	background: url(../img/bienvenido480.png) 0 0 no-repeat;
+	text-indent: -5000em;
+	outline: 0;
+	border: 1px solir red;
+}
+*/

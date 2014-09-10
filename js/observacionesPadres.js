@@ -68,7 +68,11 @@ function inicializarFormularioObservaciones()
 
 function enviarFormularioObservaciones()
 {
+	if(!verificarAccesoInternet()) return;
+	
    // alert($('#formObservaciones').serialize());
+	
+	$.mobile.loading( "show", { text: "Enviando observación",  textVisible: true, theme: "a",  html: ""	});
 	
     $.ajax({
             type:'GET',
@@ -80,14 +84,14 @@ function enviarFormularioObservaciones()
                         jsonpCallback: 'formObservacionesCallback',
                         
                         success: function(){
+                        	$.mobile.loading( "hide" );
                             inicializarFormularioObservaciones();
- 
-                           // alert ("ok submit form observaciones");
                         },
                         error: function(){
+                        	$.mobile.loading( "hide" );
                             inicializarFormularioObservaciones();
- 
-                               alert ("No se pudo mandar la Observación");
+                            navigator.notification.alert('No se pudo mandar la Observación',okObservacion,'MIA','Cerrar');
+                        	//alert ("No se pudo mandar la Observación");
                          }
     });
     
@@ -111,5 +115,8 @@ function formObservacionesCallback(data)
 }
 
 function okObservacion()
-{	history.back();
-	}
+{	
+	//history.back();
+	 window.location.replace("main.html");
+
+}

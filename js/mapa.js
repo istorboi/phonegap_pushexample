@@ -24,17 +24,28 @@ function protectHeaderiOS()
 	}
 }
 
+function verificarAccesoInternet()
+{
+    var estado=true;
+    if (navigator.network.connection.type==Connection.NONE)
+	{ 
+    	navigator.notification.alert('Se necesita conexión a internet',okAlert,'MIA','Cerrar');
+    	estado = false;
+	}
+    return estado;
+ }
+
+
+
+
+
 function onDeviceReady() {
 
 	protectHeaderiOS();	
 	
 	
 $(document).on("pagecreate", "#map-page", function() {
-	if (navigator.network.connection.type==Connection.NONE)
-	 { 
-			alert("Se necesita conexión a internet para realizar la validación");
-			return;
-	}
+	if(!verificarAccesoInternet()) return;
 	
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo

@@ -48,16 +48,70 @@ var queryRealizada=false;
 
 
 
-
-
-
 function onLoad() {
 	document.addEventListener("deviceready", onDeviceReady, false); 
 }
 function onDeviceReady() {
-	verificarAccesoInternet();
 	protectHeaderiOS();
+	
+	if (!verificarAccesoInternet())
+	{
+	$("#recargar").html('<span id="conexionnecesaria"> Conexión a internet necesaria para usar la aplicacion.</span></br>	<a onclick="recargarWelcome()">Volver a intentar</a>');
+		
+	}else
+	{
+		$("#recargar").html('');
+	}
+	
 }
+
+
+function recargarWelcome()
+{
+	 window.location.replace("index.html");
+}
+
+
+$(document).on("pageshow", "#welcomePage", function() {
+	$.mobile.loading( "show", { text: "Cargando", textVisible: true, theme: "a", html: ""});	
+});
+
+
+
+   $(document).on("pagecreate", "#welcomePage", function() {
+ 
+   
+	
+	if (localStorage.getItem("tel")) 
+	{	
+		$tel = localStorage.getItem("tel");
+		$pass = localStorage.getItem("pass");
+		
+		
+		$.ajax({
+	             type:'GET',
+	             url: URL_REST_BASE +'restapi/login.php',
+	             data:{movil : $tel , pass:$pass},
+	             dataType: 'jsonp',
+	             jsonp: 'callback',
+	             jsonpCallback: 'loginCallback',
+	             success: function(){
+	            	 $.mobile.loading( "hide");
+	            	 queryRealizada=true;
+	             },
+	             error: function(){
+	            	 $.mobile.loading( "hide");
+
+	            }
+	         
+	        });
+	}
+	else
+	{
+		$.mobile.changePage("#loginPage", {transition: "none", reverse: false  } );
+	}
+});
+
 
 
 
@@ -91,7 +145,7 @@ $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
 
 
 
-
+/*
 $(document).on("pagecreate", "#loginPage", function() {
 	
 	//alert("pagecreate loginpage");
@@ -122,12 +176,22 @@ $(document).on("pagecreate", "#loginPage", function() {
 
 });
 
-
+*/
 
 
 function loginValidar()
 {
+	if (!verificarAccesoInternet()) return;
+	
 
+	$.mobile.loading( "show", {
+		  text: "Validando datos",
+		  textVisible: true,
+		  theme: "a",
+		  html: ""
+	});
+	
+	
 	$.ajax({
              type:'GET',
              url: URL_REST_BASE + 'restapi/login.php',
@@ -136,15 +200,18 @@ function loginValidar()
              jsonp: 'callback',
              jsonpCallback: 'loginCallback',
              success: function(){
-
+            	 $.mobile.loading( "hide" );
             		localStorage.setItem("tel", $("#tel").val());
             		localStorage.setItem("pass", $("#pass").val());
             		queryRealizada=true;
+            		$( ".selector" ).loading( "hide" );
             		
              },
              error: function(){
+            	 $.mobile.loading( "hide" );
             	 navigator.notification.alert('Teléfono o password incorrectos',  onLoginError(),  'Validación Incorrecta',  'cerrar');
-            }
+            	 
+             }
             
 	
         });
@@ -159,6 +226,7 @@ function onLoginError() {
 
 function controlAlumno2(id,id_centro,logo_centro)
 {
+	if(!verificarAccesoInternet()) return;
 	localStorage.setItem("id_alumno", id);
 	localStorage.setItem("id_centro", id_centro);
 	localStorage.setItem("logo_centro", logo_centro);
@@ -258,7 +326,8 @@ function controlAlumno()
                    jsonp: 'callback',
                    jsonpCallback: 'tutorRecordarPassCallback',
                    success: function(){
-                       alert("Se ha enviado un email con su nueva contraseña, que deberá cambiar en su primer acceso a la aplicación")
+                       //alert("Se ha enviado un email con su nueva contraseña, que deberá cambiar en su primer acceso a la aplicación");
+                       navigator.notification.alert("Se ha enviado un email con su nueva contraseña, que deberá cambiar en su primer acceso a la aplicación",okAlert,'MIA','Cerrar');
                    },
                    error: function(){
                    //    alert ("Error estableciendo nuevo Password");
@@ -302,7 +371,9 @@ function controlAlumno()
             $("#pass1").val("");
             $("#pass2").val("");
 
-            alert ("Las contraseñas no coinciden,Introduzca de nuevo la contraseña.");
+            //alert ("Las contraseñas no coinciden,Introduzca de nuevo la contraseña.");
+            navigator.notification.alert("Las contraseñas no coinciden,Introduzca de nuevo la contraseña.",okAlert,'MIA','Cerrar');
+
         }
      }
        
@@ -328,4 +399,8 @@ function controlAlumno()
     	  localStorage.removeItem("notificaciones");
     	   
     	  window.location.replace("index.html");
+    	  
+    	  
+    	  
+    	  
     }

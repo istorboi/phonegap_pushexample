@@ -150,7 +150,8 @@ $id_tutor=localStorage.getItem("id_tutor");
         	//alert("success desetiquetar, delete");
         },
         error: function(){
-        	alert("No se pudo Desetiquetar la Foto");
+        	//alert("No se pudo Desetiquetar la Foto");
+        	navigator.notification.alert("No se pudo Desetiquetar la Foto",okAlert,'MIA','Cerrar');
         }
     });
 }

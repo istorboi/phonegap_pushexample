@@ -57,18 +57,7 @@ function onDeviceReady() {
 
 	verificarAccesoInternet();
 	protectHeaderiOS();
-      
-	/* temporal, oculta los botones de descarga para iphone
-	if(device.platform=="iOS" || device.platform=="ios")
-	{
-		$( "#documentos_guardar" ).hide();
-		$( "#descargarImagen" ).hide();
-   	
-   	
-	}
-   	*/
-        
-		
+  	
 } 
 
 
@@ -112,8 +101,6 @@ $(document).on("pagecreate", "#controlDiario", function() {
     if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#controlliHijos").remove();
-//    	$("#controlliDesconectarse").remove();
-//		$("#controlmenu").append('		<li  id="controlliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse2"  data-icon="custom"><img src="./css/desconectarse_white.png"/></a></li>');
 	}
 	else
 	{
@@ -123,9 +110,11 @@ $(document).on("pagecreate", "#controlDiario", function() {
 	
 	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
 	
-	
 	$id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
+	
+	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
+
 	
 	$.ajax({
         type:'GET',
@@ -137,9 +126,10 @@ $(document).on("pagecreate", "#controlDiario", function() {
                     
         success: function(){
         	//alert("success");
+        	$.mobile.loading( "hide");
         },
         error: function(){
-        	//alert("error");
+        	$.mobile.loading( "hide");
         }
 	});
 	
@@ -155,17 +145,20 @@ $(document).on("pagecreate", "#controlDiario", function() {
 function ajaxControlFecha()
 {
 	
-	if (navigator.network.connection.type==Connection.NONE)
-	{ 
-		alert("Se necesita conexión a internet para realizar la validación");
+	
+	if (!verificarAccesoInternet()){
+		$('[data-role=dialog]').dialog( "close" );
+
 		return;
 	}
 	
-   $('[data-role=dialog]').dialog( "close" );
-     $fecha = $("#inputFecha").val();
-	// $fecha = "06/30/2014" ;//$("#inputFecha").val();
-	    
-	    
+	$('[data-role=dialog]').dialog( "close" );
+   
+   $fecha = $("#inputFecha").val();
+		    
+	 
+	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
+
     $id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
 		    
@@ -180,10 +173,10 @@ function ajaxControlFecha()
         jsonp: 'callback',
         jsonpCallback: 'controldiarioCallback',
         success: function(){
-           // alert("success");
+        	$.mobile.loading( "hide" );
         },
         error: function(){
-            //alert("errorfecha");
+        	$.mobile.loading( "hide" );
         }
     });
     
@@ -192,11 +185,7 @@ function ajaxControlFecha()
 
 function ajaxControlHoy()
 {
-	if (navigator.network.connection.type==Connection.NONE)
-	{ 
-		alert("Se necesita conexión a internet para realizar la validación");
-		return;
-	}
+	if (!verificarAccesoInternet()) return;
 	
 	$id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
@@ -269,14 +258,9 @@ function cargandoDatos()
 
 
 function controldiarioCallback(data){
- //   alert("controldiario");
   
-//	alert(data);
- 
       var obj = jQuery.parseJSON(data);
-    
-  //  $("#Controldiario").html("<b>todo mub bine</b> <\br>. fecha:" + obj.fecha );
-      $("#fecha").html(obj.fecha);
+       $("#fecha").html(obj.fecha);
       
     
     //1rellenamos la seccion comida
@@ -398,26 +382,9 @@ function controldiarioCallback(data){
     }
  
     
-/*	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( window.localStorage.getItem("numero_hijos")==1)
-	{
-    	$("#controlliHijos").remove();
-    	$("#controlliDesconectarse").remove();
-		$("#controlmenu").append('		<li  id="controlliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse2"  data-icon="custom"><img src="./css/desconectarse_white.png"/></a></li>');
-	}
-	else
-	{
-	//	$("#controlmenu").append('<li  id="controlliHijos" ><a onClick="irListaHijos()" class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom">nn</a></li>');
-	}
-*/
-  
-    
 }
 
 function fichareducidaCallback(data){
-   // alert("controldiario");
-   // alert(data);
-   // debugger;
     var obj = jQuery.parseJSON(data);
     
     
@@ -440,18 +407,16 @@ function fichareducidaCallback(data){
 
 
 /****************** funciones fichadetallada *********************/
-/*
-$(document).on("pagecreate", "#perfil", function() {
-//	alert("create -->perfil");
-	//ajaxfichadetallada();
-}
-*/
+
 
 function ajaxfichadetallada()
 {
+	if(!verificarAccesoInternet()) return;
 	
-	 $.mobile.changePage("#perfil");
-
+	$.mobile.changePage("#perfil");
+	$.mobile.loading( "show", { text: "Cargando", textVisible: true, theme: "a", html: ""});
+	
+	
 	 $id_alumno=localStorage.getItem("id_alumno");
 	 $id_tutor=localStorage.getItem("id_tutor");
 
@@ -464,6 +429,11 @@ function ajaxfichadetallada()
         jsonpCallback: 'fichaDetalladaCallback',
         success: function(){
        // alert("borrar success ficher detallada");
+        	 $.mobile.loading( "hide");
+        },
+        error: function(){
+        	 $.mobile.loading( "hide");
+        	
         }
 	});
 }
