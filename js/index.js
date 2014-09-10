@@ -56,7 +56,7 @@ function onDeviceReady() {
 	
 	if (!verificarAccesoInternet())
 	{
-	$("#recargar").html('<span id="conexionnecesaria"> Conexión a internet necesaria para usar la aplicacion.</span></br>	<a onclick="recargarWelcome()">Volver a intentar</a>');
+	//$("#recargar").html('<span id="conexionnecesaria"> Conexión a internet necesaria para usar la aplicacion.</span></br>	<a data-role="button" onclick="recargarWelcome()">Volver a intentar</a>');
 		
 	}else
 	{
