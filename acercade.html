@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    	<meta charset="UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+       <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="libs/mia2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.2.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons.min.css" />
+                  
+        <title>Mia</title>
+    </head>
+   <body onload="onLoad()">
+   
+   
+
+    <!-- --------------------  Página controlDiario - datos hoy  -------------------------------------- -->
+    <div class="app" id="pageacercade" data-role="page" >
+   		    <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+				 <h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
+			  		<img class="logo_mia" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+				  <a data-icon="back" data-rel="back" data-role="button">Volver</a> 
+   			</div>
+
+			<div   class="content ui-content ui-corner-all" style="margin:3px;">
+				<h1> Acerca de la Aplicación</h1>
+				</br>
+				<div class="ui-corner-all custom-corners" style="margin: 7px">
+						<ul data-role="listview" >
+							<li> <h3 id="aboutLabelMIA">Versión MIA:</h3><h5 id="aboutMIA"></h5> </li>
+							<li> <h3 id="aboutLabelApache">Versión Apache:</h3><h5 id="aboutApache"></h5></li>
+							<li> <h3 id="aboutLabelModelo">Modelo:</h3><h5 id="aboutModelo"></h5></li>
+							<li> <h3 id="aboutLabelUUID">UUID:</h3><h5 id="aboutUUID"></h5></li>
+							<li> <h3 id="aboutLabelPlataforma">Plataforma:</h3><h5 id="aboutPlataforma"></h5></li>
+							<li> <h3 id="aboutLabelVersion">Versión:</h3><h5 id="aboutVersion"></h5></li>
+						</ul>
+				</div>
+				
+				
+				
+		   </div>
+ 	
+ 		
+ </div>  <!-- fin   pagina controlDiario-datos hoy   ------------------------------ -->
+    
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
+        <script type="text/javascript" src="js/acercade.js"></script>
+        <script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+     	
+    </body>
+</html>

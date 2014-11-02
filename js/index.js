@@ -19,6 +19,12 @@ function okAlert()
 {
 }
 
+
+
+
+
+
+
 function protectHeaderiOS()
 {
 	if( (device.platform=="iOS" || device.platform=="ios") && (parseFloat(window.device.version) >= 7.0)) {
@@ -387,20 +393,33 @@ function controlAlumno()
         
     }
     
-    function desconectarse(){
-    	//borramos variables 
-    	  localStorage.removeItem("id_tutor");
-    	  localStorage.removeItem("id_centro");
-    	  localStorage.removeItem("nombre_tutor");
-    	  localStorage.removeItem("idioma");
-    	  localStorage.removeItem("numero_hijos");
-    	  localStorage.removeItem("tel");
-    	  localStorage.removeItem("pass");
-    	  localStorage.removeItem("notificaciones");
-    	   
-    	  window.location.replace("index.html");
-    	  
-    	  
-    	  
-    	  
+    
+    
+    
+    function desconectarse()
+    {
+    	navigator.notification.confirm("Necesitarás el teléfono y la contraseña para volver a entrar, ¿Deseas salir ahora?", cerrarCallback, "Salir", "Salir,Cancelar");
     }
+
+    function cerrarCallback(index)
+    {
+    	
+    	if (index==1){
+    		localStorage.removeItem("id_tutor");
+      	  localStorage.removeItem("id_centro");
+      	  localStorage.removeItem("nombre_tutor");
+      	  localStorage.removeItem("idioma");
+      	  localStorage.removeItem("numero_hijos");
+      	  localStorage.removeItem("tel");
+      	  localStorage.removeItem("pass");
+      	  localStorage.removeItem("notificaciones");
+      	   
+      	  window.location.replace("index.html");	
+    	}
+    	
+    }
+
+    
+    
+   
+    

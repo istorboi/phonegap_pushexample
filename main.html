@@ -25,6 +25,7 @@
 
       <link rel="stylesheet" href="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.css" />
     
+   
                   
         <title>Mia</title>
     </head>
@@ -39,10 +40,14 @@
 				 <h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
 			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
-				 <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+				  <!--  <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location" >Mapa</a>
+			     -->
+			      <a href="#right-panel"   data-icon="bars" data-shadow="false" data-iconpos="notext" data-iconshadow="false"  data class=" ui-icon-bars ui-btn-right ui-btn-icon-right" style="border: 0px;" >menú</a>
+             
+			
 			</div>
 
-			<div   class="ui-content ui-corner-all " style="margin:3px;">
+			<div   class="content ui-content ui-corner-all " style="margin:3px;">
 
 				<div class="ui-corner-all custom-corners" style="margin: 7px">
 						<ul data-role="listview" >
@@ -61,7 +66,10 @@
 				</div>
 			-->
 		<br/>
-			
+	
+	
+		
+		<br/>	
 				<div data-role="controlgroup"
 					style="width: 100%; text-align: center; font-size" data-type="horizontal"
 					class="">
@@ -210,12 +218,22 @@
 			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
 			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
    	  	    <li  id="controlliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
-			<li  id="controlliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
-		
+			<!--  <li  id="controlliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		    -->
+			<li><a href="mapa.html" data-ajax="false" class="ui-nodisc-icon" id="nav_mapa" data-icon="custom"></a></li>
 		</ul>
 		</div>
 	</div>
-            
+	
+	
+	<div data-role="panel" id="right-panel" data-display="push" data-position="right" data-theme="a">
+        <p>Menu</p>
+    	<ul data-role="listview" data-theme="a"> 
+				<li><a href="acercade.html" class="ui-icon-info" data-ajax="false">Acerca de </a></li>
+				<li><a href="cerrarsesion.html" class="ui-icon-power" data-ajax="false">Salir</a></li>
+			</ul>
+	</div> <!--  fin role panel -->
+	
  </div>  <!-- fin   pagina controlDiario-datos hoy   ------------------------------ -->
     
     
@@ -230,7 +248,9 @@
 					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
 				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
-				<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+				
+				<!--  <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+			    -->
 			</div>
 
 			
@@ -293,11 +313,15 @@
 			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
 			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
    	  	    <li  id="perfilliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
-			<li  id="perfilliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+			<!--  <li  id="controlliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		    -->
+			<li><a href="mapa.html" data-ajax="false" class="ui-nodisc-icon" id="nav_mapa" data-icon="custom"></a></li>
 		
 		</ul>
 		</div>
-    </div>        
+    </div> 
+    	
+           
  </div> 
  
  
@@ -362,7 +386,8 @@
 					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
 				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
-				<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+				<!-- <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+                 -->
             </div>
 	
             <div data-role="content"> 
@@ -389,7 +414,9 @@
 			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
 			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
    	  	    <li  id="docliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
-			<li  id="docliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+			<!--  <li  id="docliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		    -->
+			<li><a href="mapa.html" data-ajax="false" class="ui-nodisc-icon" id="nav_mapa" data-icon="custom"></a></li>
 		
 		</ul>
 		</div>
@@ -419,8 +446,8 @@
             </div>
         </div>
         
+        <!--  deprecated document opened using canvas
         <div class="app" id="menu" data-role="page" >
-            
             <div data-role="header">
 		       <h1 id="documentName" class="headerh1" style="margin-bottom: 0px; padding-bottom:20px;" >Documentación</h1>
                  <a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
@@ -432,9 +459,34 @@
         			<canvas id="mycanvas" style="width: 100%; height: 100%"></canvas>
     			</div>
            </div>
-				
-	</div>
- 
+		</div>
+ 		-->
+ 		
+ 		
+ 		<div  data-role="page" id="DocImage"   >
+		<div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+			<h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
+				<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+			<a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
+		</div>		
+        <div data-role="content">
+        	<h1 id="h1docImgName">document</h1>
+		    </br>
+            	
+            <div id="divGalleryImg"  style="text-align: center;margin: 0 auto;">
+            	<img id="docImgSrc" src="" data_idfoto="0" style="display: block; width: 100%; height: auto;  max-height: 600px; max-width:600px; "/>
+            </div>
+                
+            <!--   deprecated desetiquetar <a onClick="confirmDesetiquetar();" data-role="button">Desetiquetar niño</a> -->
+            <a id="descargardocImg" onClick="descargarDocumentos();" data-role="button">Guardar Imagen en Galería</a>
+            <a id="AbrirdocImg" onClick="abrirDocImg();" data-role="button">Abrir (Ampliar) </a>    
+            </div>
+	    </div>	
+	
+	
+ 		
+ 		
  
  <!-- page -->
 
@@ -448,7 +500,8 @@
 			<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 		</h1>
 		<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
-		<a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+		<!--  <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+	     -->
 	</div>
 	<div data-role="content">
 		<h1 id="h1gallerylist" style="margin: 0px; padding:0px;"> Galería Fotos</h1>
@@ -474,7 +527,9 @@
 			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
 			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
    	  	    <li  id="galerialiHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
-			<li  id="galerialiDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+			<!--  <li  id="galerialiDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		    -->
+			<li><a href="mapa.html" data-ajax="false" class="ui-nodisc-icon" id="nav_mapa" data-icon="custom"></a></li>
 		
 		</ul>
 		</div>
@@ -497,24 +552,22 @@
   </div>
         
 	<div  data-role="page" id="GalleryDetail"   >
-	
-	 <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
-				<h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
-					<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
-				</h1>
-		<a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
-		
-    </div>		
-            <div data-role="content">
-             	<h1 id="PhotoName" >Foto</h1>
-		      </br>
+		<div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
+			<h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
+				<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+			</h1>
+			<a href="#" data-icon="back" data-rel="back" title="Go back">Volver</a>
+		</div>		
+        <div data-role="content">
+        	<h1 id="PhotoName" >Foto</h1>
+		    </br>
             	
-                <div id="divGalleryImg"  style="text-align: center;margin: 0 auto;">
-                    <img id="GalleryDetailSrc" src="" data_idfoto="0" style="display: block; width: 100%; height: auto;  max-height: 600px; max-width:600px; "/>
-                </div>
+            <div id="divGalleryImg"  style="text-align: center;margin: 0 auto;">
+            	<img id="GalleryDetailSrc" src="" data_idfoto="0" style="display: block; width: 100%; height: auto;  max-height: 600px; max-width:600px; "/>
+            </div>
                 
-                <a onClick="confirmDesetiquetar();" data-role="button">Desetiquetar niño</a>
-                <a id="descargarImagen" onClick="descargarImagen();" data-role="button">Guardar Imagen en Galería</a>
+            <!--   deprecated desetiquetar <a onClick="confirmDesetiquetar();" data-role="button">Desetiquetar niño</a> -->
+            <a id="descargarImagen" onClick="descargarImagen();" data-role="button">Guardar Imagen en Galería</a>
                 
                 
             </div>
@@ -533,7 +586,8 @@
 			  		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
 				<a href="#controlDiario" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
-				 <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+				 <!--  <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location"   data-icon="back">Mapa</a>
+			     -->
 			</div>
 			
    		    
@@ -589,7 +643,9 @@
 			<!--<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxAlumnoGetMenu();" id="nav_menu" data-icon="custom"></a></li>-->
 			<li><a href="#" class="ui-nodisc-icon"  onclick="ajaxGetDocumentosCentro();" id="nav_doc" data-icon="custom"></a></li>
    	  	    <li  id="obsliHijos" ><a onClick="irListaHijos()" data-ajax="false"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
-			<li  id="obsliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+			<!--  <li  id="obsliDesconectarse">              <a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		    -->
+			<li><a href="mapa.html" data-ajax="false" class="ui-nodisc-icon" id="nav_mapa" data-icon="custom"></a></li>
 		
 		</ul>
 		</div>
@@ -637,7 +693,7 @@
         <script type="text/javascript" src="libs/img-touch-canvas.js"></script>
         <script type="text/javascript" src="libs/zoom.js"></script>
 
-
+ 	
         <script type="text/javascript" src="js/main.js"></script>
     	<script type="text/javascript" src="js/observacionesPadres.js"></script>
     	<!-- <script type="text/javascript" src="js/menu.js"></script> -->

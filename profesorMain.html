@@ -133,6 +133,11 @@
                 <a onClick="subirFotoCamara()" class="ui-b" data-role="button" id="profFotoModoNuevo" >Nueva Foto</a>
                 <br>
                 <a onClick="subirFotoGaleria()" class="ui-b" data-role="button" id="profFotoModoGaleria" >Desde la Galería</a>
+                
+                <a onClick="getImage()" class="ui-b" data-role="button" id="profFotoModoGaleria" >Desde la Galería v2</a>
+                
+                
+                
                 <br/>
                 <div id="profFotoModoIniciarSubida"> 
 
@@ -166,42 +171,96 @@
         <div data-role="page" id="profFotoSubir">
             <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
                 <h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
-		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+				<a href="#profFotoModo" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
             </div>
              <div data-role="content"> 
-            <!-- todo: mostrar la foto seleccionada -->
-            
-            
             
             
             <!-- todo   etiquetar alumnossssssssss 
                 boton subir
-            -->
-         
-            <div  id="profFotoSubirListaAlumnos">
+            --> 
+            <!-- todo: mostrar la foto seleccionada -->
+            
+            
+            	<h1 id="profFotoSubir_h1"> Subir foto </h1>
+            
+         	<div id="fotoasubir"></div>
+         	
+         	<div id="temasaseleccionar">
+         	
+         	<div data-role="fieldcontain">
+    			<label for="temaSelect" id="temaSeleccionarLabel">Carpetas    <a href="#dialogoCrearCarpeta" data-rel="dialog">Crear carpetas</a></label>
+    			<select id="temaSelect">
+	 			</select>
+	 			</br>
+	 			
+ 			</div>
+         	
+         	</div>
+         	<div data-role="fieldcontain">
+    			<label id="temaSeleccionarLabel">Alumnos</label>
+    			<div  id="profFotoSubirListaAlumnos"> </div>
             </div>
-            
-
-            
-            
+                        
             <!--  todo:  boton enviar foto servidor  -->
             
+            <div class="ui-grid-a"> 
+    		<div class="ui-block-a"><a onClick="ajaxSubirFotoServidor()" data-role="button" ><span id="idSpanCrearCarpeta">Subir Foto</span></a></div> 
+    		<div class="ui-block-b"><a href="#" data-role="button" data-rel="back" ><span id="idSpanCancelarCarpeta">Cancelar</span></a></div> 
+            </div>
+            
+                   
+			   
             
             
-             </div>
+            
+     </div>
             <div data-role="footer" class="myNavBar" data-position="fixed">
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
-			<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
-                        <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+						<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
+                    	<li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
                         <li><a href="#profFotoModo" class="ui-nodisc-icon   ui-btn-active ui-state-persist"  id="nav_fotos" data-icon="custom"></a></li>
-		   	<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
+		   				<li><a onClick="desconectarse()"  class="ui-nodisc-icon"  id="nav_desconectarse" data-icon="custom"></a></li>
                     </ul>
-		</div>
+				</div>
             </div>
         </div>
         
+
+
+
+
+<!--     dialogo crear carpeta -->
+
+     
+       
+<div role="page" id="dialogoCrearCarpeta">
+	
+		<div data-role="header" >
+			<h1>Nueva Carpeta</h1>
+
+		</div>
+
+		<div data-role="content">
+			
+			<div data-role="fieldcontain">
+    		<label for="nuevaCarpetaNombreLabel">Nombre</label>
+    		<input id="idNuevaCarpetaNombre" type="text"/>
+			</div>
+			
+			<a onClick="ajaxCrearTema()" data-role="button" ><span id="idSpanCrearCarpeta">Crear</span></a>       
+			<a href="#" data-role="button" data-rel="back" ><span id="idSpanCancelarCarpeta">Cancelar</span></a>    
+		</div>
+	</div>
+
+
+
+
+
 
 	
 </body>

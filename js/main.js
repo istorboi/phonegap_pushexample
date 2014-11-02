@@ -46,19 +46,35 @@ function protectHeaderiOS()
 	
 
 
+
 function onLoad() {
 		document.addEventListener("deviceready", onDeviceReady, false); 
 }
 
 
-
-
 function onDeviceReady() {
-
 	verificarAccesoInternet();
 	protectHeaderiOS();
-  	
 } 
+
+/************ menu panel  ******************/
+$( document ).on( "pageinit",  function() {
+    $( document ).on( "swipeleft swiperight",  function( e ) {
+        // We check if there is no open panel on the page because otherwise
+        // a swipe to close the left panel would also open the right panel (and v.v.).
+        // We do this by checking the data that the framework stores on the page element (panel: open).
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+            if ( e.type === "swipeleft"  ) {
+                $( "#right-panel" ).panel( "open" );
+            } else if ( e.type === "swiperight" ) {
+                $( "#left-panel" ).panel( "open" );
+            }
+        }
+    });
+});
+
+/******************* fin menu panel **************/
+
 
 
 $(document).on("pagecreate", "#perfil", function() {
@@ -90,8 +106,6 @@ $(document).on("pagecreate", "#observaciones", function() {
     	$("#obsliHijos").remove();
 	}
 });	    
-
-
 
 
 
@@ -135,33 +149,22 @@ $(document).on("pagecreate", "#controlDiario", function() {
 	
 	ajaxFichaReducida();
 	
-	
-	
 });
-
-
 
 
 function ajaxControlFecha()
 {
-	
-	
 	if (!verificarAccesoInternet()){
 		$('[data-role=dialog]').dialog( "close" );
-
 		return;
 	}
-	
 	$('[data-role=dialog]').dialog( "close" );
-   
-   $fecha = $("#inputFecha").val();
-		    
+    $fecha = $("#inputFecha").val();
 	 
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
 
     $id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
-		    
     
 	cargandoDatos();
 	
@@ -209,8 +212,6 @@ function ajaxControlHoy()
 	});
 	
 }
-
-
 
 
 function ajaxFichaReducida()
@@ -261,7 +262,6 @@ function controldiarioCallback(data){
   
       var obj = jQuery.parseJSON(data);
        $("#fecha").html(obj.fecha);
-      
     
     //1rellenamos la seccion comida
      $("#comida_etiqueta").html(obj.comida_etiqueta);
@@ -269,7 +269,6 @@ function controldiarioCallback(data){
     //numero de campos
     var numcamposcomida = obj.comida_array.length;
     //tabla id=tablecomidas --> vaciamos la tabla y la rellenamos de nuevo
-   
    
     $("#table-comidas").empty();
     var i=0;
@@ -284,7 +283,6 @@ function controldiarioCallback(data){
             
         $("#table-comidas").append(tr);
     }    
-    
     
       //2rellenamos la seccion  regularidad
      $("#regularidad_etiqueta").html(obj.regularidad_etiqueta);
@@ -493,7 +491,7 @@ function irListaHijos()
 	//window.location.replace("index.html");
 	window.location.replace("index.html#seleccionarAlumnoTmp");
 }
-
+/*
 function desconectarse(){
 	//borramos variables 
 	  localStorage.removeItem("id_tutor");
@@ -506,3 +504,4 @@ function desconectarse(){
 	   
 	  window.location.replace("index.html");
 }
+*/

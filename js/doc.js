@@ -10,6 +10,10 @@ function ajaxGetDocumentosCentro()
 {
 	$id_centro=localStorage.getItem("id_centro");
 	
+	
+	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
+
+	
     $.ajax({
         type:'GET',
         url: URL_REST_BASE +'restapi/documentacionGetCategorias.php',
@@ -19,10 +23,12 @@ function ajaxGetDocumentosCentro()
         jsonpCallback: 'categoriasCallback',
         success: function(){
         	//alert("success");
+        	$.mobile.loading( "hide");
         	},
         
         error: function(){
         	//alert("error");
+        	$.mobile.loading( "hide");
         	}
     });
     
@@ -61,6 +67,8 @@ function ajaxGetDocumentosCategoria(descripcion){
 	$categoria_seleccionado = descripcion;
      $("#CategoryName").html(descripcion);
 
+     $.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
+
      $.ajax({
             type:'GET',
             url: URL_REST_BASE +'restapi/documentacionGetDocCategoria.php',
@@ -70,14 +78,113 @@ function ajaxGetDocumentosCategoria(descripcion){
             jsonpCallback: 'documentacionGetDocCategoriaCallback',
             success: function(){
             	//alert("success");
+            	$.mobile.loading( "hide");
+
             	},
             error: function(){
             	//alert("error Categorias");
+            	$.mobile.loading( "hide");
+
             	}
         });
      
 }
 
+
+
+function documentacionGetDocCategoriaCallback(data)
+{
+	//alert(data);
+    var obj = jQuery.parseJSON(data);
+    var numdoc = obj.documentos.length;
+    $("#ulDocumentos").empty();
+    var i=0;
+ //   var re = /(?:\.([^.]+))?$/;   
+   
+    for( i=0;i<numdoc;i++)
+    {
+    	//var ext =   re.exec(obj.documentos[i]["urlDoc"])[1];
+    	var lon=obj.documentos[i]["urlDoc"].length;
+    	var ext =   obj.documentos[i]["urlDoc"].substring(lon-3, lon);
+    
+    	var li="";
+    if (ext =="pdf" || ext =="PDF")
+    	{
+    		li ="<li><a onClick='mostrarDocumentoPDF(\""+ obj.documentos[i]["urlDoc"]+"\",\""+ obj.documentos[i]["descripcion"]+"\" )'><img src='./css/pdficon24.png' class='ui-li-icon' > " +    obj.documentos[i]["descripcion"] +"</a></li>";	
+    	}else
+    	{
+    		li ="<li><a onClick='mostrarDocumentoIMG(\""+ obj.documentos[i]["urlDoc"]+"\",\""+ obj.documentos[i]["descripcion"]+"\" )'><img src='./css/imageicon24.jpg' class='ui-li-icon' > " + obj.documentos[i]["descripcion"] +"</a></li>";
+    	}
+    	
+        
+        $("#ulDocumentos").append(li);
+    }
+    
+    if (boolGetDocCategoria==false)
+    {
+    	boolGetDocCategoria=true;
+    	
+    }
+    else
+    {
+    	$("#ulDocumentos").listview("refresh");
+    }
+    
+    
+    $.mobile.changePage("#listaDoc", {transition: "slide", reverse: true  } );
+    
+   
+}
+
+
+
+function mostrarDocumentoPDF(src,name)
+{
+
+  $url=src;  
+  localStorage.setItem("doc2", src);
+
+  navigator.notification.alert('Se descargará el documento '+name+ ' (PDF), el documento lo encotrarás en la sección de descargas y en la barra de notificaiones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)',okDescargarPDF,'MIA','Descargar');
+	
+  
+//ref= window.open(URL_REST_BASE +url, '_system', 'location=yes');
+   
+}
+
+function okDescargarPDF(){
+	
+	var url = localStorage.getItem("doc2");
+	
+	ref= window.open(url, '_system', 'location=yes');
+	
+	
+}
+
+
+function mostrarDocumentoIMG(src ,name)
+{
+	$url=src; 
+	localStorage.setItem("doc", src);
+	
+	$("#docImgSrc").attr("src",src);
+	$("#h1docImgName").html(name);
+	$.mobile.changePage("#DocImage", {transition: "slide", reverse: true  } );
+	
+}
+
+
+function abrirDocImg(){
+	var url = localStorage.getItem("doc");
+	
+	ref= window.open(url, '_system', 'location=yes');
+	
+}
+
+
+
+/******************************************************************************** */
+/* documentos con canvas deprecated */
+/*
 function documentacionGetDocCategoriaCallback(data)
 {
 	//alert(data);
@@ -141,3 +248,5 @@ $(document).on("pageshow",function(event,data){
 document.location.href = "#menu";
    
 }
+*/
+
