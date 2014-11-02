@@ -143,8 +143,21 @@ function mostrarDocumentoPDF(src,name)
 
   $url=src;  
   localStorage.setItem("doc2", src);
+  
+  var msg="";
+  
+  if( (device.platform=="iOS" || device.platform=="ios") && (parseFloat(window.device.version) >= 7.0)) 
+  {
+	  msg= 'Se mostrará en documento el navegador y la aplicación MIA pasa a segundo plano';
+	  
+  }else	
+  {	
+	  msg= 'Se descargará el documento '+name+ ' (PDF), el documento lo encotrarás en la sección de descargas y en la barra de notificaiones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)';
+	  
+  }
+  
 
-  navigator.notification.alert('Se descargará el documento '+name+ ' (PDF), el documento lo encotrarás en la sección de descargas y en la barra de notificaiones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)',okDescargarPDF,'MIA','Descargar');
+  navigator.notification.alert(msg,okDescargarPDF,'MIA','Descargar');
 	
   
 //ref= window.open(URL_REST_BASE +url, '_system', 'location=yes');
