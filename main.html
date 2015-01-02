@@ -43,16 +43,14 @@
 				  <!--  <a href="mapa.html" data-ajax="false" class="ui-btn-right ui-btn-icon-right" style="border: 0px;"  data-icon="location" >Mapa</a>
 			     -->
 			      <a href="#right-panel"   data-icon="bars" data-shadow="false" data-iconpos="notext" data-iconshadow="false"  data class=" ui-icon-bars ui-btn-right ui-btn-icon-right" style="border: 0px;" >menú</a>
-             
-			
-			</div>
+    		</div>
 
 			<div   class="content ui-content ui-corner-all " style="margin:3px;">
 
 				<div class="ui-corner-all custom-corners" style="margin: 7px">
 						<ul data-role="listview" >
 							<li> <a onClick="ajaxfichadetallada()" >
-		 							<img id="fichareducida_imagen" src="imagenes/noimage.jpeg" />
+		 			 				<img id="fichareducida_imagen" style="height:80px;" src="imagenes/noimage.jpeg" />
                             		<h3 id="fichareducida_nombre">CARGANDO...</h3>
                             		<p id="fichareducida_fechaaula"></p>
                            		</a>
@@ -226,9 +224,10 @@
 	</div>
 	
 	
-	<div data-role="panel" id="right-panel" data-display="push" data-position="right" data-theme="a">
-        <p>Menu</p>
-    	<ul data-role="listview" data-theme="a"> 
+	<div data-role="panel" id="right-panel" data-display="push" data-position="right" data-theme="a" style="background-color:#000000;">
+       
+    	<ul data-role="listview" data-theme="a">
+                <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-a ui-corner-top">Menú</li> 
 				<li><a href="acercade.html" class="ui-icon-info" data-ajax="false">Acerca de </a></li>
 				<li><a href="cerrarsesion.html" class="ui-icon-power" data-ajax="false">Salir</a></li>
 			</ul>
@@ -253,14 +252,13 @@
 			    -->
 			</div>
 
-			
 			<div   class="ui-content ui-corner-all " style="margin:3px;">
 
 	
 				<div class="ui-corner-all custom-corners" style="margin: 7px">
                             <ul data-role="listview" >
                                 <li> 
-                                    <img id="fichadetalle_imagen" src="imagenes/noimage.jpeg" />
+                                    <img style="height:80px;" id="fichadetalle_imagen" src="imagenes/noimage.jpeg" />
                                     <h3 id="fichadetalle_nombre">Alumno</h3>
                                     <p id="fichadetalle_fechaaula">Fecha  - Aula </p>
                            		</li>

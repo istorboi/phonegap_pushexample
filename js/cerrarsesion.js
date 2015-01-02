@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest3/";
+var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
 
 
@@ -74,6 +74,8 @@ function cerrarCallback(index)
 function desconectarse()
 {
 	//borramos variables 
+	  localStorage.removeItem("id_alumno");
+	  localStorage.removeItem("id_profesor");
 	  localStorage.removeItem("id_tutor");
 	  localStorage.removeItem("nombre_tutor");
 	  localStorage.removeItem("idioma");

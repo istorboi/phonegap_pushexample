@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest3/";
+var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
 
 
@@ -62,8 +62,10 @@ function onDeviceReady() {
 	
 	if (!verificarAccesoInternet())
 	{
-	//$("#recargar").html('<span id="conexionnecesaria"> Conexión a internet necesaria para usar la aplicacion.</span></br>	<a data-role="button" onclick="recargarWelcome()">Volver a intentar</a>');
-		
+	$("#recargar").html('<span id="conexionnecesaria"> Conexión a internet necesaria para usar la aplicacion.</span></br>	<a data-role="button" onclick="recargarWelcome()">Volver a intentar</a>');
+	
+	$("#recargar").trigger("create");
+	
 	}else
 	{
 		$("#recargar").html('');
@@ -210,7 +212,7 @@ function loginValidar()
             		localStorage.setItem("tel", $("#tel").val());
             		localStorage.setItem("pass", $("#pass").val());
             		queryRealizada=true;
-            		$( ".selector" ).loading( "hide" );
+            		$.mobile.loading( "hide");
             		
              },
              error: function(){
@@ -294,7 +296,7 @@ function controlAlumno()
 	        {
 	            var li="";
 	            li= li+ '<li><a onClick="controlAlumno2(' + obj.alumnos[i]["id_alumno"]+','+obj.alumnos[i]["id_centro"] +',\''+obj.alumnos[i]["logo_centro"] + '\')">';
-	            li= li+"<img src='"+obj.alumnos[i]["foto_url_alumno"]+"' /> " + obj.alumnos[i]["nombre_alumno"]+ " "+obj.alumnos[i]["apellidos_alumno"]  ;
+	            li= li+"<img style='height:80px;' src='"+obj.alumnos[i]["foto_url_alumno"]+"' /> " + obj.alumnos[i]["nombre_alumno"]+ " "+obj.alumnos[i]["apellidos_alumno"]  ;
 	            li= li+ '</a></li>';
 	                
 	          $("#listahijos").append(li);

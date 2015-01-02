@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest3/";
+var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
 
 
@@ -55,6 +55,13 @@ function onLoad() {
 function onDeviceReady() {
 	verificarAccesoInternet();
 	protectHeaderiOS();
+	
+	
+	if (localStorage.getItem("id_alumno")=== null)
+	{
+		window.location.replace("index.html");
+	}
+	
 } 
 
 /************ menu panel  ******************/
@@ -111,6 +118,7 @@ $(document).on("pagecreate", "#observaciones", function() {
 
 $(document).on("pagecreate", "#controlDiario", function() {
 	
+	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
     if ( localStorage.getItem("numero_hijos")==1)
 	{
@@ -128,7 +136,7 @@ $(document).on("pagecreate", "#controlDiario", function() {
 	$id_tutor=localStorage.getItem("id_tutor");
 	
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
-
+	
 	
 	$.ajax({
         type:'GET',
@@ -207,7 +215,8 @@ function ajaxControlHoy()
         //	alert("success");
         },
         error:function(){
-           alert("No hay datos para el alumno");
+           //alert("No hay datos para el alumno");
+           navigator.notification.alert('No hay datos para el alumno',okAlert,'MIA','Cerrar');
         } 
 	});
 	

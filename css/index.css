@@ -295,15 +295,20 @@ a#nav_desconectarse2{
 	left: 50%;
 	top: 50%;
 /*	margin: -240px auto 0 -240px;*/ /* value of top margin: height of the image divide by 2 (ie: 240 / 2), value of left margin: width of the image divide by 2 (ie: 260 / 2) */
-	margin: -120px auto 0 -120px;/* value of top margin: height of the image divide by 2 (ie: 240 / 2), value of left margin: width of the image divide by 2 (ie: 260 / 2) */
-	width: 240px; /* same as the image width */
-	height: 240px; /* same as the image width */
+/*	margin: -120px auto 0 -120px;*/
+	width: 240px; 
+	height: 240px; 
+	
+	margin: -53px auto 0 -83px;/* value of top margin: height of the image divide by 2 (ie: 240 / 2), value of left margin: width of the image divide by 2 (ie: 260 / 2) */
+	width: 166px; /* same as the image width */
+	height: 107px; /* same as the image width */
+	
 	
 }
 
 #img_bienvenido10{
-	width: 240px; 
-	height: 240px;
+	width: 166px; 
+	height: 107px;
 }
 
 /*

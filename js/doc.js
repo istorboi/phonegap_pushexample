@@ -148,11 +148,11 @@ function mostrarDocumentoPDF(src,name)
   
   if( (device.platform=="iOS" || device.platform=="ios") && (parseFloat(window.device.version) >= 7.0)) 
   {
-	  msg= 'Se mostrará en documento el navegador y la aplicación MIA pasa a segundo plano';
+	  msg= 'Se mostrará el documento '+name+' en el navegador y la aplicación MIA pasará a un segundo plano';
 	  
   }else	
   {	
-	  msg= 'Se descargará el documento '+name+ ' (PDF), el documento lo encotrarás en la sección de descargas y en la barra de notificaiones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)';
+	  msg= 'Se descargará el documento '+name+ ' (PDF), el documento lo encotrarás en la sección de descargas o en la barra de notificaiones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)';
 	  
   }
   
