@@ -6,9 +6,9 @@
        <meta name="viewport" id="viewport“ content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="libs/mia2.css" />
-        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.2.css" />
-        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/mia1_4_5.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons-1.4.5.min.css" />
 
 
 
@@ -46,7 +46,7 @@
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
 						<li><a href="#profesorMenu" class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_home" data-icon="custom"></a></li>
-                        <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!-- <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>-->
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
                         <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
 		   			</ul>
@@ -57,7 +57,8 @@
        
     	<ul data-role="listview" data-theme="a">
                 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-a ui-corner-top">Menú</li> 
-				<li><a href="acercade.html" class="ui-icon-info" data-ajax="false">Acerca de </a></li>
+				<li><a href="acercade.html" class="ui-icon-gear" data-ajax="false">Acerca de </a></li>
+				<li><a onClick="ayuda()" class="ui-icon-info" data-ajax="false">Ayuda </a></li>
 				<li><a href="cerrarsesion.html" class="ui-icon-power" data-ajax="false">Salir</a></li>
 			</ul>
 	</div> <!--  fin role panel -->
@@ -77,9 +78,9 @@
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
 						<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
-                        <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!-- <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>-->
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
-                        <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
+                        <li><a href="#profFotoModo"   class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
 		 			</ul>
 				</div>
             </div>
@@ -94,7 +95,7 @@
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
 						<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
-                        <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!-- <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>-->
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
                         <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
 		             </ul>
@@ -112,7 +113,7 @@
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
 						<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
-                        <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!-- <li><a href="#profObsClases"  class="ui-nodisc-icon  ui-btn-active ui-state-persist"  id="nav_perfil" data-icon="custom"></a></li>-->
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
                         <li><a href="#profFotoModo" class="ui-nodisc-icon"  id="nav_fotos" data-icon="custom"></a></li>
 		            </ul>
@@ -125,7 +126,9 @@
         <div data-role="page" id="profFotoModo">
             <div data-role="header" role="banner" data-position="fixed" style=" background-color:#ffffff;" class="ui-header ui-bar-inherit">
                 <h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
-		<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
+				</h1>
+				<a href="#profesorMenu" class="ui-b" data-rel="button" data-icon="back"  data-direction="reverse" data-icon="back">Volver</a>
             </div>
             
             <div data-role="content"> 
@@ -162,7 +165,7 @@
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
 						<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
-                        <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+                        <!-- <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>-->
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
                         <li><a href="#profFotoModo" class="ui-nodisc-icon   ui-btn-active ui-state-persist"  id="nav_fotos" data-icon="custom"></a></li>
 		   			</ul>
@@ -176,7 +179,7 @@
                 <h1 class="headerh1" style="margin: 0px; padding-bottom:0px;">
 				<img class="logo_centro" border="0" style="height:50px;" src="img/LogoMIA_1xs.png" />
 				</h1>
-				<a href="#profFotoModo" class="ui-b" data-rel="button" data-icon="home"  data-direction="reverse" data-icon="back">Inicio</a>
+				<a href="#profFotoModo" class="ui-b" data-rel="button" data-icon="back"  data-direction="reverse" data-icon="back">Volver</a>
             </div>
             
              <div data-role="content"> 
@@ -222,7 +225,7 @@
                 <div data-role="navbar" class="myNavBar ui-bar-h">
                     <ul id="controlmenu">
 						<li><a href="#profesorMenu" class="ui-nodisc-icon "  id="nav_home" data-icon="custom"></a></li>
-                    	<li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>
+                    	<!--  <li><a href="#profObsClases"  class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom"></a></li>-->
                         <!--<li><a href="#profObsClases" class="ui-nodisc-icon"  id="nav_comentarios" data-icon="custom"></a></li>-->
                         <li><a href="#profFotoModo" class="ui-nodisc-icon   ui-btn-active ui-state-persist"  id="nav_fotos" data-icon="custom"></a></li>
 		             </ul>
@@ -239,7 +242,7 @@
 
      
        
-<div role="page" id="dialogoCrearCarpeta">
+<div data-role="page" id="dialogoCrearCarpeta">
 	
 		<div data-role="header" >
 			<h1>Nueva Carpeta</h1>
@@ -264,9 +267,12 @@
 
 
 
+	<script type="text/javascript" src="libs/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="cordova.js"></script>
-	<script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
-	<script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+	<script type="text/javascript" src="libs/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="PushNotification.js"></script>
+	<script type="text/javascript" src="js/notificaciones.js"></script>
+
 	<script type="text/javascript" src="js/profesorMain.js"></script>
 		
 </body>

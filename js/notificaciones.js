@@ -32,10 +32,12 @@ function onDeviceReady() {
 */
 
 function RegistrarDispositivo() {
+	alert("RegistrarDispositivo");
 	
-
 	if(device.platform=="Android" || device.platform=="android")
 	{
+		
+		
 		//alert("plataforma Android");
 		var pushNotification = window.plugins.pushNotification;
 		pushNotification.register(successHandlerAndroid, errorHandler,{"senderID":"392135470400","ecb":"onNotificationGCM"});
@@ -51,6 +53,34 @@ function RegistrarDispositivo() {
 	}
 }
 
+var datosobj=null
+
+function RegistrarDispositivoConCallback(obj) {
+	
+	//alert("RegistrarDispositivoConCallback");
+	datosobj=obj;
+	
+	if(device.platform=="Android" || device.platform=="android")
+	{
+		
+		
+		//alert("plataforma Android");
+		var pushNotification = window.plugins.pushNotification;
+		pushNotification.register(successHandlerAndroid, errorHandler,{"senderID":"392135470400","ecb":"onNotificationGCM"});
+		
+		
+		
+	}
+	if(device.platform=="iOS" || device.platform=="ios")
+	{
+		//alert("plataforma ios");
+		var pushNotification = window.plugins.pushNotification;
+		pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
+	}
+}
+
+
+
 function successHandlerAndroid(result) {
 //	navigator.notification.alert('Dispositivo Registrado',okAlert,'MIA','Cerrar');
 
@@ -62,18 +92,16 @@ function errorHandler(error) {
 
 //servicio Registro Google
 function onNotificationGCM(e) {
-	//alert("onNotificationGCM2 "+ e);
+	
     switch( e.event )
     {
         case 'registered':
+        	
             if ( e.regid.length > 0 )
             {
-                //console.log("Regid " + e.regid);
-               // alert('registration id = '+e.regid);
-                
-                
              	if (localStorage.getItem("id_tutor")) 
-            	{	//registro alumno
+            	{	
+             		//registro alumno
              		$id_tutor=localStorage.getItem("id_tutor");
 	                $plataforma="Android";
 	                $registro_plataforma=e.regid;
@@ -89,12 +117,16 @@ function onNotificationGCM(e) {
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
 	                    			localStorage.setItem("notificaciones",true);
+	                    			loginCallbackDespuesRegistrar(datosobj);
 	                    },
 	                    error: function(){
-	                   	 	//	alert("Error: Borrar dispositivo ya registrado");
+	                   	 		//alert("Error: Borrar dispositivo ya registrado");
+	                    	loginCallbackDespuesRegistrar(datosobj);
 	                   }
 	                });
             	}else{ //registro profesor
+            		
+            		
              		$id_profesor=localStorage.getItem("id_profesor");
 	                $plataforma="Android";
 	                $registro_plataforma=e.regid;
@@ -110,9 +142,11 @@ function onNotificationGCM(e) {
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
 	                    			localStorage.setItem("notificaciones",true);
+	                    			loginCallbackDespuesRegistrar(datosobj);
 	                    },
 	                    error: function(){
 	                   	 		//alert("Borrar dispositivo ya registrado");
+	                    		loginCallbackDespuesRegistrar(datosobj);
 	                   }
 	                });
             		
@@ -125,7 +159,19 @@ function onNotificationGCM(e) {
 
         case 'message':
           // this is the actual push notification. its format depends on the data model from the push server
-          //alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+         // alert('message = '+e.message+' msgcnt = '+e.msgcnt);
+         /*
+        	 if (e.foreground) {
+                 alert('FOREGROUND MSG:' + JSON.stringify(e));
+             } else if (e.coldstart) {
+                 alert('COLDSTART MSG:' + JSON.stringify(e));
+             } else {
+                 alert('BACKGROUND:' + JSON.stringify(e));
+                // navigator.notification.alert('BACKGROUND:' + e.message ,okAlertNotificacion,'MIA-Aviso','Cerrar');
+             }
+             break;
+        	*/
+        	
           navigator.notification.alert(e.message ,okAlertNotificacion,'MIA-Aviso','Cerrar');
           break;
         case 'error':
@@ -182,9 +228,11 @@ function tokenHandler (result) {
  			success: function(){
          			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
          			localStorage.setItem("notificaciones",true);
+         			loginCallbackDespuesRegistrar(datosobj);
         	},
  			error: function(){
         	 		//alert("Borrar dispositivo ya registrado");
+ 					loginCallbackDespuesRegistrar(datosobj);
  			}
         });
 	}else{

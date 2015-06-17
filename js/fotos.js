@@ -35,16 +35,17 @@ function temasCallback(data){
 	var i=0;
 	for( i=0;i<numtemas;i++)
 	{
-		var li ="<li><a onClick='ajaxGetFotosTema(\""+ obj.temas[i]["tema"]+"\")'>" + obj.temas[i]["tema"] +"</a></li>";
+		//var li ="<li><a onClick='ajaxGetFotosTema(\""+ obj.temas[i]["tema"]+"\")'>" + obj.temas[i]["tema"] +"</a></li>";
+		var li ="<li><a onClick='ajaxGetFotosTema(\""+ obj.temas[i]["tema"]+"\""+",\""+obj.temas[i]["descripcion"]  +"\")'>" + obj.temas[i]["descripcion"] +"</a></li>";
 		$("#ultemas").append(li);
 	}    
 	$("#ultemas").listview("refresh");
 }
 
-function ajaxGetFotosTema(tema){
+function ajaxGetFotosTema(tema,descripcion){
  //alert(tema); 
  $tema_seleccionado = tema;
- $("#GalleryName").html(tema);
+ $("#GalleryName").html(descripcion);
 
  	$id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");

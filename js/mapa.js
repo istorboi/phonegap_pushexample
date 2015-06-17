@@ -166,9 +166,11 @@ $(document).on("pagecreate",  function() {
 	
 });
 
+
 function irListaHijos()
 {
-	window.location.replace("index.html#seleccionarAlumno");
+	//window.location.replace("index.html");
+	window.location.replace("index.html#seleccionarAlumnoTmp");
 }
 
 function desconectarse(){

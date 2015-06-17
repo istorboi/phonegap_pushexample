@@ -78,14 +78,14 @@ function ajaxProfesorGetAulasAlumnos()
 }
 function callBackListaAulasAlumnos(data)
 {
-	
+	//alert("borrar:" + data);
       var obj = jQuery.parseJSON(data);
       var numAulas = obj.aulas.length;
    
      $("#profFotoSubirListaAlumnos").empty();
      
      listadoAlumnos = new Array(); //inicializamos el array
-     
+      
      var i=0;
      for( i=0;i<numAulas;i++)
      {
@@ -110,8 +110,9 @@ function callBackListaAulasAlumnos(data)
          for (var j=0; j<numAlumnos;j++)
          {
              var alumno = aula.alumnos[j];
-             contenido+='<label for="alumno_'+alumno["id_Alumno"]+'">'+ alumno["nombre_alumno"] + ' ' + alumno["apellidos_alumno"]    +'</label><input type="checkbox" data-clase="clase_'+ aula["id_aula"]   +'" id="alumno_'+alumno["id_Alumno"]+'" name="alumno_'+alumno["id_Alumno"]+'">';
-             listadoAlumnos.push('alumno_'+alumno["id_Alumno"]);        
+             contenido+='<label for="alumno_'+alumno["id_alumno"]+'">'+ alumno["nombre_alumno"] + ' ' + alumno["apellidos_alumno"]    +'</label><input type="checkbox" data-clase="clase_'+ aula["id_aula"]   +'" id="alumno_'+alumno["id_alumno"]+'" name="alumno_'+alumno["id_alumno"]+'">';
+             listadoAlumnos.push('alumno_'+alumno["id_alumno"]); 
+           //  alert(alumno["id_alumno"]+" "+ alumno["nombre_alumno"] + ' ' + alumno["apellidos_alumno"]);
          }
          contenido+='</fieldset>';
          contenido+='</div>';
@@ -400,11 +401,12 @@ function onCameraFail(message) {
 		 
 		   if($("#"+listadoAlumnos[i]).is(':checked'))
 		   { 
-			   if (alumnos=!"") alumnos+=",";
+			   if (alumnos!="") alumnos+=",";
 			   alumnos+=listadoAlumnos[i];
 			   algunAlumno =true;	   
 		   }
-	}	 
+	}
+	 
 	 if (algunAlumno==false)
      {
 		 navigator.notification.alert('Debes Seleccionar algún alumno',okAlert,'MIA','Cerrar');
@@ -425,7 +427,10 @@ function onCameraFail(message) {
 	 var options = new FileUploadOptions();
      options.fileKey="file";
      options.fileName=lastImageURI.substr(lastImageURI.lastIndexOf('/')+1) +".jpg";
-     options.mimeType="image/jpeg";
+    options.mimeType="image/jpeg";
+    
+     
+     //
      
 
      var params = new Object();
@@ -433,13 +438,20 @@ function onCameraFail(message) {
      params.alumnos = alumnos;
      params.profesor=localStorage.getItem("id_profesor");
      params.centro= localStorage.getItem("id_centro");
-  //   params.value2 = "45";
+     //params.value2 = "45";
 
      options.params = params;
      options.chunkedMode = false;
-
+   
+     
      var ft = new FileTransfer();
-     ft.upload(lastImageURI, "http://www.istorboi.com/mia/miarest2/restapi/fotoUpload.php", win, fail, options);
+     
+     
+     //ft.upload(lastImageURI, "http://www.istorboi.com/mia/miarest2/restapi/fotoUpload.php", win, fail, options);
+    //ft.upload(lastImageURI, "http://www.istorboi.com/mia/miarest2/restapi/fotoUploadistorboi.php", win, fail, options);
+     
+     ft.upload(lastImageURI, URL_REST_BASE +'restapi/fotoUploadistorboi.php', win, fail, options);
+     
  	 
      //alert("fin upload"); //borrar
      
@@ -495,10 +507,16 @@ function onCameraFail(message) {
      window.location.replace("profesorMain.html");
      
  }
-
+ 
  function fail(error) {
      //alert("An error has occurred: Code = " + error.code);
 	 
 		$.mobile.loading( "hide");
      navigator.notification.alert('Se ha producido un error alsubir la imagen',okAlert,'MIA','Cerrar');
  }
+ 
+ function ayuda()
+ {
+	 var ref = window.open("http://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
+ }
+ 

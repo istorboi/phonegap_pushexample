@@ -82,7 +82,7 @@ function desconectarse()
 	  localStorage.removeItem("numero_hijos");
 	  localStorage.removeItem("tel");
 	  localStorage.removeItem("pass");
-	  localStorage.removeItem("notificaciones");
+	 // localStorage.removeItem("notificaciones"); no se borran solo se registra el telefono una vez
 	   
 	  window.location.replace("index.html");
 }

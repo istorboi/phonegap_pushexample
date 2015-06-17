@@ -9,11 +9,14 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
         
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="libs/mia2.css" />
-        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.2.css" />
-        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/mia1_4_5.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="libs/jquery.mobile.icons-1.4.5.min.css" />
         
-        <link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
+    <!-- isma optimizacion  
+    
+       <link href="css/photoswipe.css" type="text/css" rel="stylesheet" />
+	 -->
 		<style type="text/css">
 			div.gallery-row:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
 			div.gallery-item { float: left; width: 33.333333%; }
@@ -23,7 +26,7 @@
 		</style>
 
 
-      <link rel="stylesheet" href="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.css" />
+      <link rel="stylesheet" href="libs/jquery.mobile.datepicker.css" />
     
    
                   
@@ -228,7 +231,8 @@
        
     	<ul data-role="listview" data-theme="a">
                 <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-a ui-corner-top">Menú</li> 
-				<li><a href="acercade.html" class="ui-icon-info" data-ajax="false">Acerca de </a></li>
+				<li><a href="acercade.html" class="ui-icon-gear" data-ajax="false">Acerca de </a></li>
+				<li><a onClick="ayuda()" class="ui-icon-info" data-ajax="false">Ayuda </a></li>
 				<li><a href="cerrarsesion.html" class="ui-icon-power" data-ajax="false">Salir</a></li>
 			</ul>
 	</div> <!--  fin role panel -->
@@ -325,15 +329,10 @@
  
  
  
- 
- 
-  <!-- page -->
-        
     
     <!--     ------------------  pagina perfil fin  ------------------------------ -->
     
-
-    
+   
     <!--------------------------   Página menu inicio    --------------------------------------- -->
 <!-- 
 	<div class="app" id="menu" data-role="page" >
@@ -684,13 +683,14 @@
     
 
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="libs/jquery-2.1.0.js"></script>
+        <script type="text/javascript" src="libs/jquery-2.1.3.min.js"></script>
+<!-- optimizacion
     	<script type="text/javascript" src="libs/simple-inheritance.min.js"></script>
 		<script type="text/javascript" src="libs/jquery.animate-enhanced.min.js"></script>
 		<script type="text/javascript" src="libs/code-photoswipe-jQuery-1.0.11.min.js"></script>
         <script type="text/javascript" src="libs/img-touch-canvas.js"></script>
         <script type="text/javascript" src="libs/zoom.js"></script>
-
+-->
  	
         <script type="text/javascript" src="js/main.js"></script>
     	<script type="text/javascript" src="js/observacionesPadres.js"></script>
@@ -700,13 +700,14 @@
  		<script type="text/javascript" src="js/fotos.js"></script>
  
  
-     <script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+     <script type="text/javascript" src="libs/jquery.mobile-1.4.5.min.js"></script>
  
- 		<script src="https://rawgithub.com/jquery/jquery-ui/1.10.4/ui/jquery.ui.datepicker.js"></script>
-        <script id="mobile-datepicker" src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.js"></script>
+ 		<script src="libs/jquery.ui.datepicker.js"></script>
+        <script id="mobile-datepicker" src="libs/jquery.mobile.datepicker.js"></script>
         <script type="text/javascript" src="js/calendario.js"></script>
-        <script type="text/javascript" src="js/notificaciones.js"></script>
-     
+      	<script type="text/javascript" src="PushNotification.js"></script>
+		<script type="text/javascript" src="js/notificaciones.js"></script>
+
  
     </body>
 </html>

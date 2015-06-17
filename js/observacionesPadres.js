@@ -86,6 +86,14 @@ function enviarFormularioObservaciones()
                         success: function(){
                         	$.mobile.loading( "hide" );
                             inicializarFormularioObservaciones();
+                            
+                            navigator.notification.alert(
+                        		    'Observación Enviada!',     // mensaje (message)
+                        		    okObservacion,         // función 'callback' (alertCallback)
+                        		    'MIA',            // titulo (title)
+                        		    'Cerrar'                // nombre del botón (buttonName)
+                        		    );
+                            
                         },
                         error: function(){
                         	$.mobile.loading( "hide" );
@@ -103,19 +111,20 @@ function formObservacionesCallback(data)
     //alert("Del "+ data);
 	//inicializarFormularioObservaciones();
 	//alert("Observación Enviada");
-	navigator.notification.alert(
+	/*navigator.notification.alert(
 		    'Observación Enviada!',     // mensaje (message)
 		    okObservacion,         // función 'callback' (alertCallback)
 		    'MIA',            // titulo (title)
 		    'Cerrar'                // nombre del botón (buttonName)
 		    );
-	
+	*/
 	//history.back();
     
 }
 
 function okObservacion()
 {	
+	//alert("okObesevación");
 	//history.back();
 	 window.location.replace("main.html");
 

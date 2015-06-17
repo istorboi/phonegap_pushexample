@@ -183,47 +183,6 @@ color:#ff0000;
  .td4 { width:25%;}
 
 
-/*
-.nav-glyphish-example .ui-btn .ui-btn-inner { 
-	padding-top: 40px !important; 
-}
-.nav-glyphish-example .ui-btn .ui-icon { 
-	width: 30px!important; 
-	height: 30px!important; 
-	margin-left: -15px !important; 
-	box-shadow: none!important; 
-	-moz-box-shadow: none!important; 
-	-webkit-box-shadow: none!important; 
-	-webkit-border-radius: 0 !important; 
-	border-radius: 0 !important; 
-}
-
-#chat .ui-icon { background:  url(./chat.png) 50% 50% no-repeat; background-size: 24px 22px; }
-#email .ui-icon { background:  url('./chat.png') 50% 50% no-repeat; background-size: 24px 22px;  }
-#login .ui-icon { background:  url('chat.png') 50% 50% no-repeat;  background-size:24px 22px; }
-#beer .ui-icon { background:  url(css/chat.png)50% 50% no-repeat;  background-size: 24px 22px; }
-#coffee .ui-icon { background:  url('./css/42-photos.png') 50% 50% no-repeat;  background-size: 22px 24px; }
-#skull .ui-icon { background:  url(glyphish-icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
-		
-	*/	
-
-
-/* this makes the nav bar a bit higher than default */
-/*.myNavBar .ui-btn .ui-btn-inner { padding-top: 40px !important; }*/
-
-/* and this makes the space for the icons a bit bigger */
-/*.myNavBar .ui-btn .ui-icon { 
-width: 40px!important; 
-height: 40px!important; 
-margin-left: -20px !important; 
-box-shadow: none!important; 
--moz-box-shadow: none!important; 
--webkit-box-shadow: none!important; 
--webkit-border-radius: 0 !important;
- border-radius: 0 !important; 
-margin-top:-5px;
-}*/
-
 
 .myNavBar .ui-btn .ui-btn-inner { padding-top: 40px !important; }
 .myNavBar .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
@@ -246,8 +205,6 @@ a#nav_doc {
 	color:white !important;
 }
 
-
-
 a#nav_fotos{
 	background: url(fotos_white.png) 50% 10% no-repeat;
 	background-size:35px 28px;
@@ -259,7 +216,6 @@ a#nav_home{
 	background-size:28px 28px;
 	color:white !important;
 }
-
 
 a#nav_comentarios {
 	background: url(observaciones_white.png) 50% 10% no-repeat;
@@ -288,7 +244,6 @@ a#nav_desconectarse2{
 
 
 
-/* *****************************************************    ********************************************** */
 #enter {
 	position: absolute;
 	text-align: center;
@@ -311,16 +266,3 @@ a#nav_desconectarse2{
 	height: 107px;
 }
 
-/*
-#enter span a {
-	display: block;
-	width: 240px !important;
-	height: 240px !important;
-	margin: auto;
-	position: relative;
-	background: url(../img/bienvenido480.png) 0 0 no-repeat;
-	text-indent: -5000em;
-	outline: 0;
-	border: 1px solir red;
-}
-*/

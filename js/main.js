@@ -281,6 +281,8 @@ function controldiarioCallback(data){
    
     $("#table-comidas").empty();
     var i=0;
+    
+    var tablecomidas="";
     for( i=0;i<numcamposcomida;i++)
     {
         var tr="";
@@ -290,14 +292,18 @@ function controldiarioCallback(data){
         if(i==0)  tr=tr +'<td class="td4" rowspan="'+numcamposcomida+'" style="text-align: right; padding-right:5px;"><img src="./img/comidas_64.jpg"></td>';
     tr= tr +'</tr>';
             
-        $("#table-comidas").append(tr);
+    tablecomidas += tr;
+        //$("#table-comidas").append(tr);
     }    
+    $("#table-comidas").append(tablecomidas);
+    tablecomidas=null;
     
       //2rellenamos la seccion  regularidad
      $("#regularidad_etiqueta").html(obj.regularidad_etiqueta);
     //numero de campos
     var numcamposregularidad = obj.regularidad_array.length;
     $("#table-regularidad").empty();
+    var tablereg="";
     var r=0;
     
     for( r=0;r<numcamposregularidad;r++)
@@ -308,10 +314,11 @@ function controldiarioCallback(data){
                '<td class="td3">'+obj.regularidad_array[r]["valor"]+'</td>';
         if(r==0)  tr=tr +'<td class="td4" rowspan="'+numcamposregularidad+'" style="text-align: right; padding-right:5px;"><img src="./img/wc_64_2.jpg"></td>';
     tr= tr +'</tr>';
-            
-        $("#table-regularidad").append(tr);
+    tablereg+=tr;    
+        
     }  
-    
+    $("#table-regularidad").append(tablereg);
+    tablereg=null;
     
     //3 rellenamos la seccion Sueño
     
@@ -319,7 +326,7 @@ function controldiarioCallback(data){
     //numero de campos
     var numcampossueno = obj.sueno_array.length;
     $("#table-sueno").empty();
-    
+    var tablesueno="";
     
     for(var s=0;s<numcampossueno;s++)
     {
@@ -328,26 +335,30 @@ function controldiarioCallback(data){
                '<td class="td2">'+getImgIcon(obj.sueno_array[s]["icono"])+' </td>'+
                '<td class="td3">'+obj.sueno_array[s]["valor"]+'</td>';
         if(s==0)  tr=tr +'<td class="td4" rowspan="'+numcampossueno+'" style="text-align: right; padding-right:5px;"><img src="./img/sueno_64.jpg"></td>';
-    tr= tr +'</tr>';
-            
-        $("#table-sueno").append(tr);
+        tr= tr +'</tr>';
+        tablesueno+=tr;    
+        
     }  
+    $("#table-sueno").append(tablesueno);
+    tablesueno=null;
     
     //4 rellenamos la seccion traer
     $("#traer_etiqueta").html(obj.traer_etiqueta);
     var numcampostraer = obj.traer_array.length;
     $("#table-traer").empty();
+    var tabletraer="";
     for(var s=0;s<numcampostraer;s++)
     {
         var tr='<tr><td class="td1"><span class="texto-verde" >'+ obj.traer_array[s]["campo"]+'</span></td>'+
                '<td class="td2">'+getImgIcon(obj.traer_array[s]["icono"])+' </td>'+
                '<td class="td3">'+obj.traer_array[s]["valor"]+'</td>';
         if(s==0)  tr=tr +'<td class="td4" rowspan="'+numcampostraer+'" style="text-align: right; padding-right:5px;"><img src="./img/traer_64.jpg"></td>';
-    tr= tr +'</tr>';
-            
-        $("#table-traer").append(tr);
+        tr= tr +'</tr>';
+        tabletraer+= tr;    
+       
     }  
-    
+    $("#table-traer").append(tabletraer);
+    tabletraer=null;
     
     //observaciones
     $("#observaciones_etiqueta").html(obj.observaciones_etiqueta);
@@ -356,39 +367,44 @@ function controldiarioCallback(data){
     
     var numcamposobservaciones = obj.observaciones.length;
     $("#table-observaciones").empty();
+    var tableobs="";
     for(var s=0;s<numcamposobservaciones;s++)
     {
         var tr='<tr><td><span class="texto-marron fonts_Handlee_Regular" ><b>'+ obj.observaciones[s]["usuario"]+':</b> '+obj.observaciones[s]["texto"]+ '</span></td></tr>';
-        $("#table-observaciones").append(tr);
+        tableobs +=tr;
+        
+        //$("#table-observaciones").append(tr);
     }  
-     
-    
+    $("#table-observaciones").append(tableobs);
+    tableobs=null;
   //tablonaula
     $("#tablonaula_etiqueta").html(obj.tablonaula_etiqueta);
   //  $("#tablonaula").html(obj.tablonaula);
     var numtablonaula = obj.tablonaula.length;
     $("#table-aula").empty();
+    var tableaula="";
     for(var s=0;s<numtablonaula;s++)
     {
         var tr='<tr><td><span class="texto-gris" >'+ obj.tablonaula[s]["texto"]+ '</span></td></tr>';
-            
-        $("#table-aula").append(tr);
+        tableaula+=tr;    
     }  
-    
+    $("#table-aula").append(tableaula);
+    tableaula=null;
     
     //tabloncentro
     $("#tabloncentro_etiqueta").html(obj.tabloncentro_etiqueta);
   //  $("#tabloncentro").html(obj.tabloncentro);
     var numtabloncentro = obj.tabloncentro.length;
     $("#table-centro").empty();
+    var tablecentro="";
     for(var s=0;s<numtabloncentro;s++)
     {
         var tr='<tr><td><span class="texto-rojo" >'+ obj.tabloncentro[s]["texto"]+ '</span></td></tr>';
-            
-        $("#table-centro").append(tr);
+        tablecentro+=tr;    
+        
     }
- 
-    
+    $("#table-centro").append(tablecentro);
+    tablecentro=null;
 }
 
 function fichareducidaCallback(data){
@@ -491,6 +507,13 @@ function fichaDetalladaCallback(data){
           $("#observaciones_alumno").html(obj.fichadetalle_observaciones);
     }
    
+
+
+function ayuda()
+{
+	var ref = window.open("http://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
+
+}
 
 
 /******************* funciones footer  *****************************/

@@ -152,7 +152,7 @@ function mostrarDocumentoPDF(src,name)
 	  
   }else	
   {	
-	  msg= 'Se descargará el documento '+name+ ' (PDF), el documento lo encotrarás en la sección de descargas o en la barra de notificaiones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)';
+	  msg= 'Se descargará el documento '+name+ ' (PDF), el documento lo encontrarás en la sección de descargas o en la barra de notificaciones. Necesitas un lector de pdf para verlo (puedes instalarte el Adobe reader o similar)';
 	  
   }
   
