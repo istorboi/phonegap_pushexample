@@ -248,22 +248,22 @@ function controlAlumno()
     window.location.replace("main.html");
 }
 
- /* original con problemas para registrar algun dispositivo
-  * function loginCallback(data){
+ function loginCallback(data){
       var obj = jQuery.parseJSON(data);
  
      
       if(("rol" in obj ) && obj.rol=="profesor" ){
-       
-    	  //version nueva y tipo profesor
+       //version nueva y tipo profesor
     	  localStorage.setItem("id_profesor", obj.id_profesor);
     	  localStorage.setItem("nombre_profesor", obj.nombre_profesor);
     	  localStorage.setItem("idioma", obj.idioma);
     	  localStorage.setItem("logo_centro", obj.logo_centro);
           localStorage.setItem("id_centro", obj.id_centro);
         
+    
           if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
-          window.location.replace("profesorMain.html");
+          
+    	  window.location.replace("profesorMain.html");
     	  
     	  return;
     	      
@@ -273,9 +273,9 @@ function controlAlumno()
 	     localStorage.setItem("nombre_tutor", obj.nombre_tutor);
 	     localStorage.setItem("idioma", obj.idioma);
 	     localStorage.setItem("numero_hijos", obj.alumnos.length);
-	    
-	     if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
 	   
+	     if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
+	     
 	     var numalumnos = obj.alumnos.length;
 	     var primeraVisita = obj.primeraVisita;
 	    
@@ -323,112 +323,6 @@ function controlAlumno()
       }
      
   }    
-*/
-
-function loginCallback(data){
-    var obj = jQuery.parseJSON(data);
-
-   
-    if(("rol" in obj ) && obj.rol=="profesor" ){
-      //version nueva y tipo profesor
-  	  localStorage.setItem("id_profesor", obj.id_profesor);
-  	  localStorage.setItem("nombre_profesor", obj.nombre_profesor);
-  	  localStorage.setItem("idioma", obj.idioma);
-  	  localStorage.setItem("logo_centro", obj.logo_centro);
-        localStorage.setItem("id_centro", obj.id_centro);
-      
-       //descomentar if (localStorage.getItem("notificaciones")==null)
-        	{
-        		RegistrarDispositivoConCallback(obj); //registro notificaciones;
-        	    return;
-        	}
-        loginCallbackDespuesRegistrar(obj);//llamamos directamente si no hay que registrar
-        
-  	      
-    }else{
-        localStorage.setItem("id_tutor", obj.id_tutor);
-	     localStorage.setItem("nombre_tutor", obj.nombre_tutor);
-	     localStorage.setItem("idioma", obj.idioma);
-	     localStorage.setItem("numero_hijos", obj.alumnos.length);
-	    
-	    // if (localStorage.getItem("notificaciones")==null)
-	    	{
-	    	 	RegistrarDispositivoConCallback(obj); //registro notificaciones;
-     	    	return;
-	    	}
-	    loginCallbackDespuesRegistrar(obj);  //llamamos directamente si no hay que registrar
-	
-	     
-    }
-   
-}    
-
-
-
-
- function loginCallbackDespuesRegistrar(obj){
-//lo tenemos que partir en dos,ya que al haber mensajes, nos debemos de esperar a la respuesta    
-
-    
-     if(("rol" in obj ) && obj.rol=="profesor" ){
-         window.location.replace("profesorMain.html");
-   	  	return;
-   	      
-     }else{
-         var numalumnos = obj.alumnos.length;
-	     var primeraVisita = obj.primeraVisita;
-	    
-	     //inicializar variables en funcion de los niños
-	     if (numalumnos==0)
-	     {
-	         
-	     }
-	     if(numalumnos==1)
-	     {
-	        localStorage.setItem("id_alumno", obj.alumnos[0]["id_alumno"]);
-	        localStorage.setItem("logo_centro", obj.alumnos[0]["logo_centro"]);
-	        localStorage.setItem("id_centro", obj.alumnos[0]["id_centro"]);
-	      //  controlAlumno();
-	     }
-	     if(numalumnos>1)
-	     {
-	        $("#listahijos").empty();
-	        
-	        for( var i=0;i<numalumnos;i++)
-	        {
-	            var li="";
-	            li= li+ '<li><a onClick="controlAlumno2(' + obj.alumnos[i]["id_alumno"]+','+obj.alumnos[i]["id_centro"] +',\''+obj.alumnos[i]["logo_centro"] + '\')">';
-	            li= li+"<img style='height:80px;' src='"+obj.alumnos[i]["foto_url_alumno"]+"' /> " + obj.alumnos[i]["nombre_alumno"]+ " "+obj.alumnos[i]["apellidos_alumno"]  ;
-	            li= li+ '</a></li>';
-	                
-	          $("#listahijos").append(li);
-	         
-	        }
-	        //$.mobile.changePage("#seleccionarAlumno", {transition: "slide", reverse: false  } );
-	     }   
-	    
-	     //pagina destino en funcion de si es la primera vez de los niños que tengan
-	     if  (primeraVisita==0)
-	     { //es la primera visita, se cambia el pass
-	         
-	         $.mobile.changePage("#pagePrimerAcceso", {transition: "slide", reverse: false  } );
-	         
-	     }
-	     else{
-	        if(numalumnos==1) { controlAlumno(); }
-	        if(numalumnos>1){ $.mobile.changePage("#seleccionarAlumno", {transition: "none", reverse: false  } );}   
-	     }
-	     
-     }
-    
- }    
-
-
- 
- 
- 
- 
- 
  
  
  function recordarPass()
@@ -444,7 +338,7 @@ function loginCallback(data){
                    jsonpCallback: 'tutorRecordarPassCallback',
                    success: function(){
                        //alert("Se ha enviado un email con su nueva contraseña, que deberá cambiar en su primer acceso a la aplicación");
-                      // navigator.notification.alert("Se ha enviado un email con su nueva contraseña, que deberá cambiar en su primer acceso a la aplicación",okAlert,'MIA','Cerrar');
+                       navigator.notification.alert("Se ha enviado un email con su nueva contraseña, que deberá cambiar en su primer acceso a la aplicación",okAlert,'MIA','Cerrar');
                    },
                    error: function(){
                    //    alert ("Error estableciendo nuevo Password");
