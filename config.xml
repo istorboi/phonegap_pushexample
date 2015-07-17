@@ -3,7 +3,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "es.esolver.mia"
         versionCode = "9" 
-        version     = "9.0.2" >
+        version     = "9.1.0" >
 
     <!-- versionCode is optional and Android only -->
 
