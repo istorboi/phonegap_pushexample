@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="http://miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
 
 
@@ -84,19 +84,21 @@ function recargarWelcome()
 
 
 $(document).on("pageshow", "#welcomePage", function() {
-	 $.mobile.loading( "show", { text: "Cargando", textVisible: true, theme: "a", html: ""});	
+	
+	$.mobile.loading( "show", { text: "Cargando", textVisible: true, theme: "a", html: ""});	
 });
 
 
 
-   $(document).on("pagecreate", "#welcomePage", function() {
+$(document).on("pagecreate", "#welcomePage", function() {
  
-  
+
 	
 	if (localStorage.getItem("tel")) 
 	{	
-		$tel = localStorage.getItem("tel");
+		$tel =    localStorage.getItem("tel");
 		$pass = localStorage.getItem("pass");
+		
 		
 		
 		$.ajax({
@@ -111,7 +113,7 @@ $(document).on("pageshow", "#welcomePage", function() {
 	            	 queryRealizada=true;
 	             },
 	             error: function(){
-	            	 $.mobile.loading( "hide");
+	             	 $.mobile.loading( "hide");
 
 	            }
 	         
@@ -121,6 +123,7 @@ $(document).on("pageshow", "#welcomePage", function() {
 	{
 		$.mobile.changePage("#loginPage", {transition: "none", reverse: false  } );
 	}
+
 });
 
 
@@ -128,7 +131,6 @@ $(document).on("pageshow", "#welcomePage", function() {
 
 $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
    
-	//alert("pagecreate --> lista hijos");
 	if (queryRealizada==false)
 	{
 		$tel = localStorage.getItem("tel");
@@ -249,7 +251,9 @@ function controlAlumno()
 }
 
  function loginCallback(data){
-      var obj = jQuery.parseJSON(data);
+    
+	
+	 var obj = jQuery.parseJSON(data);
  
      
       if(("rol" in obj ) && obj.rol=="profesor" ){
