@@ -23,7 +23,7 @@
 	</gap:config-file>
 
 	 
-	<preference name="phonegap-version"           value="3.9.0" />          <!-- all: current version of PhoneGap -->
+	<preference name="phonegap-version"           value="3.8.0" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation" value="default" />
 	<preference name="fullscreen" value="true" />
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
