@@ -2,7 +2,7 @@
 var pg=false;
 var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
-
+var MIAVERSION="100000";
 
 function verificarAccesoInternet()
 {
@@ -76,18 +76,20 @@ function onNotificationGCM(e) {
             	{	//registro alumno
              		$id_tutor=localStorage.getItem("id_tutor");
 	                $plataforma="Android";
+	                $uuid = localStorage.getItem("uuid");
+	                $version=MIAVERSION;
 	                $registro_plataforma=e.regid;
 	                
 	                $.ajax({
 	                    type:'GET',
-	                    url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor.php',
-	                    data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma},
+	                    url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor_100000.php',
+	                    data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma,uuid:$uuid,version:$version},
 	                     dataType: 'jsonp',
 	                    jsonp: 'callback',
 	                    jsonpCallback: 'dispositivoRegistrarCallback',
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
-	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
+	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo Android',okAlert,'MIA','Cerrar');
 	                    			localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
@@ -175,11 +177,14 @@ function tokenHandler (result) {
 	{	//registro alumno
  		$id_tutor=localStorage.getItem("id_tutor");
  		$plataforma="iOS";
+ 		$uuid = localStorage.getItem("uuid");
+ 		$version=MIAVERSION;
+ 		
  		$registro_plataforma=result;
  		$.ajax({
  			type:'GET',
- 			url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor.php',
- 			data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma},
+ 			url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor_100000.php',
+ 			data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma,uuid:$uuid,version:$version},
  			dataType: 'jsonp',
  			jsonp: 'callback',
  			jsonpCallback: 'dispositivoRegistrarCallback',
@@ -218,8 +223,8 @@ function tokenHandler (result) {
 }
 
 
-function dispositivoRegistrarCallback()
+function dispositivoRegistrarCallback(data)
 {
-	
+	//alert (data);
 }
 

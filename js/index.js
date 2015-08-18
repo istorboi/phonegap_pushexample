@@ -2,6 +2,7 @@
 var pg=false;
 var URL_REST_BASE ="http://miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
+var MIAVERSION="100000";
 
 
 function verificarAccesoInternet()
@@ -23,9 +24,6 @@ function ayuda()
 {
 	var ref = window.open("http://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
 }
-
-
-
 
 
 function protectHeaderiOS()
@@ -74,6 +72,11 @@ function onDeviceReady() {
 		$("#recargar").html('');
 	}
 	
+	if (!localStorage.getItem("uuid"))  localStorage.setItem("uuid", device.uuid);
+	
+	
+	
+	
 }
 
 
@@ -98,13 +101,14 @@ $(document).on("pagecreate", "#welcomePage", function() {
 	{	
 		$tel =    localStorage.getItem("tel");
 		$pass = localStorage.getItem("pass");
-		
+		$uuid = localStorage.getItem("uuid");
+		$version=MIAVERSION;
 		
 		
 		$.ajax({
 	             type:'GET',
-	             url: URL_REST_BASE +'restapi/login.php',
-	             data:{movil : $tel , pass:$pass},
+	             url: URL_REST_BASE +'restapi/login_100000.php',
+	             data:{movil : $tel , pass:$pass, uuid:$uuid,version:$version},
 	             dataType: 'jsonp',
 	             jsonp: 'callback',
 	             jsonpCallback: 'loginCallback',
@@ -135,11 +139,12 @@ $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
 	{
 		$tel = localStorage.getItem("tel");
 		$pass = localStorage.getItem("pass");
+		$uuid = localStorage.getItem("uuid");
 		
 		$.ajax({
 	        type:'GET',
-	        url: URL_REST_BASE +'restapi/login.php',
-	        data:{movil : $tel , pass:$pass},
+	        url: URL_REST_BASE +'restapi/login_100000.php',
+	        data:{movil : $tel , pass:$pass, uuid:$uuid},
 	        dataType: 'jsonp',
 	        jsonp: 'callback',
 	        jsonpCallback: 'loginCallback',
@@ -216,6 +221,7 @@ function loginValidar()
             	 $.mobile.loading( "hide" );
             		localStorage.setItem("tel", $("#tel").val());
             		localStorage.setItem("pass", $("#pass").val());
+            		localStorage.setItem("uuid", device.uuid);
             		queryRealizada=true;
             		$.mobile.loading( "hide");
             		
@@ -232,9 +238,7 @@ function loginValidar()
 
 
 
-function onLoginError() {
-       
-}
+function onLoginError() {}
 
 
 function controlAlumno2(id,id_centro,logo_centro)

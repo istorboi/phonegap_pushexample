@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="http://miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
 
 
@@ -73,6 +73,9 @@ function cerrarCallback(index)
 
 function desconectarse()
 {
+	
+	
+	
 	//borramos variables 
 	  localStorage.removeItem("id_alumno");
 	  localStorage.removeItem("id_profesor");
@@ -84,5 +87,52 @@ function desconectarse()
 	  localStorage.removeItem("pass");
 	 // localStorage.removeItem("notificaciones"); no se borran solo se registra el telefono una vez
 	   
-	  window.location.replace("index.html");
+	  cerrarsesionservidor();  
+	  
+	  
+	  
+	  
+	  
+	  //window.location.replace("index.html");
+}
+
+function cerrarsesionservidor()
+{
+  	
+	if(!verificarAccesoInternet()) return;
+		
+		$uuid = localStorage.getItem("uuid");
+		
+		// alert ($uuid);
+			
+		
+	    $.ajax({
+	            type:'GET',
+	            url: URL_REST_BASE +'restapi/cerrarsesionservidor_100000.php',
+	            data:{uuid : $uuid},
+	            dataType: 'jsonp',
+                jsonp: 'callback',
+                jsonpCallback: 'cerrarsesionCallback',
+                success: function(){
+           	    $.mobile.loading( "hide");
+           	    queryRealizada=true;
+              },
+              success: function(){
+            	  window.location.replace("index.html");
+             },
+              error: function(){
+            	  window.location.replace("index.html");
+             }
+        
+       });
+	    
+		
+	    //alert ("borrar fin: cerrarsesionservidor");
+	    
+}
+
+function cerrarsesionCallback(data)
+{
+	//alert("borrar cerrarsesionCallback");
+	// alert(data);
 }

@@ -2,6 +2,7 @@
 var pg=false;
 var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
+var MIAVERSION="100000";
 
 
 function verificarAccesoInternet()
@@ -62,6 +63,7 @@ function onDeviceReady() {
 		window.location.replace("index.html");
 	}
 	
+	if (!localStorage.getItem("uuid"))  localStorage.setItem("uuid", device.uuid);
 } 
 
 /************ menu panel  ******************/
@@ -134,14 +136,15 @@ $(document).on("pagecreate", "#controlDiario", function() {
 	
 	$id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
-	
+	$uuid = localStorage.getItem("uuid");
+	$version=MIAVERSION;
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
 	
 	
 	$.ajax({
         type:'GET',
-        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor},
+        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2_100000.php',
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,version:$version},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'controldiarioCallback',
@@ -173,13 +176,15 @@ function ajaxControlFecha()
 
     $id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
-    
+	$uuid = localStorage.getItem("uuid");
+	
+	
 	cargandoDatos();
 	
         $.ajax({
         type:'GET',
-        url: URL_REST_BASE +'restapi/alumnosGetFechaControlDiario.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor, fecha:$fecha},
+        url: URL_REST_BASE +'restapi/alumnosGetFechaControlDiario_100000.php',
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor, fecha:$fecha,uuid:$uuid},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'controldiarioCallback',
@@ -201,12 +206,17 @@ function ajaxControlHoy()
 	$id_alumno=localStorage.getItem("id_alumno");
 	$id_tutor=localStorage.getItem("id_tutor");
 	
+	
+	$uuid = localStorage.getItem("uuid");
+	$version=MIAVERSION;
+	
+	
 	cargandoDatos();
 	
 	$.ajax({
         type:'GET',
-        url: URL_REST_BASE + 'restapi/alumnosGetUltimoControlDiario2.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor},
+        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2_100000.php',
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,version:$version},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'controldiarioCallback',
