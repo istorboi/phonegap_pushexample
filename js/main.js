@@ -2,7 +2,7 @@
 var pg=false;
 var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
-var MIAVERSION="100000";
+var MIAVERSION="100101";
 
 
 function verificarAccesoInternet()
@@ -166,10 +166,14 @@ $(document).on("pagecreate", "#controlDiario", function() {
 function ajaxControlFecha()
 {
 	if (!verificarAccesoInternet()){
-		$('[data-role=dialog]').dialog( "close" );
+	//	$('#dialogCalendario').dialog( "close" );
+		//$('[data-role=dialog]').dialog( "close" );
 		return;
 	}
-	$('[data-role=dialog]').dialog( "close" );
+	//$('#dialogCalendario').dialog( "close" );
+	
+	
+	//$('[data-role=dialog]').dialog( "close" );
     $fecha = $("#inputFecha").val();
 	 
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
