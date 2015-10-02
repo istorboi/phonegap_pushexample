@@ -1,6 +1,7 @@
 
 
 
+
 $(document).on("pagebeforeshow","#observaciones",function(){
 	inicializarFormularioObservaciones();
 });

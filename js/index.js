@@ -2,7 +2,7 @@
 var pg=false;
 var URL_REST_BASE ="http://miagendainfantil.com/miarest4/";
 var URL="http://www.miagendainfantil.com/";
-var MIAVERSION="100101";
+var MIAVERSION="100000";
 
 
 function verificarAccesoInternet()
@@ -212,9 +212,7 @@ function loginValidar()
 	
 	$.ajax({
              type:'GET',
-             //url: URL_REST_BASE + 'restapi/login.php',
-             url: URL_REST_BASE + 'restapi/login_100000.php',
-             
+             url: URL_REST_BASE + 'restapi/login.php',
              data:$('#formularioLogin').serialize(),
              dataType: 'jsonp',
              jsonp: 'callback',
