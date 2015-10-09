@@ -44,10 +44,6 @@ function protectHeaderiOS()
 
 /************************  fin auxiliares ************************/
 
-	
-
-
-
 function onLoad() {
 		document.addEventListener("deviceready", onDeviceReady, false); 
 }
@@ -84,8 +80,6 @@ $( document ).on( "pageinit",  function() {
 
 /******************* fin menu panel **************/
 
-
-
 $(document).on("pagecreate", "#perfil", function() {
 		//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
 	    if ( localStorage.getItem("numero_hijos")==1)
@@ -120,51 +114,139 @@ $(document).on("pagecreate", "#observaciones", function() {
 
 $(document).on("pagecreate", "#controlDiario", function() {
 	
-	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
     if ( localStorage.getItem("numero_hijos")==1)
 	{
     	$("#controlliHijos").remove();
 	}
-	else
-	{
-	//	$("#controlmenu").append('<li  id="controlliHijos" ><a onClick="irListaHijos()" class="ui-nodisc-icon"  id="nav_perfil" data-icon="custom">nn</a></li>');
-	}
+	  
+    //podemos venir del calendario  o de otra página
+    $(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
+
+	 if (localStorage.getItem("ENABLE_CONTROL_FECHA") && localStorage.getItem("ENABLE_CONTROL_FECHA")=="TRUE" ) 
+	 { 
+		 ajaxControlFecha();
+			
+	 }else
+    {
+    	$id_alumno=localStorage.getItem("id_alumno");
+		$id_tutor=localStorage.getItem("id_tutor");
+		$uuid = localStorage.getItem("uuid");
+		$version=MIAVERSION;
+		$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
 		
-	
-	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
-	
-	$id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
-	$uuid = localStorage.getItem("uuid");
-	$version=MIAVERSION;
-	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
-	
-	
-	$.ajax({
-        type:'GET',
-        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2_100000.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,version:$version},
-        dataType: 'jsonp',
-        jsonp: 'callback',
-        jsonpCallback: 'controldiarioCallback',
-                    
-        success: function(){
-        	//alert("success");
-        	$.mobile.loading( "hide");
-        },
-        error: function(){
-        	$.mobile.loading( "hide");
-        }
-	});
-	
+		$.ajax({
+	        type:'GET',
+	        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2_100000.php',
+	        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,version:$version},
+	        dataType: 'jsonp',
+	        jsonp: 'callback',
+	        jsonpCallback: 'controldiarioCallback',
+	                    
+	        success: function(){
+	        	//alert("success");
+	        	$.mobile.loading( "hide");
+	        },
+	        error: function(){
+	        	$.mobile.loading( "hide");
+	        }
+		});
+    }
+	 
+	 
 	ajaxFichaReducida();
 	
 });
 
 
+/*
+$( document ).on( "pagecontainerbeforechange", function ( event, data ) {
+	 
+	 var toPage = data.toPage,
+        prevPage = data.prevPage ? data.prevPage : "",
+        options = data.options,
+       absUrl = data.absUrl ? $.mobile.path.parseUrl(data.absUrl).hash.split("#")[1] : "",
+        
+        userLogged = false; //assuming the user is logged off 
+ 
+//    if ( typeof toPage == "object" && absUrl == "pageX" && !userLogged ) {
+   
+//        data.toPage[ 0 ] = $("#pageY")[ 0 ];
+ 
+//        $.extend( data.options, {
+//            transition: "flip",
+//            changeHash: false
+//        });
+//    }
+  
+	  
+	 if (localStorage.getItem("ENABLE_CONTROL_FECHA") && localStorage.getItem("ENABLE_CONTROL_FECHA")=="TRUE" ) 
+	 { 
+		 alert("enablecontrol");
+		 ajaxControlFecha();
+		 localStorage.removeItem("fecha");
+		 localStorage.removeItem("ENABLE_CONTROL_FECHA");
+	 }
+	
+});
+*/
+
+function ajaxControlFechaNuevoSinPopup()
+{
+	
+	$inputFecha = $("#inputFecha").val();
+	localStorage.setItem("inputFecha",$inputFecha);
+	localStorage.setItem("ENABLE_CONTROL_FECHA","TRUE");
+	
+    window.location.replace("main.html");
+
+	    
+}
+
 function ajaxControlFecha()
 {
+
+	
+	$inputFecha = localStorage.getItem("inputFecha");
+	 
+	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
+
+    $id_alumno=localStorage.getItem("id_alumno");
+	$id_tutor=localStorage.getItem("id_tutor");
+	$uuid = localStorage.getItem("uuid");
+	
+	
+	cargandoDatos();
+	
+        $.ajax({
+        type:'GET',
+        url: URL_REST_BASE +'restapi/alumnosGetFechaControlDiario_100000.php',
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor, fecha:$inputFecha,uuid:$uuid},
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        jsonpCallback: 'controldiarioCallback',
+        success: function(){
+        	$.mobile.loading( "hide" );
+        	 localStorage.removeItem("fecha");
+    		 localStorage.removeItem("ENABLE_CONTROL_FECHA");
+    		
+        },
+        error: function(){
+        	$.mobile.loading( "hide" );
+        	 localStorage.removeItem("fecha");
+    		 localStorage.removeItem("ENABLE_CONTROL_FECHA");
+    		
+        }
+    });
+    
+}
+
+
+/*
+
+function ajaxControlFecha()
+{
+		
 	if (!verificarAccesoInternet()){
 	//	$('#dialogCalendario').dialog( "close" );
 		//$('[data-role=dialog]').dialog( "close" );
@@ -201,10 +283,11 @@ function ajaxControlFecha()
     });
     
 }
-
+*/
 
 function ajaxControlHoy()
 {
+	
 	if (!verificarAccesoInternet()) return;
 	
 	$id_alumno=localStorage.getItem("id_alumno");
@@ -282,7 +365,6 @@ function cargandoDatos()
 
 
 function controldiarioCallback(data){
-  
       var obj = jQuery.parseJSON(data);
        $("#fecha").html(obj.fecha);
     
