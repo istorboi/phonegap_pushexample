@@ -1,7 +1,7 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
-var URL="http://www.miagendainfantil.com/";
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest4/";
+var URL="https://www.miagendainfantil.com/";
 
 
 function verificarAccesoInternet()

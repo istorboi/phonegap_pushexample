@@ -1,6 +1,6 @@
 var map;
 var marcadorGuarderia;
-var URL_REST_BASE ="http://www.miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest4/";
 
 function protectHeaderiOS()
 {

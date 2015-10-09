@@ -1,7 +1,7 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="http://miagendainfantil.com/miarest4/";
-var URL="http://www.miagendainfantil.com/";
+var URL_REST_BASE ="https://miagendainfantil.com/miarest4/";
+var URL="https://www.miagendainfantil.com/";
 var MIAVERSION="100101";
 
 
@@ -22,7 +22,7 @@ function okAlert()
 
 function ayuda()
 {
-	var ref = window.open("http://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
+	var ref = window.open("https://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
 }
 
 
