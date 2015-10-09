@@ -607,7 +607,7 @@ function fichaDetalladaCallback(data){
 
 function ayuda()
 {
-	var ref = window.open("https://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
+	var ref = window.open("http://www.miagendainfantil.es/ayuda.html", '_blank', 'location=yes');
 
 }
 
