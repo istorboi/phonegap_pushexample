@@ -2,8 +2,8 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "es.esolver.mia"
-        versionCode = "10" 
-        version     = "10.0.0" >
+        versionCode = "11" 
+        version     = "10.1.1" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -19,7 +19,7 @@
  
 	
 	<gap:config-file platform="ios" parent="CFBundleShortVersionString">
-	<string>10</string>
+	<string>11</string>
 	</gap:config-file>
 
 	 
