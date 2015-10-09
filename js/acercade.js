@@ -56,7 +56,7 @@ function onDeviceReady() {
 
 function deviceinformation()
 {
-	$("#aboutMIA").html("10.0.0");
+	$("#aboutMIA").html("10.0.0_rev1");
 	$("#aboutApache").html(device.cordova);
 	$("#aboutModelo").html(device.model);
 	$("#aboutUUID").html(device.uuid);
