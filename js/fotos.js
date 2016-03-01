@@ -3,15 +3,20 @@
     
 function ajaxAlumnoGetFotos()
 {
-	$id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
+	$id_alumno=window.localStorage.getItem("id_alumno");
+	$id_tutor=window.localStorage.getItem("id_tutor");
   
 	//alert("alumno:"+$id_alumno+" tutor:" + $id_tutor );
+	
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
+
 	
     $.ajax({
         type:'GET',
         url: URL_REST_BASE +'restapi/fotoGetTemas.php',
-        data:{id_alumno:$id_alumno, id_tutor:$id_tutor},
+        data:{id_alumno:$id_alumno, id_tutor:$id_tutor,cv:$cv},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'temasCallback',
@@ -47,14 +52,17 @@ function ajaxGetFotosTema(tema,descripcion){
  $tema_seleccionado = tema;
  $("#GalleryName").html(descripcion);
 
- 	$id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
+ 	$id_alumno=window.localStorage.getItem("id_alumno");
+	$id_tutor=window.localStorage.getItem("id_tutor");
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
 
  
  $.ajax({
         type:'GET',
         url: URL_REST_BASE +'restapi/fotoGetFotosTema.php',
-        data:{id_alumno:$id_alumno, id_tutor:$id_tutor , tema: $tema_seleccionado},
+        data:{id_alumno:$id_alumno, id_tutor:$id_tutor , tema: $tema_seleccionado,cv:$cv},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'fotosTemaCallback',
@@ -136,14 +144,17 @@ function ajaxDesetiquetar()
 {
 
 $idfoto= $("#GalleryDetailSrc").attr("data_idfoto");
-$id_alumno=localStorage.getItem("id_alumno");
-$id_tutor=localStorage.getItem("id_tutor");
+$id_alumno=window.localStorage.getItem("id_alumno");
+$id_tutor=window.localStorage.getItem("id_tutor");
+$cv = window.localStorage.getItem("cv");
+//new api 162
+//FALTA PROBAR
 
 	
   $.ajax({
         type:'GET',
         url: URL_REST_BASE + 'restapi/fotoDesetiquetarAlumno.php',
-        data:{id_alumno:$id_alumno, id_tutor:$id_tutor , id_foto: $idfoto},
+        data:{id_alumno:$id_alumno, id_tutor:$id_tutor , id_foto: $idfoto,cv:$cv},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'desetiquetarCallback',
@@ -219,7 +230,7 @@ var error = function(err){
 function descargarDocumentos()
 {
 	
-	var URL = localStorage.getItem("doc");
+	var URL = window.localStorage.getItem("doc");
 	saveImageToPhone(URL, success, error);   //usando el plugin del canvas 
 
 	
@@ -245,7 +256,7 @@ function descargarDocumentos()
 	*/
 	
 	/* metodo tradicional, no guarda directo en la galeria
-	var URL = localStorage.getItem("doc");
+	var URL = window.localStorage.getItem("doc");
 
 	var File_Name= URL.substring(URL.lastIndexOf('/')+1);
 	

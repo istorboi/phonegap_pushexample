@@ -35,7 +35,7 @@ $(function($){
         yearSuffix: ''
     };
    
-       $idioma = localStorage.getItem("idioma");
+       $idioma = window.localStorage.getItem("idioma");
        
        if ($idioma=="ES")
     	   $.datepicker.setDefaults($.datepicker.regional['ES']);

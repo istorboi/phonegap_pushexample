@@ -8,16 +8,19 @@ var boolGetCategoria=false;  //refresh excepto primera vez
 
 function ajaxGetDocumentosCentro()
 {
-	$id_centro=localStorage.getItem("id_centro");
+	$id_centro=window.localStorage.getItem("id_centro");
 	
 	
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
 
 	
     $.ajax({
         type:'GET',
         url: URL_REST_BASE +'restapi/documentacionGetCategorias.php',
-        data:{id_centro:$id_centro},
+        data:{id_centro:$id_centro,cv:$cv},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'categoriasCallback',
@@ -63,16 +66,21 @@ function categoriasCallback(data){
  }
 
 function ajaxGetDocumentosCategoria(descripcion){
-	$id_centro=localStorage.getItem("id_centro");
+	$id_centro=window.localStorage.getItem("id_centro");
 	$categoria_seleccionado = descripcion;
      $("#CategoryName").html(descripcion);
 
      $.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
 
+   $cv = window.localStorage.getItem("cv");
+   //new api 162
+   //FALTA PROBAR
+
+     
      $.ajax({
             type:'GET',
             url: URL_REST_BASE +'restapi/documentacionGetDocCategoria.php',
-            data:{id_centro:$id_centro, categoria: $categoria_seleccionado},
+            data:{id_centro:$id_centro, categoria: $categoria_seleccionado,cv:$cv},
             dataType: 'jsonp',
             jsonp: 'callback',
             jsonpCallback: 'documentacionGetDocCategoriaCallback',
@@ -142,7 +150,7 @@ function mostrarDocumentoPDF(src,name)
 {
 
   $url=src;  
-  localStorage.setItem("doc2", src);
+  window.localStorage.setItem("doc2", src);
   
   var msg="";
   
@@ -166,7 +174,7 @@ function mostrarDocumentoPDF(src,name)
 
 function okDescargarPDF(){
 	
-	var url = localStorage.getItem("doc2");
+	var url = window.localStorage.getItem("doc2");
 	
 	ref= window.open(url, '_system', 'location=yes');
 	
@@ -177,7 +185,7 @@ function okDescargarPDF(){
 function mostrarDocumentoIMG(src ,name)
 {
 	$url=src; 
-	localStorage.setItem("doc", src);
+	window.localStorage.setItem("doc", src);
 	
 	$("#docImgSrc").attr("src",src);
 	$("#h1docImgName").html(name);
@@ -187,7 +195,7 @@ function mostrarDocumentoIMG(src ,name)
 
 
 function abrirDocImg(){
-	var url = localStorage.getItem("doc");
+	var url = window.localStorage.getItem("doc");
 	
 	ref= window.open(url, '_system', 'location=yes');
 	
@@ -231,7 +239,7 @@ function mostrarDocumento(src)
 {
 
   $url=src;  
-  localStorage.setItem("doc", src);
+  window.localStorage.setItem("doc", src);
 	
   
   var isCanvasSet = false;

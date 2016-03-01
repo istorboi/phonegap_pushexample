@@ -1,8 +1,8 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="https://miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="https://miagendainfantil.com/miarest162/";
 var URL="https://www.miagendainfantil.com/";
-var MIAVERSION="100101";
+var MIAVERSION="110000";
 
 
 function verificarAccesoInternet()
@@ -72,7 +72,7 @@ function onDeviceReady() {
 		$("#recargar").html('');
 	}
 	
-	if (!localStorage.getItem("uuid"))  localStorage.setItem("uuid", device.uuid);
+	if (!window.localStorage.getItem("uuid"))  window.localStorage.setItem("uuid", device.uuid);
 	
 	
 	
@@ -97,17 +97,20 @@ $(document).on("pagecreate", "#welcomePage", function() {
  
 
 	
-	if (localStorage.getItem("tel")) 
+	//if (window.localStorage.getItem("tel"))
+	if (window.localStorage.getItem("cv")) 
 	{	
-		$tel =    localStorage.getItem("tel");
-		$pass = localStorage.getItem("pass");
-		$uuid = localStorage.getItem("uuid");
+		$tel =    window.localStorage.getItem("tel");
+		$pass = window.localStorage.getItem("pass");
+		$uuid = window.localStorage.getItem("uuid");
 		$version=MIAVERSION;
 		
 		
+		//new api 162
+		//FALTA PROBAR
 		$.ajax({
 	             type:'GET',
-	             url: URL_REST_BASE +'restapi/login_100000.php',
+	             url: URL_REST_BASE +'restapi/login.php',
 	             data:{movil : $tel , pass:$pass, uuid:$uuid,version:$version},
 	             dataType: 'jsonp',
 	             jsonp: 'callback',
@@ -137,13 +140,15 @@ $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
    
 	if (queryRealizada==false)
 	{
-		$tel = localStorage.getItem("tel");
-		$pass = localStorage.getItem("pass");
-		$uuid = localStorage.getItem("uuid");
+		//new api 162
+		//FALTA PROBAR
+		$tel = window.localStorage.getItem("tel");
+		$pass = window.localStorage.getItem("pass");
+		$uuid = window.localStorage.getItem("uuid");
 		
 		$.ajax({
 	        type:'GET',
-	        url: URL_REST_BASE +'restapi/login_100000.php',
+	        url: URL_REST_BASE +'restapi/login.php',
 	        data:{movil : $tel , pass:$pass, uuid:$uuid},
 	        dataType: 'jsonp',
 	        jsonp: 'callback',
@@ -167,13 +172,13 @@ $(document).on("pagecreate", "#seleccionarAlumnoTmp", function() {
 $(document).on("pagecreate", "#loginPage", function() {
 	
 	//alert("pagecreate loginpage");
-	if (localStorage.getItem("tel")) 
+	if (window.localStorage.getItem("tel")) 
 	{	
-		$tel = localStorage.getItem("tel");
-		$pass = localStorage.getItem("pass");
+		$tel = window.localStorage.getItem("tel");
+		$pass = window.localStorage.getItem("pass");
 		
 		
-	//	alert ("loginvalidar automatico movil:" +localStorage.getItem("tel") +  " pass:" + localStorage.getItem("pass") );
+	//	alert ("loginvalidar automatico movil:" +window.localStorage.getItem("tel") +  " pass:" + window.localStorage.getItem("pass") );
 		$.ajax({
 	             type:'GET',
 	             url: URL_REST_BASE +'restapi/login.php',
@@ -209,11 +214,12 @@ function loginValidar()
 		  html: ""
 	});
 	
-	
+	//new api 162
+	//FALTA PROBAR
 	$.ajax({
              type:'GET',
              //url: URL_REST_BASE + 'restapi/login.php',
-             url: URL_REST_BASE + 'restapi/login_100000.php',
+             url: URL_REST_BASE + 'restapi/login.php',
              
              data:$('#formularioLogin').serialize(),
              dataType: 'jsonp',
@@ -221,9 +227,9 @@ function loginValidar()
              jsonpCallback: 'loginCallback',
              success: function(){
             	 $.mobile.loading( "hide" );
-            		localStorage.setItem("tel", $("#tel").val());
-            		localStorage.setItem("pass", $("#pass").val());
-            		localStorage.setItem("uuid", device.uuid);
+            		window.localStorage.setItem("tel", $("#tel").val());
+            		window.localStorage.setItem("pass", $("#pass").val());
+            		window.localStorage.setItem("uuid", device.uuid);
             		queryRealizada=true;
             		$.mobile.loading( "hide");
             		
@@ -246,9 +252,9 @@ function onLoginError() {}
 function controlAlumno2(id,id_centro,logo_centro)
 {
 	if(!verificarAccesoInternet()) return;
-	localStorage.setItem("id_alumno", id);
-	localStorage.setItem("id_centro", id_centro);
-	localStorage.setItem("logo_centro", logo_centro);
+	window.localStorage.setItem("id_alumno", id);
+	window.localStorage.setItem("id_centro", id_centro);
+	window.localStorage.setItem("logo_centro", logo_centro);
     window.location.replace("main.html");
 }
 function controlAlumno()
@@ -264,14 +270,14 @@ function controlAlumno()
      
       if(("rol" in obj ) && obj.rol=="profesor" ){
        //version nueva y tipo profesor
-    	  localStorage.setItem("id_profesor", obj.id_profesor);
-    	  localStorage.setItem("nombre_profesor", obj.nombre_profesor);
-    	  localStorage.setItem("idioma", obj.idioma);
-    	  localStorage.setItem("logo_centro", obj.logo_centro);
-          localStorage.setItem("id_centro", obj.id_centro);
+    	  window.localStorage.setItem("id_profesor", obj.id_profesor);
+    	  window.localStorage.setItem("nombre_profesor", obj.nombre_profesor);
+    	  window.localStorage.setItem("idioma", obj.idioma);
+    	  window.localStorage.setItem("logo_centro", obj.logo_centro);
+          window.localStorage.setItem("id_centro", obj.id_centro);
         
     
-          if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
+          if (window.localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
           
     	  window.location.replace("profesorMain.html");
     	  
@@ -279,12 +285,13 @@ function controlAlumno()
     	      
       }else{
       
-	     localStorage.setItem("id_tutor", obj.id_tutor);
-	     localStorage.setItem("nombre_tutor", obj.nombre_tutor);
-	     localStorage.setItem("idioma", obj.idioma);
-	     localStorage.setItem("numero_hijos", obj.alumnos.length);
+	     window.localStorage.setItem("id_tutor", obj.id_tutor);
+	     window.localStorage.setItem("nombre_tutor", obj.nombre_tutor);
+	     window.localStorage.setItem("idioma", obj.idioma);
+	     window.localStorage.setItem("numero_hijos", obj.alumnos.length);
+	     window.localStorage.setItem("cv", obj.cv);
 	   
-	     if (localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
+	     if (window.localStorage.getItem("notificaciones")==null)RegistrarDispositivo(); //registro notificaciones;
 	     
 	     var numalumnos = obj.alumnos.length;
 	     var primeraVisita = obj.primeraVisita;
@@ -296,9 +303,9 @@ function controlAlumno()
 	     }
 	     if(numalumnos==1)
 	     {
-	        localStorage.setItem("id_alumno", obj.alumnos[0]["id_alumno"]);
-	        localStorage.setItem("logo_centro", obj.alumnos[0]["logo_centro"]);
-	        localStorage.setItem("id_centro", obj.alumnos[0]["id_centro"]);
+	        window.localStorage.setItem("id_alumno", obj.alumnos[0]["id_alumno"]);
+	        window.localStorage.setItem("logo_centro", obj.alumnos[0]["logo_centro"]);
+	        window.localStorage.setItem("id_centro", obj.alumnos[0]["id_centro"]);
 	      //  controlAlumno();
 	     }
 	     if(numalumnos>1)
@@ -339,6 +346,8 @@ function controlAlumno()
  {
      
      $movilRecordar = $("#movilRecordar").val();
+      //new api 162  --> no cambia nada
+ 	  //FALTA PROBAR
          $.ajax({
                    type:'GET',
                    url: URL_REST_BASE +'restapi/tutorRecordarPass.php',
@@ -371,7 +380,7 @@ function controlAlumno()
  
     function ajaxCambiarPassPrimerAcceso()
     {
-        $id_tutor= localStorage.getItem("id_tutor");
+        $id_tutor= window.localStorage.getItem("id_tutor");
         var newpass1 = $("#pass1").val();
         var newpass2 = $("#pass2").val();
     
@@ -379,9 +388,11 @@ function controlAlumno()
         if (newpass1 ==newpass2 )
         {
             
-             $idtutor=localStorage.getItem("id_tutor");
+             $idtutor=window.localStorage.getItem("id_tutor");
              $pass = newpass1;
-                     
+              
+           //new api 162
+         	//FALTA PROBAR
             $.ajax({
                     type:'GET',
                     url: URL_REST_BASE +'restapi/tutorCambiarPassPrimerAcceso.php',
@@ -408,7 +419,7 @@ function controlAlumno()
     function primerAccesoCallback(data)
     {
      // alert(data); //delete
-       var  numalumnos= localStorage.getItem("numero_hijos");
+       var  numalumnos= window.localStorage.getItem("numero_hijos");
         if(numalumnos==1) { controlAlumno(); }
         if(numalumnos>1){ $.mobile.changePage("#seleccionarAlumno", {transition: "slide", reverse: false  } );}   
     
@@ -427,14 +438,15 @@ function controlAlumno()
     {
     	
     	if (index==1){
-    		localStorage.removeItem("id_tutor");
-      	  localStorage.removeItem("id_centro");
-      	  localStorage.removeItem("nombre_tutor");
-      	  localStorage.removeItem("idioma");
-      	  localStorage.removeItem("numero_hijos");
-      	  localStorage.removeItem("tel");
-      	  localStorage.removeItem("pass");
-      	  localStorage.removeItem("notificaciones");
+    	  window.localStorage.removeItem("id_tutor");
+      	  window.localStorage.removeItem("id_centro");
+      	  window.localStorage.removeItem("nombre_tutor");
+      	  window.localStorage.removeItem("idioma");
+      	  window.localStorage.removeItem("numero_hijos");
+      	  window.localStorage.removeItem("tel");
+      	  window.localStorage.removeItem("pass");
+      	  window.localStorage.removeItem("notificaciones");
+      	  window.localStorage.removeItem("cv");
       	   
       	  window.location.replace("index.html");	
     	}

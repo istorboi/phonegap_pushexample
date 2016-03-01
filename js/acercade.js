@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="https://www.miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest162/";
 var URL="https://www.miagendainfantil.com/";
 
 
@@ -56,7 +56,7 @@ function onDeviceReady() {
 
 function deviceinformation()
 {
-	$("#aboutMIA").html("10.1.1");
+	$("#aboutMIA").html("11.0.0");
 	$("#aboutApache").html(device.cordova);
 	$("#aboutModelo").html(device.model);
 	$("#aboutUUID").html(device.uuid);

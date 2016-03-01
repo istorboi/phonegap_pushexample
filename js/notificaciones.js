@@ -1,8 +1,10 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="https://www.miagendainfantil.com/miarest4/";
+
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest162/";
+//var URL_REST_BASE2 ="https://www.miagendainfantil.com/miarest4/";
 var URL="https://www.miagendainfantil.com/";
-var MIAVERSION="100000";
+var MIAVERSION="110000";
 
 function verificarAccesoInternet()
 {
@@ -72,32 +74,38 @@ function onNotificationGCM(e) {
                // alert('registration id = '+e.regid);
                 
                 
-             	if (localStorage.getItem("id_tutor")) 
+             	if (window.localStorage.getItem("id_tutor")) 
             	{	//registro alumno
-             		$id_tutor=localStorage.getItem("id_tutor");
+             		$id_tutor=window.localStorage.getItem("id_tutor");
 	                $plataforma="Android";
-	                $uuid = localStorage.getItem("uuid");
+	                $uuid = window.localStorage.getItem("uuid");
 	                $version=MIAVERSION;
 	                $registro_plataforma=e.regid;
+	            
+
+	                $cv = window.localStorage.getItem("cv");
+	                //new api 162
+	                //FALTA PROBAR
+
 	                
 	                $.ajax({
 	                    type:'GET',
 	                    url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor_100000.php',
-	                    data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma,uuid:$uuid,version:$version},
+	                    data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma,uuid:$uuid,cv: $cv, version: $version },
 	                     dataType: 'jsonp',
 	                    jsonp: 'callback',
 	                    jsonpCallback: 'dispositivoRegistrarCallback',
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo Android',okAlert,'MIA','Cerrar');
-	                    			localStorage.setItem("notificaciones",true);
+	                    			window.localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
 	                   	 	//	alert("Error: Borrar dispositivo ya registrado");
 	                   }
 	                });
             	}else{ //registro profesor
-             		$id_profesor=localStorage.getItem("id_profesor");
+             		$id_profesor=window.localStorage.getItem("id_profesor");
 	                $plataforma="Android";
 	                $registro_plataforma=e.regid;
 	                
@@ -111,7 +119,7 @@ function onNotificationGCM(e) {
 	                    success: function(){
 	                    			//alert("Servicio de Alertas activado para su dispositivo");
 	                    			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-	                    			localStorage.setItem("notificaciones",true);
+	                    			window.localStorage.setItem("notificaciones",true);
 	                    },
 	                    error: function(){
 	                   	 		//alert("Borrar dispositivo ya registrado");
@@ -173,31 +181,36 @@ function tokenHandler (result) {
 	//alert("borrar tokenhandler:" + result);
 	
 	
-	if (localStorage.getItem("id_tutor")) 
+	if (window.localStorage.getItem("id_tutor")) 
 	{	//registro alumno
- 		$id_tutor=localStorage.getItem("id_tutor");
+ 		$id_tutor=window.localStorage.getItem("id_tutor");
  		$plataforma="iOS";
- 		$uuid = localStorage.getItem("uuid");
+ 		$uuid = window.localStorage.getItem("uuid");
  		$version=MIAVERSION;
+
+ 		$cv = window.localStorage.getItem("cv");
+ 		//new api 162
+ 		//FALTA PROBAR
+
  		
  		$registro_plataforma=result;
  		$.ajax({
  			type:'GET',
  			url: URL_REST_BASE + 'restapi/dispositivoRegistrarTutor_100000.php',
- 			data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma,uuid:$uuid,version:$version},
+ 			data:{id_tutor:$id_tutor, plataforma: $plataforma, registro_plataforma:$registro_plataforma,uuid: $uuid,cv: $cv , version: $version},
  			dataType: 'jsonp',
  			jsonp: 'callback',
  			jsonpCallback: 'dispositivoRegistrarCallback',
  			success: function(){
          			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-         			localStorage.setItem("notificaciones",true);
+         			window.localStorage.setItem("notificaciones",true);
         	},
  			error: function(){
         	 		//alert("Borrar dispositivo ya registrado");
  			}
         });
 	}else{
-		$id_profesor=localStorage.getItem("id_profesor");
+		$id_profesor=window.localStorage.getItem("id_profesor");
 		$plataforma="iOS";
  		$registro_plataforma=result;
  		
@@ -211,7 +224,7 @@ function tokenHandler (result) {
             success: function(){
             			//alert("Servicio de Alertas activado para su dispositivo");
             			navigator.notification.alert('Servicio de Alertas activado para su dispositivo',okAlert,'MIA','Cerrar');
-            			localStorage.setItem("notificaciones",true);
+            			window.localStorage.setItem("notificaciones",true);
             },
             error: function(){
            	 		//alert("Borrar dispositivo ya registrado");

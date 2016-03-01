@@ -32,7 +32,7 @@ function onLoad() {
 function onDeviceReady() {
     if (!verificarAccesoInternet()) return;  
     
-    if (localStorage.getItem("id_profesor")=== null)
+    if (window.localStorage.getItem("id_profesor")=== null)
 	{
 		window.location.replace("index.html");
 	}
@@ -63,7 +63,7 @@ $( document ).on( "pageinit",  function() {
 function ajaxProfesorGetAulasAlumnos()
 {
     
-     $id_profesor=localStorage.getItem("id_profesor");
+     $id_profesor=window.localStorage.getItem("id_profesor");
 	$.ajax({
              type:'GET',
              url: URL_REST_BASE +'restapi/profesorGetAulasAlumnos.php',
@@ -125,8 +125,8 @@ function callBackListaAulasAlumnos(data)
 
 function ajaxProfesorGetTemasCentro()
 {
-    $id_profesor=localStorage.getItem("id_profesor");
-    $id_centro=localStorage.getItem("id_centro");
+    $id_profesor=window.localStorage.getItem("id_profesor");
+    $id_centro=window.localStorage.getItem("id_centro");
 
     
     $.ajax({
@@ -163,8 +163,8 @@ function ajaxCrearTema(){
 	//$('[data-role=dialog]').dialog( "close" );
 	 $('.ui-dialog').dialog('close');
 	
-	  $id_profesor=localStorage.getItem("id_profesor");
-	  $id_centro=localStorage.getItem("id_centro");
+	  $id_profesor=window.localStorage.getItem("id_profesor");
+	  $id_centro=window.localStorage.getItem("id_centro");
 	  $nuevo_tema=$("#idNuevaCarpetaNombre").val();
 	    $.ajax({
 	            type:'GET',
@@ -436,8 +436,8 @@ function onCameraFail(message) {
      var params = new Object();
      params.tema = $("#temaSelect").val();
      params.alumnos = alumnos;
-     params.profesor=localStorage.getItem("id_profesor");
-     params.centro= localStorage.getItem("id_centro");
+     params.profesor=window.localStorage.getItem("id_profesor");
+     params.centro= window.localStorage.getItem("id_centro");
      //params.value2 = "45";
 
      options.params = params;

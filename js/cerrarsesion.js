@@ -1,6 +1,6 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="https://miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest162/";
 var URL="https://www.miagendainfantil.com/";
 
 

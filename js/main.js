@@ -1,8 +1,12 @@
 /*******************  auxiliares      ***************************/
 var pg=false;
-var URL_REST_BASE ="https://www.miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest162/";
 var URL="https://www.miagendainfantil.com/";
-var MIAVERSION="100101";
+var MIAVERSION="110000";
+
+//$cv = window.localStorage.getItem("cv");
+//new api 162
+//FALTA PROBAR
 
 
 function verificarAccesoInternet()
@@ -54,12 +58,13 @@ function onDeviceReady() {
 	protectHeaderiOS();
 	
 	
-	if (localStorage.getItem("id_alumno")=== null)
+	//if (window.localStorage.getItem("id_alumno")=== null)
+	if (window.localStorage.getItem("cv")=== null)
 	{
 		window.location.replace("index.html");
 	}
 	
-	if (!localStorage.getItem("uuid"))  localStorage.setItem("uuid", device.uuid);
+	if (!window.localStorage.getItem("uuid"))  window.localStorage.setItem("uuid", device.uuid);
 } 
 
 /************ menu panel  ******************/
@@ -82,14 +87,14 @@ $( document ).on( "pageinit",  function() {
 
 $(document).on("pagecreate", "#perfil", function() {
 		//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-	    if ( localStorage.getItem("numero_hijos")==1)
+	    if ( window.localStorage.getItem("numero_hijos")==1)
 		{
 	    	$("#perfilliHijos").remove();
 		}
 });    
 $(document).on("pagecreate", "#listaCategorias", function() {
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( localStorage.getItem("numero_hijos")==1)
+    if ( window.localStorage.getItem("numero_hijos")==1)
 	{
     	$("#docliHijos").remove();
 	}
@@ -97,14 +102,14 @@ $(document).on("pagecreate", "#listaCategorias", function() {
 
 $(document).on("pagecreate", "#GalleryList", function() {
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( localStorage.getItem("numero_hijos")==1)
+    if ( window.localStorage.getItem("numero_hijos")==1)
 	{
     	$("#galerialiHijos").remove();
 	}
 });
 $(document).on("pagecreate", "#observaciones", function() {
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( localStorage.getItem("numero_hijos")==1)
+    if ( window.localStorage.getItem("numero_hijos")==1)
 	{
     	$("#obsliHijos").remove();
 	}
@@ -115,30 +120,33 @@ $(document).on("pagecreate", "#observaciones", function() {
 $(document).on("pagecreate", "#controlDiario", function() {
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( localStorage.getItem("numero_hijos")==1)
+    if ( window.localStorage.getItem("numero_hijos")==1)
 	{
     	$("#controlliHijos").remove();
 	}
 	  
     //podemos venir del calendario  o de otra página
-    $(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
+    $(".logo_centro").attr("src",window.localStorage.getItem("logo_centro"));
 
-	 if (localStorage.getItem("ENABLE_CONTROL_FECHA") && localStorage.getItem("ENABLE_CONTROL_FECHA")=="TRUE" ) 
+	 if (window.localStorage.getItem("ENABLE_CONTROL_FECHA") && window.localStorage.getItem("ENABLE_CONTROL_FECHA")=="TRUE" ) 
 	 { 
 		 ajaxControlFecha();
 			
 	 }else
     {
-    	$id_alumno=localStorage.getItem("id_alumno");
-		$id_tutor=localStorage.getItem("id_tutor");
-		$uuid = localStorage.getItem("uuid");
+    	$id_alumno=window.localStorage.getItem("id_alumno");
+		$id_tutor=window.localStorage.getItem("id_tutor");
+		$uuid = window.localStorage.getItem("uuid");
+		
 		$version=MIAVERSION;
 		$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
-		
+		$cv = window.localStorage.getItem("cv");
+		//new api 162
+		//FALTA PROBAR
 		$.ajax({
 	        type:'GET',
-	        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2_100000.php',
-	        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,version:$version},
+	        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2.php',
+	        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor, uuid:$uuid,cv: $cv, version: $version},
 	        dataType: 'jsonp',
 	        jsonp: 'callback',
 	        jsonpCallback: 'controldiarioCallback',
@@ -180,12 +188,12 @@ $( document ).on( "pagecontainerbeforechange", function ( event, data ) {
 //    }
   
 	  
-	 if (localStorage.getItem("ENABLE_CONTROL_FECHA") && localStorage.getItem("ENABLE_CONTROL_FECHA")=="TRUE" ) 
+	 if (window.localStorage.getItem("ENABLE_CONTROL_FECHA") && window.localStorage.getItem("ENABLE_CONTROL_FECHA")=="TRUE" ) 
 	 { 
 		 alert("enablecontrol");
 		 ajaxControlFecha();
-		 localStorage.removeItem("fecha");
-		 localStorage.removeItem("ENABLE_CONTROL_FECHA");
+		 window.localStorage.removeItem("fecha");
+		 window.localStorage.removeItem("ENABLE_CONTROL_FECHA");
 	 }
 	
 });
@@ -195,8 +203,8 @@ function ajaxControlFechaNuevoSinPopup()
 {
 	
 	$inputFecha = $("#inputFecha").val();
-	localStorage.setItem("inputFecha",$inputFecha);
-	localStorage.setItem("ENABLE_CONTROL_FECHA","TRUE");
+	window.localStorage.setItem("inputFecha",$inputFecha);
+	window.localStorage.setItem("ENABLE_CONTROL_FECHA","TRUE");
 	
     window.location.replace("main.html");
 
@@ -207,34 +215,37 @@ function ajaxControlFecha()
 {
 
 	
-	$inputFecha = localStorage.getItem("inputFecha");
+	$inputFecha = window.localStorage.getItem("inputFecha");
 	 
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
 
-    $id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
-	$uuid = localStorage.getItem("uuid");
+    $id_alumno=window.localStorage.getItem("id_alumno");
+	$id_tutor=window.localStorage.getItem("id_tutor");
+	$uuid = window.localStorage.getItem("uuid");
 	
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
 	
 	cargandoDatos();
 	
         $.ajax({
         type:'GET',
-        url: URL_REST_BASE +'restapi/alumnosGetFechaControlDiario_100000.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor, fecha:$inputFecha,uuid:$uuid},
+        url: URL_REST_BASE +'restapi/alumnosGetFechaControlDiario.php',
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor, fecha:$inputFecha,uuid:$uuid,cv:$cv},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'controldiarioCallback',
         success: function(){
         	$.mobile.loading( "hide" );
-        	 localStorage.removeItem("fecha");
-    		 localStorage.removeItem("ENABLE_CONTROL_FECHA");
+        	 window.localStorage.removeItem("fecha");
+    		 window.localStorage.removeItem("ENABLE_CONTROL_FECHA");
     		
         },
         error: function(){
         	$.mobile.loading( "hide" );
-        	 localStorage.removeItem("fecha");
-    		 localStorage.removeItem("ENABLE_CONTROL_FECHA");
+        	 window.localStorage.removeItem("fecha");
+    		 window.localStorage.removeItem("ENABLE_CONTROL_FECHA");
     		
         }
     });
@@ -260,9 +271,9 @@ function ajaxControlFecha()
 	 
 	$.mobile.loading( "show", { text: "Cargando",  textVisible: true, theme: "a",  html: ""	});
 
-    $id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
-	$uuid = localStorage.getItem("uuid");
+    $id_alumno=window.localStorage.getItem("id_alumno");
+	$id_tutor=window.localStorage.getItem("id_tutor");
+	$uuid = window.localStorage.getItem("uuid");
 	
 	
 	cargandoDatos();
@@ -290,20 +301,22 @@ function ajaxControlHoy()
 	
 	if (!verificarAccesoInternet()) return;
 	
-	$id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
+	$id_alumno=window.localStorage.getItem("id_alumno");
+	$id_tutor=window.localStorage.getItem("id_tutor");
 	
 	
-	$uuid = localStorage.getItem("uuid");
+	$uuid = window.localStorage.getItem("uuid");
 	$version=MIAVERSION;
-	
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
 	
 	cargandoDatos();
 	
 	$.ajax({
         type:'GET',
-        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2_100000.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,version:$version},
+        url: URL_REST_BASE +'restapi/alumnosGetUltimoControlDiario2.php',
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,uuid:$uuid,cv: $cv, version:$version},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'controldiarioCallback',
@@ -322,13 +335,15 @@ function ajaxControlHoy()
 
 function ajaxFichaReducida()
 {
-	$id_alumno=localStorage.getItem("id_alumno");
-	$id_tutor=localStorage.getItem("id_tutor");
-	
+	$id_alumno=window.localStorage.getItem("id_alumno");
+	$id_tutor=window.localStorage.getItem("id_tutor");
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
 	$.ajax({
         type:'GET',
         url: URL_REST_BASE + 'restapi/alumnoGetFichaReducida.php',
-        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor},
+        data:{id_alumno:  $id_alumno ,id_tutor: $id_tutor,cv:$cv},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'fichareducidaCallback',
@@ -536,13 +551,16 @@ function ajaxfichadetallada()
 	$.mobile.loading( "show", { text: "Cargando", textVisible: true, theme: "a", html: ""});
 	
 	
-	 $id_alumno=localStorage.getItem("id_alumno");
-	 $id_tutor=localStorage.getItem("id_tutor");
-
+	 $id_alumno=window.localStorage.getItem("id_alumno");
+	 $id_tutor=window.localStorage.getItem("id_tutor");
+	 $cv = window.localStorage.getItem("cv");
+		//new api 162
+		//FALTA PROBAR
+	 
 	$.ajax({
         type:'GET',
         url: URL_REST_BASE + 'restapi/alumnoGetFichaDetallada.php',
-        data:{id_alumno:$id_alumno, id_tutor:$id_tutor},
+        data:{id_alumno:$id_alumno, cv: $cv, id_tutor:$id_tutor},
         dataType: 'jsonp',
         jsonp: 'callback',
         jsonpCallback: 'fichaDetalladaCallback',
@@ -560,9 +578,10 @@ function ajaxfichadetallada()
 
 function fichaDetalladaCallback(data){
    // alert("fichaDetalladaCallback");
-  //  alert(data);
+   
     
-    
+            
+	
         var obj = jQuery.parseJSON(data);
        
        
@@ -622,13 +641,13 @@ function irListaHijos()
 /*
 function desconectarse(){
 	//borramos variables 
-	  localStorage.removeItem("id_tutor");
-	  localStorage.removeItem("nombre_tutor");
-	  localStorage.removeItem("idioma");
-	  localStorage.removeItem("numero_hijos");
-	  localStorage.removeItem("tel");
-	  localStorage.removeItem("pass");
-	  localStorage.removeItem("notificaciones");
+	  window.localStorage.removeItem("id_tutor");
+	  window.localStorage.removeItem("nombre_tutor");
+	  window.localStorage.removeItem("idioma");
+	  window.localStorage.removeItem("numero_hijos");
+	  window.localStorage.removeItem("tel");
+	  window.localStorage.removeItem("pass");
+	  window.localStorage.removeItem("notificaciones");
 	   
 	  window.location.replace("index.html");
 }

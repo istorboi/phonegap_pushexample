@@ -1,6 +1,7 @@
 var map;
 var marcadorGuarderia;
-var URL_REST_BASE ="https://www.miagendainfantil.com/miarest4/";
+var URL_REST_BASE ="https://www.miagendainfantil.com/miarest162/";
+
 
 function protectHeaderiOS()
 {
@@ -49,7 +50,7 @@ $(document).on("pagecreate", "#map-page", function() {
 	
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-    if ( localStorage.getItem("numero_hijos")==1)
+    if ( window.localStorage.getItem("numero_hijos")==1)
 	{
     	$("#mapaliHijos").remove();
     }
@@ -65,15 +66,20 @@ function onLoad() {
 //function onDeviceReady() {
 	//initialize();
 	
-	$id_centro=localStorage.getItem("id_centro");
+	$id_centro=window.localStorage.getItem("id_centro");
 
-	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
+	$cv = window.localStorage.getItem("cv");
+	//new api 162
+	//FALTA PROBAR
+
+	
+	$(".logo_centro").attr("src",window.localStorage.getItem("logo_centro"));
 	//alert("onloadmapa");
 	   $.ajax({
            type:'GET',
 //           url: 'http://www.miagendainfantil.com/miarest2/restapi/centroGetDetalle.php',
            url: URL_REST_BASE +'restapi/centroGetDetalle.php',         
-           data:{id_centro: $id_centro},
+           data:{id_centro: $id_centro,cv:$cv},
            dataType: 'jsonp',
            jsonp: 'callback',
            jsonpCallback: 'centroCallback',
@@ -155,12 +161,12 @@ $(document).on("pagecreate",  function() {
 	
 	
 	//quitamos el boton hijos del nav bas si solo tenemos 1 hijo
-	if ( localStorage.getItem("numero_hijos")==1)
+	if ( window.localStorage.getItem("numero_hijos")==1)
 	{
 		$( "#liHijos" ).remove();
 	}
 	
-	$(".logo_centro").attr("src",localStorage.getItem("logo_centro"));
+	$(".logo_centro").attr("src",window.localStorage.getItem("logo_centro"));
 	
 	
 	
@@ -175,12 +181,13 @@ function irListaHijos()
 
 function desconectarse(){
 	//borramos variables 
-	  localStorage.removeItem("id_tutor");
-	  localStorage.removeItem("nombre_tutor");
-	  localStorage.removeItem("idioma");
-	  localStorage.removeItem("numero_hijos");
-	  localStorage.removeItem("tel");
-	  localStorage.removeItem("pass");
+	  window.localStorage.removeItem("id_tutor");
+	  window.localStorage.removeItem("nombre_tutor");
+	  window.localStorage.removeItem("idioma");
+	  window.localStorage.removeItem("numero_hijos");
+	  window.localStorage.removeItem("tel");
+	  window.localStorage.removeItem("pass");
+	  window.localStorage.removeItem("cv");
 	   
 	  location.replace("index.html");
 }

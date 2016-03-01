@@ -23,12 +23,13 @@ function inicializarFormularioObservaciones()
     $("#textObservaciones").val('');
 
   
-    var id_alumno_obs=localStorage.getItem("id_alumno");
-	var id_tutor_obs=localStorage.getItem("id_tutor");
-
+    var id_alumno_obs=window.localStorage.getItem("id_alumno");
+	var id_tutor_obs=window.localStorage.getItem("id_tutor");
+	var cv=window.localStorage.getItem("cv");
+	
     $("#id_tutorObservaciones").val(id_tutor_obs);
     $("#id_alumnoObservaciones").val(id_alumno_obs);
-    
+    $("#cv").val(cv);
   
     
     
@@ -101,6 +102,7 @@ function enviarFormularioObservaciones()
                         	//alert ("No se pudo mandar la Observación");
                          }
     });
+    
     
     
 }
