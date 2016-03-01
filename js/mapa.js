@@ -67,7 +67,7 @@ function onLoad() {
 	//initialize();
 	
 	$id_centro=window.localStorage.getItem("id_centro");
-
+	$id_tutor=window.localStorage.getItem("id_tutor");
 	$cv = window.localStorage.getItem("cv");
 	//new api 162
 	//FALTA PROBAR
@@ -79,7 +79,7 @@ function onLoad() {
            type:'GET',
 //           url: 'http://www.miagendainfantil.com/miarest2/restapi/centroGetDetalle.php',
            url: URL_REST_BASE +'restapi/centroGetDetalle.php',         
-           data:{id_centro: $id_centro,cv:$cv},
+           data:{id_centro: $id_centro,cv:$cv, id_tutor:$id_tutor},
            dataType: 'jsonp',
            jsonp: 'callback',
            jsonpCallback: 'centroCallback',
